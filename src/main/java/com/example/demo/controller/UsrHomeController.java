@@ -1,30 +1,84 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Controller
 public class UsrHomeController {
 
-	private int count;
-	
-	public UsrHomeController() {
-		count = 0;
+	@RequestMapping("/usr/home/getArticle")
+	@ResponseBody
+	public Article getArticle() {
+		Article article = new Article(1, "제목1");
+
+		return article;
 	}
 
-	@RequestMapping("/usr/home/setCount")
+	@RequestMapping("/usr/home/getList")
 	@ResponseBody
-	public String setCount(int count) {
-		this.count = count;
-		return "count의 값이 " + count + "(으)로 초기화 되었습니다.";
+	public List<String> getList() {
+		List<String> list = new ArrayList<>();
+
+		list.add("철수나이");
+		list.add("영수나이");
+
+		return list;
 	}
 
-	@RequestMapping("/usr/home/getCount")
+	@RequestMapping("/usr/home/getMap")
 	@ResponseBody
-	public int getCount() {
-		return count++;
+	public Map<String, Object> getMap() {
+		Map<String, Object> map = new HashMap<>();
+
+		map.put("철수나이", 11);
+		map.put("영수나이", 12);
+
+		return map;
 	}
-	
+
+	@RequestMapping("/usr/home/getDouble")
+	@ResponseBody
+	public double getDouble() {
+		return 3.3;
+	}
+
+	@RequestMapping("/usr/home/getBoolean")
+	@ResponseBody
+	public boolean getBoolean() {
+		return true;
+	}
+
+	@RequestMapping("/usr/home/getString")
+	@ResponseBody
+	public String getString() {
+		return "abc";
+	}
+
+	@RequestMapping("/usr/home/getInt")
+	@ResponseBody
+	public int getInt() {
+		return 1;
+	}
+}
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+class Article {
+	public Article(int i, String string) {
+		// TODO Auto-generated constructor stub
+	}
+	int id;
+	String title;
 
 }
