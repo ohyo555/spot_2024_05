@@ -48,6 +48,13 @@ public class UsrHomeController {
 //		==v2== 생성자를 이용함
 		return cnt++;
 	}
+	
+	@RequestMapping("/usr/home/main6")
+	@ResponseBody
+	public String showMain6() {
+		cnt = 0;
+		return "count의 값이 0으로 초기화 되었습니다.";
+	}
 
 	
 
