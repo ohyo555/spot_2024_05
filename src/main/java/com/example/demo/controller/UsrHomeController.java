@@ -75,9 +75,6 @@ public class UsrHomeController {
 @AllArgsConstructor
 @NoArgsConstructor
 class Article {
-	public Article(int i, String string) {
-		// TODO Auto-generated constructor stub
-	}
 	int id;
 	String title;
 
