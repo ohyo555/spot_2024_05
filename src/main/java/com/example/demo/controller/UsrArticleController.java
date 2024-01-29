@@ -37,7 +37,8 @@ public class UsrArticleController {
 	@RequestMapping("/usr/article/doModify")
 	@ResponseBody
 	public Object doModify(int id, String title, String body) {
-
+		System.err.println("title : " + title);
+		System.err.println("body : " + body);
 		Article article = articleService.getArticle(id);
 
 		if (article == null) {
