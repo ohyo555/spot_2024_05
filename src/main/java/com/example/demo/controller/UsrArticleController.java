@@ -64,9 +64,9 @@ public class UsrArticleController {
 		return id + "번 글이 삭제 되었습니다";
 	}
 
-	@RequestMapping("/usr/article/doAdd")
+	@RequestMapping("/usr/article/doWrite")
 	@ResponseBody
-	public Article doAdd(String title, String body) {
+	public Article doWrite(String title, String body) {
 		Article article = articleService.writeArticle(title, body);
 		return article;
 	}
