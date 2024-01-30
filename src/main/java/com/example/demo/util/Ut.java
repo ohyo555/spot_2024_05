@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Ut {
 
-	public static Object f(String format, Object... args) {
+	public static String f(String format, Object... args) {
 		return String.format(format, args);
 	}
 
