@@ -47,6 +47,7 @@ title = '제목3',
 `body` = '내용3';
 
 # member TD 생성
+# (관리자)
 INSERT INTO `member`
 SET regDate = NOW(),
 updateDate = NOW(),
@@ -58,6 +59,7 @@ nickname = '관리자',
 cellphoneNum = '01012341234',
 email = 'abcd@gmail.com';
 
+# (일반)
 INSERT INTO `member`
 SET regDate = NOW(),
 updateDate = NOW(),
@@ -68,6 +70,7 @@ nickname = '회원1',
 cellphoneNum = '01043214321',
 email = 'abcde@gmail.com';
 
+# (일반)
 INSERT INTO `member`
 SET regDate = NOW(),
 updateDate = NOW(),
