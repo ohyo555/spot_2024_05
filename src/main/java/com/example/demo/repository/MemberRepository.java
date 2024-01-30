@@ -8,6 +8,13 @@ import com.example.demo.vo.Member;
 
 @Mapper
 public interface MemberRepository {
+	@Select("""
+			SELECT *
+			FROM `member`
+			WHERE loginId = #{loginId}
+			""")
+	public Member getMemberByLoginId(String loginId);
+
 	@Insert("""
 			INSERT INTO
 			`member` SET
@@ -27,4 +34,5 @@ public interface MemberRepository {
 
 	@Select("SELECT * FROM `member` WHERE id = #{id}")
 	public Member getMember(int id);
+
 }
