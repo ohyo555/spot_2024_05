@@ -15,7 +15,7 @@ public class MemberService {
 		this.memberRepository = memberRepository;
 	}
 
-	public int doJoin(String loginId, String loginPw, String name, String nickname, String cellphoneNum, String email) {
+	public int join(String loginId, String loginPw, String name, String nickname, String cellphoneNum, String email) {
 
 		Member existsMember = getMemberByLoginId(loginId);
 
