@@ -19,4 +19,8 @@ public class MemberService {
 		memberRepository.join(loginId, loginPw, name, nickname, cellphoneNum, email);
 	}
 
+	public int findMember(String loginId) {
+		return memberRepository.findMember(loginId);
+	}
+
 }

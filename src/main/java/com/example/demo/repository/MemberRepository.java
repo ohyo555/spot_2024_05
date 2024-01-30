@@ -20,6 +20,6 @@ public interface MemberRepository {
 			""")
 	public void join(String loginId, String loginPw, String name, String nickname, String cellphoneNum, String email);
 
-	@Select("SELECT LAST_INSERT_ID()")
-	public int getLastInsertId();
+	@Select("SELECT IF(COUNT(*),1,0) FROM `member` WHERE loginId = #{loginId}")
+	public int findMember(String loginId);
 }

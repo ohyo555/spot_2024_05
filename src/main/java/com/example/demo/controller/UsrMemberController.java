@@ -18,8 +18,11 @@ public class UsrMemberController {
 	public String doJoin(String loginId, String loginPw, String name, String nickname, String cellphoneNum,
 			String email) {
 
+		int cnt = memberService.findMember(loginId);
+		if(cnt == 1) {
+			return "중복된 아이디가 존재합니다.";
+		}
 		memberService.doJoin(loginId, loginPw, name, nickname, cellphoneNum, email);
-
 		return "가입!";
 	}
 }
