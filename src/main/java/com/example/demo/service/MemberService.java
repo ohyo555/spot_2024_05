@@ -17,7 +17,7 @@ public class MemberService {
 		this.memberRepository = memberRepository;
 	}
 
-	public ResultData join(String loginId, String loginPw, String name, String nickname, String cellphoneNum,
+	public ResultData<Integer> join(String loginId, String loginPw, String name, String nickname, String cellphoneNum,
 			String email) {
 
 		Member existsMember = getMemberByLoginId(loginId);
@@ -50,6 +50,21 @@ public class MemberService {
 
 	public Member getMember(int id) {
 		return memberRepository.getMember(id);
+	}
+
+	public ResultData<Member> login(String loginId, String loginPw) {
+		
+		Member existsMember = getMemberByLoginId(loginId);
+		
+		if(existsMember != null) {
+			
+			if(memberRepository.login(loginId, loginPw).equals(loginPw)) {
+				return ResultData.from("S-1", "로그인 성공", existsMember);
+			}
+			return ResultData.from("F-3", "비밀번호가 일치하지 않습니다.");
+		} 
+		return ResultData.from("F-4", "해당 아이디는 존재하지 않습니다.");
+
 	}
 
 }
