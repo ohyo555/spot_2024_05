@@ -77,6 +77,7 @@ public class UsrArticleController {
 		return ResultData.newData(writeArticleRd, article);
 	}
 
+	// 로그인 체크 -> 유무 체크 -> 권한 체크 -> 수정
 	@RequestMapping("/usr/article/doModify")
 	@ResponseBody
 	public ResultData<Integer> doModify(HttpSession httpSession, int id, String title, String body) {
@@ -99,15 +100,14 @@ public class UsrArticleController {
 			return ResultData.from("F-1", Ut.f("%d번 글은 존재하지 않습니다", id), id);
 		}
 
-		if (article.getMemberId() != loginedMemberId) {
-			return ResultData.from("F-2", Ut.f("%d번 글에 대한 권한이 없습니다", id), id);
-		}
+		ResultData loginedMemberCanModifyRd = articleService.loginedMemberCanModify(loginedMemberId, article);
 
 		articleService.modifyArticle(id, title, body);
 
-		return ResultData.from("S-1", Ut.f("%d번 글을 수정했습니다", id), id);
+		return ResultData.from(loginedMemberCanModifyRd.getResultCode(), loginedMemberCanModifyRd.getMsg(), id);
 	}
 
+	// 로그인 체크 -> 유무 체크 -> 권한 체크 -> 삭제
 	@RequestMapping("/usr/article/doDelete")
 	@ResponseBody
 	public ResultData<Integer> doDelete(HttpSession httpSession, int id) {
