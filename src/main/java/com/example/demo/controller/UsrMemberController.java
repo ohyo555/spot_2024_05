@@ -18,6 +18,25 @@ public class UsrMemberController {
 	@Autowired
 	private MemberService memberService;
 
+	@RequestMapping("/usr/member/doLogout")
+	@ResponseBody
+	public ResultData doLogout(HttpSession httpSession) {
+
+		boolean isLogined = false;
+
+		if (httpSession.getAttribute("loginedMemberId") != null) {
+			isLogined = true;
+		}
+
+		if (isLogined == false) {
+			return ResultData.from("F-A", "이미 로그아웃 상태입니다");
+		}
+
+		httpSession.removeAttribute("loginedMemberId");
+
+		return ResultData.from("S-1", Ut.f("로그아웃 되었습니다"));
+	}
+
 	@RequestMapping("/usr/member/doLogin")
 	@ResponseBody
 	public ResultData<Member> doLogin(HttpSession httpSession, String loginId, String loginPw) {
@@ -50,22 +69,8 @@ public class UsrMemberController {
 		}
 
 		httpSession.setAttribute("loginedMemberId", member.getId());
-		return ResultData.from("S-1", Ut.f("%s님 환영합니다", member.getNickname()));
-	}
-	
-	@RequestMapping("/usr/member/doLogout")
-	@ResponseBody
-	public ResultData<Member> doLogout(HttpSession httpSession) {
-        
-        if (httpSession.getAttribute("loginedMemberId") == null) {
-			return ResultData.from("F-1", "로그인 후 이용해주세요");
-		}
-        
-        httpSession.removeAttribute("loginedMemberId");
-        httpSession.removeAttribute("loginedMemberLoginId");
-        httpSession.removeAttribute("loginedMember");
 
-		return ResultData.from("S-1", "로그아웃 성공");
+		return ResultData.from("S-1", Ut.f("%s님 환영합니다", member.getNickname()));
 	}
 
 	@RequestMapping("/usr/member/doJoin")

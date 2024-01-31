@@ -12,8 +12,6 @@ import com.example.demo.util.Ut;
 import com.example.demo.vo.Article;
 import com.example.demo.vo.ResultData;
 
-import jakarta.servlet.http.HttpSession;
-
 @Controller
 public class UsrArticleController {
 
@@ -61,90 +59,36 @@ public class UsrArticleController {
 
 		Article article = articleService.getArticle(id);
 
-		return ResultData.from(writeArticleRd.getResultCode(), writeArticleRd.getMsg(), article);
+		return ResultData.newData(writeArticleRd, article);
 	}
-	
-	@RequestMapping("/usr/article/doDelete")
-	@ResponseBody
-	public ResultData<Integer> doDelete(HttpSession httpSession, int id) {
 
-		if (httpSession.getAttribute("loginedMemberId") == null) {
-			return ResultData.from("F-1", "로그인 후 이용해주세요");
-		}
-		
-		int loginedMemberId = (int) httpSession.getAttribute("loginedMemberId");
-		
-		Article article = articleService.getArticle(id);
-			
-		if (article == null) {
-			return ResultData.from("F-1", Ut.f("%d번 글은 존재하지 않습니다", id), id);
-		}
-		if (loginedMemberId == article.getMemberId()){
-			articleService.deleteArticle(id);
-			return ResultData.from("S-1", Ut.f("%d번 글이 삭제 되었습니다", id), id);
-			
-		} else return ResultData.from("F-3", "작성자만 삭제 가능해");
-
-	}
-	
 	@RequestMapping("/usr/article/doModify")
 	@ResponseBody
-	public ResultData<Integer> doModify(HttpSession httpSession, int id, String title, String body) {
-		
-		if (httpSession.getAttribute("loginedMemberId") == null) {
-			return ResultData.from("F-1", "로그인 후 이용해주세요");
-		}
-		
-		int loginedMemberId = (int) httpSession.getAttribute("loginedMemberId");
-		
+	public ResultData<Integer> doModify(int id, String title, String body) {
 		Article article = articleService.getArticle(id);
 
 		if (article == null) {
 			return ResultData.from("F-1", Ut.f("%d번 글은 존재하지 않습니다", id), id);
 		}
 
-		if (loginedMemberId == article.getMemberId()){
-			articleService.modifyArticle(id, title, body);
+		articleService.modifyArticle(id, title, body);
 
-			return ResultData.from("S-1", Ut.f("%d번 글을 수정했습니다", id), id);
-			
-		} else return ResultData.from("F-3", "작성자만 수정 가능해");
+		return ResultData.from("S-1", Ut.f("%d번 글을 수정했습니다", id), id);
 	}
-//	@RequestMapping("/usr/article/doModify")
-//	@ResponseBody
-//	public ResultData<Integer> doModify(HttpSession httpSession, int id, String title, String body) {
-//		Article article = articleService.getArticle(id);
-//		
-//		if (httpSession.getAttribute("loginedMemberId") == null) {
-//			return ResultData.from("F-1", "로그인 후 이용해주세요");
-//		}
-//		
-//		if (article == null) {
-//			return ResultData.from("F-2", Ut.f("%d번 글은 존재하지 않습니다", id), id);
-//		}
-//
-//		int loginedMemberId = (int) httpSession.getAttribute("loginedMemberId");
-//	
-//		if (loginedMemberId == article.getMemberId()){
-//			articleService.modifyArticle(id, title, body);
-//		} else ResultData.from("F-3", "작성자만 수정 가능해");
-//		
-//		return ResultData.from("S-1", Ut.f("%d번 글을 수정했습니다", id), id);
-//	}
 
-	
-//	@RequestMapping("/usr/article/doModify")
-//	@ResponseBody
-//	public ResultData<Integer> doModify(int id, String title, String body) {
-//		Article article = articleService.getArticle(id);
-//
-//		if (article == null) {
-//			return ResultData.from("F-1", Ut.f("%d번 글은 존재하지 않습니다", id), id);
-//		}
-//
-//		articleService.modifyArticle(id, title, body);
-//
-//		return ResultData.from("S-1", Ut.f("%d번 글을 수정했습니다", id), id);
-//	}
+	@RequestMapping("/usr/article/doDelete")
+	@ResponseBody
+	public ResultData<Integer> doDelete(int id) {
+
+		Article article = articleService.getArticle(id);
+
+		if (article == null) {
+			return ResultData.from("F-1", Ut.f("%d번 글은 존재하지 않습니다", id), id);
+		}
+
+		articleService.deleteArticle(id);
+
+		return ResultData.from("S-1", Ut.f("%d번 글이 삭제 되었습니다", id), id);
+	}
 
 }
