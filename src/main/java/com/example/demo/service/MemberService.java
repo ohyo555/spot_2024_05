@@ -44,27 +44,12 @@ public class MemberService {
 		return memberRepository.getMemberByNameAndEmail(name, email);
 	}
 
-	private Member getMemberByLoginId(String loginId) {
+	public Member getMemberByLoginId(String loginId) {
 		return memberRepository.getMemberByLoginId(loginId);
 	}
 
 	public Member getMember(int id) {
 		return memberRepository.getMember(id);
-	}
-
-	public ResultData<Member> login(String loginId, String loginPw) {
-		
-		Member existsMember = getMemberByLoginId(loginId);
-		
-		if(existsMember != null) {
-			
-			if(memberRepository.login(loginId, loginPw).equals(loginPw)) {
-				return ResultData.from("S-1", "로그인 성공", existsMember);
-			}
-			return ResultData.from("F-3", "비밀번호가 일치하지 않습니다.");
-		} 
-		return ResultData.from("F-4", "해당 아이디는 존재하지 않습니다.");
-
 	}
 
 }
