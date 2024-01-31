@@ -50,8 +50,22 @@ public class UsrMemberController {
 		}
 
 		httpSession.setAttribute("loginedMemberId", member.getId());
-
 		return ResultData.from("S-1", Ut.f("%s님 환영합니다", member.getNickname()));
+	}
+	
+	@RequestMapping("/usr/member/doLogout")
+	@ResponseBody
+	public ResultData<Member> doLogout(HttpSession httpSession) {
+        
+        if (httpSession.getAttribute("loginedMemberId") == null) {
+			return ResultData.from("F-1", "로그인 후 이용해주세요");
+		}
+        
+        httpSession.removeAttribute("loginedMemberId");
+        httpSession.removeAttribute("loginedMemberLoginId");
+        httpSession.removeAttribute("loginedMember");
+
+		return ResultData.from("S-1", "로그아웃 성공");
 	}
 
 	@RequestMapping("/usr/member/doJoin")
