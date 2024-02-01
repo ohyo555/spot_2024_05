@@ -52,10 +52,7 @@
 		</table>
 		<div class="btns text-base">
 			<button type="button" onclick="history.back();">뒤로가기</button>
-			<%-- <c:if test= "loginedMemberCanModifyRd.isSucces()">
-				<a href="modify?id=${article.id }">수정</a>
-				<a href="delete?id=${article.id }">삭제</a>
-			</c:if> --%>
+			
 			<c:if test="${article.memberId == loginedMemberId}">
 				<a href="modify?id=${article.id }">수정</a>
 				<a href="delete?id=${article.id }">삭제</a>
