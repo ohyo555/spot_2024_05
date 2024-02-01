@@ -8,11 +8,18 @@
 		<div class="div1">
 			<th>번호: ${article.id }</th><br>
 			<th>날짜: ${article.regDate.substring(0,10) }</th><br>
-			<th>제목: <input type="text" name="title" value="${article.title }"/ ></th><br>
-			<th>내용: <textarea type="text" name="body">${article.body }></textarea></th><br>
+			<form method="POST" action="doModify">
+				<th>제목: <input type="text" name="title" placeholder="${article.title }"/ ></th><br>
+			</form>
+			<th>내용: <textarea type="text" name="body" placeholder="${article.body }"></textarea></th><br>
 			<th>작성자: ${article.nickname }</th>
 		</div>
 	</div>
 </section>
 
+<div class="btns mt-5 px-4">
+	<button type="button" onclick="history.back();">뒤로가기</button>
+	<button type="submit" >수정</button>
+</div>
+		
 <%@ include file="../common/foot.jspf"%>

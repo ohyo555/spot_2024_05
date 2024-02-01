@@ -49,17 +49,39 @@ public class UsrArticleController {
 	}
 	
 	@RequestMapping("/usr/article/detail")
-	public String showDetail(Model model, int id) {
+	public String showDetail(HttpSession httpSession, Model model, int id) {
+		
+		boolean isLogined = false;
+		int loginedMemberId = 0;
+		
+		if (httpSession.getAttribute("loginedMemberId") != null) {
+			isLogined = true;
+			loginedMemberId = (int) httpSession.getAttribute("loginedMemberId");
+		}
+		
+		Article article = articleService.getArticle(id);
+//		System.out.println("----------------------" + article.getMemberId());
+//		System.out.println("++++++++++++++++++++++" + loginedMemberId);
+		
+		model.addAttribute("article", article);
+		model.addAttribute("loginedMemberId", loginedMemberId);
+		
+		return "usr/article/detail";
+	}
+	
+	@RequestMapping("/usr/article/modify")
+	public String showModify(Model model, int id, String title, String body) {
+	
 		Article article = articleService.getArticle(id);
 
 		model.addAttribute("article", article);
 
-		return "usr/article/detail";
+		return "usr/article/modify";
 	}
 
 	@RequestMapping("/usr/article/doWrite")
 	@ResponseBody
-	public ResultData<Article> doWrite(HttpSession httpSession, String title, String body) {
+	public ResultData<Article> doWrite(HttpSession httpSession, Model model, String title, String body) {
 
 		boolean isLogined = false;
 		int loginedMemberId = 0;
@@ -85,7 +107,7 @@ public class UsrArticleController {
 		int id = (int) writeArticleRd.getData1();
 
 		Article article = articleService.getArticle(id);
-
+		
 		return ResultData.newData(writeArticleRd, "article", article);
 	}
 
@@ -93,7 +115,7 @@ public class UsrArticleController {
 	@RequestMapping("/usr/article/doModify")
 	@ResponseBody
 	
-	public ResultData<Integer> doModify(HttpSession httpSession, int id, String title, String body) {
+	public ResultData<Integer> doModify(HttpSession httpSession, Model model, int id, String title, String body) {
 
 		boolean isLogined = false;
 		int loginedMemberId = 0;
@@ -114,7 +136,11 @@ public class UsrArticleController {
 		}
 
 		ResultData loginedMemberCanModifyRd = articleService.loginedMemberCanModify(loginedMemberId, article);
-
+		
+		model.addAttribute("loginedMemberCanModifyRd", loginedMemberCanModifyRd);
+//		String t = httpSession.setAttribute("title", title);
+//		String b = httpSession.getAttribute("body");
+		
 		articleService.modifyArticle(id, title, body);
 
 		return ResultData.from(loginedMemberCanModifyRd.getResultCode(), loginedMemberCanModifyRd.getMsg(), "id", id);

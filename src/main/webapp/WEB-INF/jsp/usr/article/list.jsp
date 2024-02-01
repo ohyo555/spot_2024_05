@@ -25,12 +25,22 @@
 				</tr>
 			</thead>
 			<tbody>
-
+				
+				<c:if test="${articles.size() == 0 }">
+					<tfoot>
+						<tr>
+							<td colspan="4">게시글 없어</td>
+						</tr>
+					</tfoot>
+				</c:if>
+			
 				<c:forEach var="article" items="${articles }">
 					<tr>
 						<td>${article.id }</td>
 						<td>${article.regDate.substring(0,10) }</td>
-						<td><a class="hover:underline" href="detail?id=${article.id }">${article.title }</a></td>
+						<td>
+							<a class="hover:underline" href="detail?id=${article.id }">${article.title }</a>
+						</td>
 						<td>${article.nickname }</td>
 					</tr>
 				</c:forEach>

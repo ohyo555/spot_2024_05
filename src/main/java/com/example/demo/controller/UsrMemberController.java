@@ -1,12 +1,16 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.service.MemberService;
 import com.example.demo.util.Ut;
+import com.example.demo.vo.Article;
 import com.example.demo.vo.Member;
 import com.example.demo.vo.ResultData;
 
@@ -36,7 +40,27 @@ public class UsrMemberController {
 
 		return ResultData.from("S-1", Ut.f("로그아웃 되었습니다"));
 	}
+	
+	@RequestMapping("/usr/member/login")
+	public String doLogin(HttpSession httpSession, Model model, String loginId) {
+		
+		return "/usr/member/login";
+	}
+	
+	@RequestMapping("/usr/member/logout")
+	public String doLogout(HttpSession httpSession, Model model, String loginId) {
+		
+		httpSession.removeAttribute("loginedMemberId");
+		
+		return "";
+	}
+	
+	@RequestMapping("/usr/member/join")
+	public String join(HttpSession httpSession, Model model, String loginId) {
 
+		return "/usr/member/join";
+	}
+	
 	@RequestMapping("/usr/member/doLogin")
 	@ResponseBody
 	public ResultData<Member> doLogin(HttpSession httpSession, String loginId, String loginPw) {
