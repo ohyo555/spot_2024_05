@@ -3,7 +3,7 @@
 <c:set var="pageTitle" value="ARTICLE DETAIL"></c:set>
 <%@ include file="../common/head.jspf"%>
 
-<style>
+<!-- <style>
 
 	.div1 {
 	margin: 15px;
@@ -18,19 +18,46 @@
 	}
 	
 </style>
+ -->
+ 
+ <section class="mt-8 text-xl px-4">
+	<div class="mx-auto">
+		<table class="table-box-1" border="1">
+			<tbody>
+				<tr>
+					<th>번호</th>
+					<td>${article.id }</td>
+				</tr>
+				<tr>
+					<th>작성날짜</th>
+					<td>${article.regDate }</td>
+				</tr>
+				<tr>
+					<th>수정날짜</th>
+					<td>${article.updateDate }</td>
+				</tr>
+				<tr>
+					<th>작성자</th>
+					<td>${article.nickname }</td>
+				</tr>
+				<tr>
+					<th>제목</th>
+					<td>${article.title }</td>
+				</tr>
+				<tr>
+					<th>내용</th>
+					<td>${article.body }</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="btns">
+			<button type="button" onclick="history.back();">뒤로가기</button>
+			<a href="modify?id=${article.id }">수정</a>
+			<a href="delete?id=${article.id }">삭제</a>
+		</div>
+	</div>
+</section>
 
-	<div class="div1">
-		<th>번호: ${article.id }</th><br>
-		<th>날짜: ${article.regDate.substring(0,10) }</th><br>
-		<th>제목: ${article.title }</th><br>
-		<th>내용: ${article.body }</th><br>
-		<th>작성자: ${article.nickname }</th>
-	</div>
-	
-	<div class="div1 div2">
-	<a href="list">목록</a>
-	<a href="modify?id=${article.id }">수정</a>
-	<a href="delete?id=${article.id }">삭제</a>
-	</div>
+
 
 <%@ include file="../common/foot.jspf"%>
