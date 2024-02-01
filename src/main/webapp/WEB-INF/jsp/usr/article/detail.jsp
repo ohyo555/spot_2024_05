@@ -3,21 +3,23 @@
 <c:set var="pageTitle" value="ARTICLE DETAIL"></c:set>
 <%@ include file="../common/head.jspf"%>
 
-<!-- <style>
+<style>
+
 	.div1 {
-	margin: 10px;
-	background-color: red;
-	display:inline-block;
+	margin: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
 	}
 	
 	.div2 {
 	display:block;
-	text-align: center;
+/* 	text-align: center; */
 	}
 	
-</style> -->
+</style>
 
-	<div>
+	<div class="div1">
 		<th>번호: ${article.id }</th><br>
 		<th>날짜: ${article.regDate.substring(0,10) }</th><br>
 		<th>제목: ${article.title }</th><br>
@@ -25,7 +27,8 @@
 		<th>작성자: ${article.nickname }</th>
 	</div>
 	
-	<div>
+	<div class="div1 div2">
+	<a href="list">목록</a>
 	<a href="modify?id=${article.id }">수정</a>
 	<a href="delete?id=${article.id }">삭제</a>
 	</div>

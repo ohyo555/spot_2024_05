@@ -7,15 +7,26 @@
 <title>${pageTitle }</title>
 <link rel="stylesheet" href="/resource/common.css" />
 <script src="/resource/common.js" defer="defer"></script>
+<!-- 테일윈드 불러오기 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" />
+
+<!-- 폰트어썸 불러오기 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+<!-- 제이쿼리 불러오기 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
 	<header>
-		<a href="/">LOGO</a>
-
-		<ul>
-			<li><a href="/">HOME</a></li>
-			<li><a href="../article/list">LIST</a></li>
-		</ul>
+		<div class="h-20 flex mx-auto items-center text-3xl">
+			<a href="/">LOGO</a>
+			<div class="flex-grow"></div>
+			<ul class="flex">
+				<li><a class="hover:underline" href="/">HOME</a></li>
+				<li><a class="hover:underline" href="../article/list">LIST</a></li>
+				<li><a class="hover:underline" href="../member/login">LOGIN</a></li>
+			</ul>
+		</div>
 	</header>
 	<h1>${pageTitle }</h1>
 	<hr />

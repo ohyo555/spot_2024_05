@@ -3,38 +3,42 @@
 <c:set var="pageTitle" value="ARTICLE LIST"></c:set>
 <%@ include file="../common/head.jspf"%>
 
-<table id ="tb" border="1">
-	<thead>
-		<tr>
-			<th>번호</th>
-			<th>날짜</th>
-			<th>제목</th>
-			<th>작성자</th>
-		</tr>
-	</thead>
-	<tbody>
-		<label class="checkbox checkbox-inline">
-			<input type="checkbox" name="myBtn" data-toggle="checkbox" value="아이디">check
-		</label>
-		
-		<c:if test="${articles.size() == 0 }">
-			<tfoot>
+<!-- <style>
+	.tb {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	background-color: rgb(211, 232, 240);
+	width: 400px;
+}
+</style> -->
+
+<section class="mt-8 text-xl px-4">
+	<div class="mx-auto">
+		<table class="table-box-1" border="1">
+			<thead>
 				<tr>
-					<td colspan="4">게시글 없어</td>
+					<th>번호</th>
+					<th>날짜</th>
+					<th>제목</th>
+					<th>작성자</th>
 				</tr>
-			</tfoot>
-		</c:if>
+			</thead>
+			<tbody>
 
-		<c:forEach var="article" items="${articles }">
-			<tr>
-				<td>${article.id }</td>
-				<td>${article.regDate.substring(0,10) }</td>
-				<td><a href="detail?id=${article.id }">${article.title }</a></td>
-				<td>${article.nickname }</td>
-			</tr>
-		</c:forEach>
-	</tbody>
+				<c:forEach var="article" items="${articles }">
+					<tr>
+						<td>${article.id }</td>
+						<td>${article.regDate.substring(0,10) }</td>
+						<td><a class="hover:underline" href="detail?id=${article.id }">${article.title }</a></td>
+						<td>${article.nickname }</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
+</section>
 
-</table>
+
 
 <%@ include file="../common/foot.jspf"%>
