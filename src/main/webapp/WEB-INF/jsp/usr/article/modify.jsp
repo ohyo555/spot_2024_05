@@ -12,7 +12,7 @@
 				<th>제목: <input type="text" name="title" placeholder="${article.title }"/ ></th><br>
 			</form>
 			<th>내용: <textarea type="text" name="body" placeholder="${article.body }"></textarea></th><br>
-			<th>작성자: ${article.nickname }</th>
+			<th>작성자: ${article.extra__writer }</th>
 		</div>
 	</div>
 </section>

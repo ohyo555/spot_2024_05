@@ -48,11 +48,9 @@ public class UsrMemberController {
 	}
 	
 	@RequestMapping("/usr/member/logout")
-	public String doLogout(HttpSession httpSession, Model model, String loginId) {
+	public void doLogout(HttpSession httpSession, Model model, String loginId) {
 		
 		httpSession.removeAttribute("loginedMemberId");
-		
-		return "";
 	}
 	
 	@RequestMapping("/usr/member/join")
