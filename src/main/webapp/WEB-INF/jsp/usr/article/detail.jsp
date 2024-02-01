@@ -1,11 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
+<c:set var="pageTitle" value="ARTICLE DETAIL"></c:set>
+<%@ include file="../common/head.jspf"%>
 
-<style>
+<!-- <style>
 	.div1 {
 	margin: 10px;
 	background-color: red;
@@ -17,16 +15,9 @@
 	text-align: center;
 	}
 	
-</style>
+</style> -->
 
-<title>ARTICLE DETAIL PAGE</title>
-</head>
-<body>
-	<h1>DETAIL</h1>
-
-	<hr />
-
-	<div class="div1">
+	<div>
 		<th>번호: ${article.id }</th><br>
 		<th>날짜: ${article.regDate.substring(0,10) }</th><br>
 		<th>제목: ${article.title }</th><br>
@@ -34,9 +25,9 @@
 		<th>작성자: ${article.nickname }</th>
 	</div>
 	
-	<div class="div1 div2">
+	<div>
 	<a href="modify?id=${article.id }">수정</a>
 	<a href="delete?id=${article.id }">삭제</a>
 	</div>
-</body>
-</html>
+
+<%@ include file="../common/foot.jspf"%>
