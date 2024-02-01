@@ -47,6 +47,15 @@ public class UsrArticleController {
 
 		return "usr/article/list";
 	}
+	
+	@RequestMapping("/usr/article/detail")
+	public String showDetail(Model model, int id) {
+		Article article = articleService.getArticle(id);
+
+		model.addAttribute("article", article);
+
+		return "usr/article/detail";
+	}
 
 	@RequestMapping("/usr/article/doWrite")
 	@ResponseBody
@@ -83,6 +92,7 @@ public class UsrArticleController {
 	// 로그인 체크 -> 유무 체크 -> 권한 체크 -> 수정
 	@RequestMapping("/usr/article/doModify")
 	@ResponseBody
+	
 	public ResultData<Integer> doModify(HttpSession httpSession, int id, String title, String body) {
 
 		boolean isLogined = false;

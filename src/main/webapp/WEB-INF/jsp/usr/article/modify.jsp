@@ -4,18 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <style>
-	body {
-		text-align:center;
-	}
-	
-	.tb {
-	}
+
 </style>
-<title>ARTICLE LIST</title>
+
+<title>ARTICLE MODIFY PAGE</title>
 </head>
 <body>
-	<h1>LIST</h1>
+	<h1>MODIFY</h1>
 
 	<hr />
 
@@ -25,37 +22,25 @@
 				<th>번호</th>
 				<th>날짜</th>
 				<th>제목</th>
+				<th>내용</th>
 				<th>작성자</th>
 			</tr>
 		</thead>
 		<tbody>
-			<label class="checkbox checkbox-inline">
-				<input type="checkbox" name="myBtn" data-toggle="checkbox" value="아이디">check
-			</label>
-			
-			<c:if test="${articles.size() == 0 }">
-				<tfoot>
-					<tr>
-						<td colspan="4">게시글 없어</td>
-					</tr>
-				</tfoot>
-			</c:if>
-
-			<c:forEach var="article" items="${articles }">
+			<c var="article" value="${article }">
 				<tr>
 					<td>${article.id }</td>
 					<td>${article.regDate.substring(0,10) }</td>
-					<td><a href="detail?id=${article.id }">${article.title }</a></td>
+					<td>${article.title }</a></td>
+					<td>${article.body }</td>
 					<td>${article.nickname }</td>
 				</tr>
-			</c:forEach>
+			</c >
 		</tbody>
-
 	</table>
-
-
-
-
-
+	<div>
+	<a href="modify?id=${article.id }">수정</a>
+	<a href="delete?id=${article.id }">삭제</a>
+	</div>
 </body>
 </html>
