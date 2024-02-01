@@ -30,12 +30,12 @@ public class ResultData<DT> {
 		return from(rd.getResultCode(), rd.getMsg(), dataName, newData);
 	}
 
-	public boolean isSuccess() {
+	public boolean isSucces() {
 		return resultCode.startsWith("S-");
 	}
 
 	public boolean isFail() {
-		return isSuccess() == false;
+		return isSucces() == false;
 	}
 
 }
