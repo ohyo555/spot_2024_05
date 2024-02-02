@@ -4,23 +4,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.vo.Article;
+import com.example.demo.vo.Rq;
+
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class UsrHomeController {
 
 	@RequestMapping("/usr/home/main")
-	public String showMain(Model model, HttpSession httpSession) {
-        
-		boolean isLogined = false;
-		int loginedMemberId = 0;
-		
-		if (httpSession.getAttribute("loginedMemberId") != null) {
-			isLogined = true;
-			loginedMemberId = (int) httpSession.getAttribute("loginedMemberId");
-		}
-		
-		model.addAttribute("loginedMemberId", loginedMemberId);
+	public String showMain(Model model, HttpServletRequest req) {
+//		Rq rq = (Rq) req.getAttribute("rq");
+//
+//		model.addAttribute("loginedMemberId", rq.getLoginedMemberId());
 		
 		return "/usr/home/main";
 	}
