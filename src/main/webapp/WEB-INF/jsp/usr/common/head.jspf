@@ -7,6 +7,9 @@
 <title>${pageTitle }</title>
 <link rel="stylesheet" href="/resource/common.css" />
 <script src="/resource/common.js" defer="defer"></script>
+
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+
 <!-- 테일윈드 불러오기 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" />
 
@@ -23,17 +26,19 @@
 			<div class="flex-grow"></div>
 			<ul class="flex">
 				<c:if test="${rq.loginedMemberId != 0}">
-				<li>${rq.loginedMemberNickname } 님 <i class="fa-regular fa-face-grin"></i></li>
+				<li>${rq.loginedMemberNickname } 님 <i class="fa-solid fa-face-smile fa-sm fa-spin" style="color: #efdf2e;"></i></li>
 				</c:if>
-				<li><a class="hover:underline" href="/">HOME</a></li>
-				<li><a class="hover:underline" href="../article/list">LIST</a></li>
+				<li><a class="hover:underline" href="/"><i class="fa-solid fa-house-chimney"></i></a></li>
+				<li><a class="hover:underline" href="../article/list"><i class="fa-solid fa-list"></i></a></li>
 				<c:if test="${rq.loginedMemberId == 0}">
-				<li><a class="hover:underline" href="../member/login">LOGIN</a></li>
+				<li><a class="hover:underline" href="../member/login"><i class="fa-solid fa-right-to-bracket"></i></i></a></li>
 				</c:if>
 				<c:if test="${rq.loginedMemberId != 0}">
-				<li><a class="hover:underline" onclick="if(confirm('로그아웃 할꺼지?') == false) return false;" href="../member/logout">LOGOUT</a></li>
+				<li><a class="hover:underline" onclick="if(confirm('로그아웃 할꺼지?') == false) return false;" href="../member/logout"><i class="fa-solid fa-right-from-bracket"></i></a></li>
 				</c:if>
-				<li><a class="hover:underline" href="../member/join">JOIN</a></li>
+				<%-- <c:if test="${rq.loginedMemberId == 0}"> --%>
+				<li><a class="hover:underline" href="../member/join"><i class="fa-solid fa-address-card"></i></a></li>
+				<%-- </c:if> --%>
 			</ul>
 		</div>
 	</header>

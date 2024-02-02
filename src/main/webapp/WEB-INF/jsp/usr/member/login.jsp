@@ -21,7 +21,7 @@
 			비밀번호 : <input autocomplete="off" type="text"
 				placeholder="비밀번호를 입력해주세요" name="loginPw" />
 		</div>
-		<!-- <button type="button" onclick="history.back();">뒤로가기</button> -->
+		<button type="button" onclick="history.back();">뒤로가기</button>
 		
 		<div class = "text-base" >
 			<button type="submit" >로그인</button>

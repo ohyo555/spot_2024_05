@@ -15,7 +15,7 @@ public class UsrHomeController {
 
 	@RequestMapping("/usr/home/main")
 	public String showMain(HttpServletRequest req) {
-		Rq rq = (Rq) req.getAttribute("rq");
+//		Rq rq = (Rq) req.getAttribute("rq");
 		
 //		model.addAttribute("loginedMemberId", rq.getLoginedMemberId());
 		

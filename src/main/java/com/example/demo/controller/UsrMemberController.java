@@ -48,7 +48,7 @@ public class UsrMemberController {
 	 
 	
 	@RequestMapping("/usr/member/login")
-	public String Login(HttpSession httpSession, Model model, String loginId) {
+	public String Login(HttpSession httpSession) {
 		
 		return "/usr/member/login";
 	}
@@ -78,13 +78,6 @@ public class UsrMemberController {
 			return Ut.jsReplace("F-A", "이미 로그인 중이야", "../home/main");
 		}
 
-//		if (Ut.isNullOrEmpty(loginId)) {
-//			return ResultData.from("F-1", "아이디를 입력해주세요");
-//		}
-//		if (Ut.isNullOrEmpty(loginPw)) {
-//			return ResultData.from("F-2", "비밀번호를 입력해주세요");
-//		}
-
 		Member member = memberService.getMemberByLoginId(loginId);
 
 		if (member == null) {
@@ -94,10 +87,10 @@ public class UsrMemberController {
 		if (member.getLoginPw().equals(loginPw) == false) {
 			return Ut.jsHistoryBack("F-1", "비밀번호가 일치하지 않아");
 		}
-//
-//		req.setAttribute("loginedMemberId", member.getId());
+		
 		httpSession.setAttribute("loginedMemberId", member.getId());
 		httpSession.setAttribute("loginedMemberNickname", member.getNickname());
+		
 		System.out.println(member.getNickname());
 		return Ut.jsReplace("S-1", Ut.f("%s님 환영합니다", member.getNickname()),"../home/main");
 	}
