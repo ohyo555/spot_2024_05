@@ -43,7 +43,13 @@ html>body {
 /* 라이브러리 */
 
 /* 커스텀 */
+
+header>div>a {
+ 	margin-left: 20px;
+}
+
 header>div>ul>li {
+/* 	margin-left: 10px; */
 	margin-right: 30px;
 }
 
