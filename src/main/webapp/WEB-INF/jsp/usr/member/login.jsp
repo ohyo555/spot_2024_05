@@ -3,6 +3,12 @@
 <c:set var="pageTitle" value="MEMBER LOGIN"></c:set>
 <%@ include file="../common/head.jspf"%>
 
+<style>
+	section > div div {
+		margin-bottom: 10px; 
+	}
+</style>
+
 <section class="mt-8 text-xl px-4">
 	<div class="mx-auto">
 		<form method="POST" action="doLogin"

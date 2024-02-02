@@ -14,9 +14,9 @@ import jakarta.servlet.http.HttpSession;
 public class UsrHomeController {
 
 	@RequestMapping("/usr/home/main")
-	public String showMain(Model model, HttpServletRequest req) {
-//		Rq rq = (Rq) req.getAttribute("rq");
-//
+	public String showMain(HttpServletRequest req) {
+		Rq rq = (Rq) req.getAttribute("rq");
+		
 //		model.addAttribute("loginedMemberId", rq.getLoginedMemberId());
 		
 		return "/usr/home/main";

@@ -66,6 +66,8 @@ public class UsrArticleController {
 	public ResultData<Article> doWrite(HttpServletRequest req, Model model, String title, String body) {
 		Rq rq = (Rq) req.getAttribute("rq");
 		
+		System.out.println("++++++++++++++++++++" + rq.getLoginedMemberId());
+		
 		if (rq.isLogined() == false) {
 			return ResultData.from("F-A", "로그인 후 이용해주세요");
 		}
@@ -78,7 +80,7 @@ public class UsrArticleController {
 		}
 
 		ResultData<Integer> writeArticleRd = articleService.writeArticle(rq.getLoginedMemberId(), title, body);
-
+		
 		int id = (int) writeArticleRd.getData1();
 
 		Article article = articleService.getArticle(id);
