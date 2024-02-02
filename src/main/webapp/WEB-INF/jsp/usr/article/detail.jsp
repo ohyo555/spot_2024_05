@@ -50,7 +50,7 @@
 				</tr>
 			</tbody>
 		</table>
-		<div class="btns text-base">
+		<div class="btns mt-5 text-base">
 			<button type="button" onclick="history.back();">뒤로가기</button>
 			
 			<c:if test="${article.userCanModify }">

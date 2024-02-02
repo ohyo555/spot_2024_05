@@ -12,7 +12,7 @@
 			<th>제목: <input type="text" name="title" placeholder="${article.title }"/ ></th><br>
 			<th>내용: <textarea type="text" name="body" placeholder="${article.body }"></textarea></th><br>
 			<th>작성자: ${article.extra__writer }</th>
-		<div class="btns mt-5 px-4 text-xl">
+		<div class="btns mt-5 text-base">
 			<button type="button" onclick="history.back();">뒤로가기</button>
 			<button type="submit" >수정</button>
 		</div>
