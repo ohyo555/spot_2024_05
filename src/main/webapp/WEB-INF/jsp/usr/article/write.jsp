@@ -6,7 +6,7 @@
 <section class="mt-8 text-xl px-4">
 	<div class="mx-auto">
 		<form action="../article/doWrite" method="POST">
-			<table class="join-box table-box-1" border="1">
+			<table class="write-box table-box-1" border="1">
 				<tbody>
 					<tr>
 						<th>제목</th>
@@ -14,10 +14,15 @@
 					</tr>
 					<tr>
 						<th>내용</th>
-						<td><input autocomplete="off" type="text" placeholder="내용을 입력해주세요" name="content" /></td>
+						<td><textarea autocomplete="off" type="text" placeholder="내용을 입력해주세요" name="body" /></textarea></td>
 					</tr>
 			</tbody>
 		</table>
+		
+		<div class="btns mt-5 text-base">
+			<button type="button" onclick="history.back();">뒤로가기</button>
+			<button type="submit" >등록</button>
+		</div>
 	</div>
 </section>
 

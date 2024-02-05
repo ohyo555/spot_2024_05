@@ -3,23 +3,58 @@
 <c:set var="pageTitle" value="ARTICLE MODIFY"></c:set>
 <%@ include file="../common/head.jspf"%>
 
-<section class="mt-5 text-2xl px-4">
+
+<section class="mt-8 text-xl px-4">
 	<div class="mx-auto">
-		<th>번호: ${article.id }</th><br>
-		<th>날짜: ${article.regDate.substring(0,10) }</th><br>
-		<form method="POST" action="doModify">
-		<input type="hidden" value=${article.id } name="id" />
-			<th>제목: <input type="text" name="title" placeholder="${article.title }"/ ></th><br>
-			<th>내용: <textarea type="text" name="body" placeholder="${article.body }"></textarea></th><br>
-			<th>작성자: ${article.extra__writer }</th>
-		<div class="btns mt-5 text-base">
-			<button type="button" onclick="history.back();">뒤로가기</button>
-			<button type="submit" >수정</button>
-		</div>
+		<form action="../article/doModify" method="POST">
+			<input type="hidden" name="id" value="${article.id }" />
+			<table class="modify-box table-box-1" border="1">
+				<tbody>
+					<tr>
+						<th>번호</th>
+						<td>${article.id }</td>
+					</tr>
+					<tr>
+						<th>작성날짜</th>
+						<td>${article.regDate }</td>
+					</tr>
+					<tr>
+						<th>수정날짜</th>
+						<td>${article.updateDate }</td>
+					</tr>
+					<tr>
+						<th>작성자</th>
+						<td>${article.extra__writer }</td>
+					</tr>
+					<tr>
+						<th>제목</th>
+						<td><input autocomplete="off" type="text" placeholder="제목을 입력해주세요" name="title" value="${article.title }" /></td>
+					</tr>
+					<tr>
+						<th>내용</th>
+						<td><input autocomplete="off" type="text" placeholder="내용을 입력해주세요" name="body" value="${article.body }" /></td>
+					</tr>
+					<tr>
+						<th></th>
+						<td><input type="submit" value="수정" /></td>
+					</tr>
+				</tbody>
+			</table>
 		</form>
+		<div class="btns">
+			<button class="hover:underline" type="button" onclick="history.back();">뒤로가기</button>
+			<c:if test="${article.userCanModify }">
+				<a href="../article/modify?id=${article.id }">수정</a>
+			</c:if>
+			<c:if test="${article.userCanDelete }">
+				<a onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;" href="../article/doDelete?id=${article.id }">삭제</a>
+			</c:if>
+
+		</div>
+
 	</div>
 </section>
 
 
-		
+
 <%@ include file="../common/foot.jspf"%>

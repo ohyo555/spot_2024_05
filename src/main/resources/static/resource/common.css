@@ -57,7 +57,11 @@ header>div>ul>li {
 	padding-left: 0;
 }
 
-
+.modify-box>tbody>tr:nth-child(5)>td>input, .modify-box>tbody>tr:nth-child(6)>td>input,
+	.modify-box>tbody>tr:nth-child(7)>td>input {
+	border-radius: 3px;
+	border: 1px solid red;
+}
 
 .table-box-1 th, .table-box-1 td {
 	border: 1px solid black;
