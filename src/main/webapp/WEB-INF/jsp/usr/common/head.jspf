@@ -31,14 +31,13 @@
 				<li><a class="hover:underline" href="/"><i class="fa-solid fa-house-chimney"></i></a></li>
 				<li><a class="hover:underline" href="../article/list"><i class="fa-solid fa-list"></i></a></li>
 				<c:if test="${rq.loginedMemberId == 0}">
-				<li><a class="hover:underline" href="../member/login"><i class="fa-solid fa-right-to-bracket"></i></i></a></li>
+				<li><a class="hover:underline" href="../member/login"><i class="fa-solid fa-right-to-bracket"></i></a></li>
+				<li><a class="hover:underline" href="../member/join"><i class="fa-solid fa-address-card"></i></a></li>
 				</c:if>
 				<c:if test="${rq.loginedMemberId != 0}">
-				<li><a class="hover:underline" onclick="if(confirm('로그아웃 할꺼지?') == false) return false;" href="../member/logout"><i class="fa-solid fa-right-from-bracket"></i></a></li>
+				<li><a onclick="if(confirm('로그아웃 할래?') == false) return false;" class="hover:underline"
+							href="../member/doLogout"><i class="fa-solid fa-right-from-bracket"></i></a></li>
 				</c:if>
-				<%-- <c:if test="${rq.loginedMemberId == 0}"> --%>
-				<li><a class="hover:underline" href="../member/join"><i class="fa-solid fa-address-card"></i></a></li>
-				<%-- </c:if> --%>
 			</ul>
 		</div>
 	</header>

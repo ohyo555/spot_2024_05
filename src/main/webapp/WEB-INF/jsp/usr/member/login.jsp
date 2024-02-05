@@ -11,23 +11,27 @@
 
 <section class="mt-8 text-xl px-4">
 	<div class="mx-auto">
-		<form method="POST" action="doLogin"
-		onsubmit="LoginForm__submit(this); return false;">
-		<div>
-			아이디 : <input autocomplete="off" type="text"
-				placeholder="아이디를 입력해주세요" name="loginId" />
-		</div>
-		<div>
-			비밀번호 : <input autocomplete="off" type="text"
-				placeholder="비밀번호를 입력해주세요" name="loginPw" />
-		</div>
-		<button type="button" onclick="history.back();">뒤로가기</button>
-		
-		<div class = "text-base" >
-			<button type="submit" >로그인</button>
-			<a class="hover:underline" href="../member/join">회원가입</a>
-		</div>
+		<form action="../member/doLogin" method="POST">
+			<table class="login-box table-box-1" border="1">
+				<tbody>
+					<tr>
+						<th>아이디</th>
+						<td><input autocomplete="off" type="text" placeholder="아이디를 입력해주세요" name="loginId" /></td>
+					</tr>
+					<tr>
+						<th>비밀번호</th>
+						<td><input autocomplete="off" type="text" placeholder="비밀번호를 입력해주세요" name="loginPw" /></td>
+					</tr>
+					<tr>
+						<th></th>
+						<td><input type="submit" value="로그인" /></td>
+					</tr>
+				</tbody>
+			</table>
 		</form>
+		<div class="btns">
+			<button class="hover:underline" type="button" onclick="history.back();">뒤로가기</button>
+		</div>
 	</div>
 </section>
 

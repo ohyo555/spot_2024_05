@@ -53,6 +53,12 @@ header>div>ul>li {
 	margin-right: 30px;
 }
 
+.join-box>tbody>tr:nth-child(7)>td>input  {
+	padding-left: 0;
+}
+
+
+
 .table-box-1 th, .table-box-1 td {
 	border: 1px solid black;
 	padding: 10px;
