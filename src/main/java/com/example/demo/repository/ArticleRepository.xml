@@ -8,6 +8,7 @@
 		FROM article AS A
 		INNER JOIN `member` AS M
 		ON A.memberId = M.id
+		WHERE BGNO = 1
 		ORDER BY A.id DESC
 	</select>
 	

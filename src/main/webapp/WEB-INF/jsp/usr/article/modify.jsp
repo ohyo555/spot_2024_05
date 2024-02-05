@@ -43,13 +43,6 @@
 		</form>
 		<div class="btns mt-5">
 			<button class="btn btn-outline" type="button" onclick="history.back();">뒤로가기</button>
-			<c:if test="${article.userCanModify }">
-				<a class="btn btn-outline" href="../article/modify?id=${article.id }">수정</a>
-			</c:if>
-			<c:if test="${article.userCanDelete }">
-				<a class="btn btn-outline" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;" href="../article/doDelete?id=${article.id }">삭제</a>
-			</c:if>
-
 		</div>
 
 	</div>

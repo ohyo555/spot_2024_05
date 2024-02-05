@@ -31,7 +31,16 @@ public interface ArticleRepository {
 			WHERE id = #{id}
 			""")
 	public Article getArticle(int id);
-
+	
+	@Select("""
+			SELECT A.*, M.nickname AS extra__writer
+			FROM article AS A
+			INNER JOIN `member` AS M
+			ON A.memberId = M.id
+			WHERE authLevel = 7
+			""")
+	public List<Article> getNotice();
+	
 	@Select("""
 			SELECT A.*, M.nickname AS extra__writer
 			FROM article AS A

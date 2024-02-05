@@ -35,12 +35,12 @@
 
 					<tr>
 						<th></th>
-						<td><input class="btn btn-outline btn-info" type="submit" value="가입" /></td>
+						<td><input class="btn btn-info" type="submit" value="가입" /></td>
 					</tr>
 				</tbody>
 			</table>
 		</form>
-		<div class="btns">
+		<div class="btns mt-5">
 			<button class="btn btn-outline" type="button" onclick="history.back();">뒤로가기</button>
 		</div>
 	</div>

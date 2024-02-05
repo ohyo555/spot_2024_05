@@ -43,6 +43,17 @@ public class UsrArticleController {
 		
 	}
 	
+	@RequestMapping("/usr/article/notice")
+	public String showNotice(HttpSession httpSession, Model model) {
+		
+		List<Article> articles = articleService.getNotice();
+
+		model.addAttribute("articles", articles);
+		
+		return "usr/article/list";
+		
+	}
+	
 	@RequestMapping("/usr/article/detail")
 	public String showDetail(HttpServletRequest req, Model model, int id) {
 		Rq rq = (Rq) req.getAttribute("rq");
@@ -69,7 +80,7 @@ public class UsrArticleController {
 	}
 	
 	@RequestMapping("/usr/article/write")
-	public String showModify(HttpServletRequest req, Model model) {
+	public String showWrite(HttpServletRequest req, Model model) {
 
 		return "usr/article/write";
 	}
@@ -85,14 +96,13 @@ public class UsrArticleController {
 		if (Ut.isNullOrEmpty(body)) {
 			return Ut.jsHistoryBack("F-1", "내용을 입력해주세요");
 		}
-
-		ResultData<Integer> writeArticleRd = articleService.writeArticle(rq.getLoginedMemberId(), title, body);
 		
+		ResultData<Integer> writeArticleRd = articleService.writeArticle(rq.getLoginedMemberId(), title, body);
 		int id = (int) writeArticleRd.getData1();
 
 		Article article = articleService.getArticle(id);
 
-		return Ut.jsReplace("S-1", Ut.f("%d번 글이 등록되었습니다.", id), "../article/list");
+		return Ut.jsReplace(writeArticleRd.getResultCode(), writeArticleRd.getMsg(), "../article/detail?id=" + id);
 	}
 
 	// 로그인 체크 -> 유무 체크 -> 권한 체크 -> 수정

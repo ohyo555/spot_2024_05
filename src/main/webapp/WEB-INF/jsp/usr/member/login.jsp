@@ -29,7 +29,7 @@
 				</tbody>
 			</table>
 		</form>
-		<div class="btns">
+		<div class="btns mt-5">
 			<button class="btn btn-outline" type="button" onclick="history.back();">뒤로가기</button>
 		</div>
 	</div>
