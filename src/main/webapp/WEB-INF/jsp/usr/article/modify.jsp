@@ -28,26 +28,26 @@
 					</tr>
 					<tr>
 						<th>제목</th>
-						<td><input autocomplete="off" type="text" placeholder="제목을 입력해주세요" name="title" value="${article.title }" /></td>
+						<td><input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text" placeholder="제목을 입력해주세요" name="title" value="${article.title }" /></td>
 					</tr>
 					<tr>
 						<th>내용</th>
-						<td><input autocomplete="off" type="text" placeholder="내용을 입력해주세요" name="body" value="${article.body }" /></td>
+						<td><input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text" placeholder="내용을 입력해주세요" name="body" value="${article.body }" /></td>
 					</tr>
 					<tr>
 						<th></th>
-						<td><input type="submit" value="수정" /></td>
+						<td><input class="btn btn-info" type="submit" value="수정" /></td>
 					</tr>
 				</tbody>
 			</table>
 		</form>
-		<div class="btns">
-			<button class="hover:underline" type="button" onclick="history.back();">뒤로가기</button>
+		<div class="btns mt-5">
+			<button class="btn btn-outline" type="button" onclick="history.back();">뒤로가기</button>
 			<c:if test="${article.userCanModify }">
-				<a href="../article/modify?id=${article.id }">수정</a>
+				<a class="btn btn-outline" href="../article/modify?id=${article.id }">수정</a>
 			</c:if>
 			<c:if test="${article.userCanDelete }">
-				<a onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;" href="../article/doDelete?id=${article.id }">삭제</a>
+				<a class="btn btn-outline" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;" href="../article/doDelete?id=${article.id }">삭제</a>
 			</c:if>
 
 		</div>
