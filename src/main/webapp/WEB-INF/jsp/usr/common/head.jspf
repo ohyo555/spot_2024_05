@@ -32,7 +32,12 @@
 				<li>${rq.loginedMemberNickname } 님 <i class="fa-solid fa-face-smile fa-sm fa-spin" style="color: #efdf2e;"></i></li>
 				</c:if>
 				<li><a class="hover:underline" href="/"><i class="fa-solid fa-house-chimney"></i></a></li>
-				<li><a class="hover:underline" href="../article/list"><i class="fa-solid fa-list"></i></a></li>
+				<li><a class="hover:underline" href="../article/list"><i class="fa-solid fa-list"></i></a>
+					<ul>
+						<li><a class="hover:underline" href="../article/list?boardId=1">NOTICE</a></li>
+						<li><a class="hover:underline" href="../article/list?boardId=2">FREE</a></li>
+						<li><a class="hover:underline" href="../article/list?boardId=3">QnA</a></li>
+					</ul></li>
 				<li><a class="hover:underline" href="../article/notice"><i class="fa-solid fa-bullhorn"></i></a></li>
 				<c:if test="${rq.loginedMemberId == 0}">
 				<li><a class="hover:underline" href="../member/login"><i class="fa-solid fa-right-to-bracket"></i></a></li>
