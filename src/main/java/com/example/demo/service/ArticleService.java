@@ -104,4 +104,11 @@ public class ArticleService {
 		return articleRepository.getArticlesCount(boardId);
 	}
 
+	public List<Article> getForSearchPrintArticles(int boardId, int itemsInAPage, int page, String list, String content) {
+		int limitFrom = (page - 1) * itemsInAPage;
+		int limitTake = itemsInAPage;
+		
+		return articleRepository.getForSearchPrintArticles(boardId, limitFrom, limitTake, list, content);
+	}
+
 }

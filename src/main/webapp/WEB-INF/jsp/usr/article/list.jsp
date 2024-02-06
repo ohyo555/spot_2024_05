@@ -13,15 +13,20 @@
 }
 </style> -->
 
-<section class="mt-8 text-xl px-4">
-	<form action="../article/Search" method="POST">
+<section class="mt-3 text-xl px-4">
+	<form action="../article/search" method="POST">
 	<input type="hidden" name="id" value="${article.id }" />
 			
 	<div class="mx-auto overflow-x-auto">
 		<div class="badge badge-outline">${articlesCount }개</div>
 		
-		<div class="mt-5 mb-5">
-			<input type="text" placeholder="검색어를 입력하세요" class="input input-bordered w-full max-w-xs" name="title"/>
+		<div class="mt-3 mb-3">
+			<select id = "list" class = "text-base">
+				<option value = "title">제목</option>
+				<option value = "body">내용</option>
+				<option value = "extra__writer">작성자</option>
+			</select>
+			<input type="text" placeholder="검색어를 입력하세요" class="input input-bordered w-full max-w-xs" name="content"/>
 			<button class="btn btn-outline" type="submit" >검색</button>
 		</div>
 		
@@ -60,17 +65,27 @@
 			</tbody>
 		</table>
 	</div>
-		<div class="pagination flex justify-center mt-3">	
-		<div class="btn-group">
-		<a href="?boardId=${boardId }&page=1">◀◀</a>
-			<c:forEach begin="1" end="${pageSize }" var="i">
-			<!-- 글 개수에 따라서 페이지 articlesCount/15 올림 한 만큼 페이지) -->
-			
-				<a class="btn btn-sm ${param.page == i ? 'btn-active' : '' }" href="?boardId=${boardId }&page=${i }">${i }</a>
-			</c:forEach>
-			<a href="?boardId=${boardId }&page=${pageSize }">▶▶</a>
-		</div>
+		<div class="pagination flex justify-center mt-3">
+		<c:set var="paginationLen" value="3" />
+		<c:set var="startPage" value="${page -  paginationLen  >= 1 ? page - paginationLen : 1}" />
+		<c:set var="endPage" value="${page +  paginationLen  <= pagesCount ? page + paginationLen : pagesCount}" />
+
+		<c:if test="${startPage > 1 }">
+			<a class="btn btn-sm" href="?page=1&boardId=${boardId }">1</a>
+			<button class="btn btn-sm btn-disabled">...</button>
+		</c:if>
+
+		<c:forEach begin="${startPage }" end="${endPage }" var="i">
+			<a class="btn btn-sm ${param.page == i ? 'btn-active' : '' }" href="?page=${i }&boardId=${boardId}">${i }</a>
+		</c:forEach>
+
+		<c:if test="${endPage < pagesCount }">
+			<button class="btn btn-sm btn-disabled">...</button>
+			<a class="btn btn-sm" href="?page=${pagesCount }&boardId=${boardId }">${pagesCount }</a>
+		</c:if>
+
 	</div>
+
 	</form>
 </section>
 

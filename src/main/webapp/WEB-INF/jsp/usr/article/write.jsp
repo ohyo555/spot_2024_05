@@ -12,10 +12,10 @@
 						<div class="form-check"> 
 					 			<input type="checkbox" id="notice"  name="notice" class="form-check-input">
 					 			<input type="hidden" name="_open" value="on"> 
-					 			<label for="open" class="form-check-label mr-5">일반게시판</label> 
+					 			<label for="open" class="form-check-label mr-5 text-base">일반게시판</label> 
 					 			<input type="checkbox" id="list"  name="notice" class="form-check-input">
 					 			<input type="hidden" name="_open" value="on"> 
-					 			<label for="open" class="form-check-label">자유게시판</label> 
+					 			<label for="open" class="form-check-label text-base">자유게시판</label> 
 					 			<!-- 체크박스 미선택 시, open은 null이지만 hidden 필드는 on -->
 						</div> 
 					</div>
