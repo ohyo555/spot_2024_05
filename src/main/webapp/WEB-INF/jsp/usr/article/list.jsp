@@ -14,7 +14,17 @@
 </style> -->
 
 <section class="mt-8 text-xl px-4">
+	<form action="../article/Search" method="POST">
+	<input type="hidden" name="id" value="${article.id }" />
+			
 	<div class="mx-auto overflow-x-auto">
+		<div class="badge badge-outline">${articlesCount }개</div>
+		
+		<div class="mt-5 mb-5">
+			<input type="text" placeholder="검색어를 입력하세요" class="input input-bordered w-full max-w-xs" name="title"/>
+			<button class="btn btn-outline" type="submit" >검색</button>
+		</div>
+		
 		<table class="table-box-1 table" border="1">
 			<colgroup>
 				<col style="width: 10%" />
@@ -50,6 +60,18 @@
 			</tbody>
 		</table>
 	</div>
+		<div class="pagination flex justify-center mt-3">	
+		<div class="btn-group">
+		<a href="?boardId=${boardId }&page=1">◀◀</a>
+			<c:forEach begin="1" end="${pageSize }" var="i">
+			<!-- 글 개수에 따라서 페이지 articlesCount/15 올림 한 만큼 페이지) -->
+			
+				<a class="btn btn-sm ${param.page == i ? 'btn-active' : '' }" href="?boardId=${boardId }&page=${i }">${i }</a>
+			</c:forEach>
+			<a href="?boardId=${boardId }&page=${pageSize }">▶▶</a>
+		</div>
+	</div>
+	</form>
 </section>
 
 

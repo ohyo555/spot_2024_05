@@ -39,19 +39,31 @@ public class UsrArticleController {
 
 	// 액션 메서드
 	@RequestMapping("/usr/article/list")
-	public String showList(HttpServletRequest req, Model model, @RequestParam(defaultValue = "1")int boardId) throws IOException {
-		
+	public String showList(HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int boardId,
+			@RequestParam(defaultValue = "1") int page) {
+
 		Rq rq = (Rq) req.getAttribute("rq");
-		
+
 		Board board = boardService.getBoardById(boardId);
 		
-		List<Article> articles = articleService.getForPrintArticles(boardId);
-		
+		int articlesCount = articleService.getArticlesCount(boardId);
+
 		if (board == null) {
 			return rq.historyBackOnView("없는 게시판이야");
 		}
 
+		int itemsInAPage = 15;
+		
+		List<Article> articles = articleService.getForPrintArticles(boardId, itemsInAPage, page);
+		
+		int pageSize = (int) Math.ceil(articlesCount / (double) itemsInAPage);
+		
+		System.out.println("+++++++++++++" + pageSize);
+		
 		model.addAttribute("board", board);
+		model.addAttribute("boardId", boardId);
+		model.addAttribute("pageSize", pageSize);
+		model.addAttribute("articlesCount", articlesCount);
 		model.addAttribute("articles", articles);
 
 		return "usr/article/list";
