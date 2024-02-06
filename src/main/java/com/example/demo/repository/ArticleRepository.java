@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.example.demo.vo.Article;
 
@@ -54,9 +55,35 @@ public interface ArticleRepository {
 	public void deleteArticle(int id);
 
 //	@Update("UPDATE article SET updateDate = NOW(), title = #{title}, `body` = #{body} WHERE id = #{id}")
+	@Update("""
+			UPDATE article
+				<set>
+					<if test="title != null and title != ''">title = #{title},</if>
+					<if test="body != null and body != ''">`body` = #{body},</if>
+					updateDate = NOW()
+				</set>
+			WHERE id = #{id}
+				""")
 	public void modifyArticle(int id, String title, String body);
 
 //	@Select("SELECT * FROM article ORDER BY id DESC")
+	@Select("""
+			SELECT A.*, M.nickname AS extra__writer
+			FROM article AS A
+			INNER JOIN `member` AS M
+			ON A.memberId = M.id
+			ORDER BY A.id DESC
+			""")
 	public List<Article> getArticles();
+	
+	@Select("""
+			SELECT A.*, M.nickname AS extra__writer
+			FROM article AS A
+			INNER JOIN `member` AS M
+			ON A.memberId = M.id
+			WHERE boardId = #{boardId}
+			ORDER BY A.id DESC
+			""")
+	public List<Article> getForPrintArticles(int boardId);
 
 }

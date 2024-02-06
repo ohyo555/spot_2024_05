@@ -88,4 +88,9 @@ public class ArticleService {
 	public List<Article> getNotice() {
 		return articleRepository.getNotice();
 	}
+
+	public List<Article> getForPrintArticles(int boardId) {
+		return articleRepository.getForPrintArticles(boardId);
+	}
+
 }
