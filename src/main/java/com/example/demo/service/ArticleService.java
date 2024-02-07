@@ -100,4 +100,12 @@ public class ArticleService {
 	public int getArticlesCount(int boardId, String searchKeywordTypeCode, String searchKeyword) {
 		return articleRepository.getArticlesCount(boardId, searchKeywordTypeCode, searchKeyword);
 	}
+
+	public void hitArticle(int id, int hit) {
+		articleRepository.hitArticle(id, hit);
+	}
+
+	public void goodArticle(int id, int good, int loginedId) {
+		articleRepository.goodArticle(id, good, loginedId);
+	}
 }

@@ -45,9 +45,8 @@ public class UsrArticleController {
 			@RequestParam(defaultValue = "") String searchKeyword) {
 
 		Rq rq = (Rq) req.getAttribute("rq");
-
 		Board board = boardService.getBoardById(boardId);
-
+		
 		int articlesCount = articleService.getArticlesCount(boardId, searchKeywordTypeCode, searchKeyword);
 
 		if (board == null) {
@@ -57,13 +56,15 @@ public class UsrArticleController {
 		int itemsInAPage = 15;
 		
 		int pagesCount = (int) Math.ceil(articlesCount / (double) itemsInAPage);
-
+		
 		List<Article> articles = articleService.getForPrintArticles(boardId, itemsInAPage, page, searchKeywordTypeCode, searchKeyword);
 
 		model.addAttribute("board", board);
 		model.addAttribute("boardId", boardId);
 		model.addAttribute("page", page);
 		model.addAttribute("pagesCount", pagesCount);
+		model.addAttribute("searchKeywordTypeCode", searchKeywordTypeCode);
+		model.addAttribute("searchKeyword", searchKeyword);
 		model.addAttribute("articlesCount", articlesCount);
 		model.addAttribute("articles", articles);
 
@@ -76,7 +77,18 @@ public class UsrArticleController {
 		Rq rq = (Rq) req.getAttribute("rq");
 		
 		Article article = articleService.getForPrintArticle(rq.getLoginedMemberId(), id);
+		
+//		if (!rq.isLogined()) {
+//			return Ut.jsHistoryBack("F-A", "로그아웃 상태입니다");
+//		}
 
+		int hit = article.getHit();
+		int good = article.getGood();
+		int loginedId = rq.getLoginedMemberId();
+
+		articleService.hitArticle(id, hit);
+		articleService.goodArticle(id, good, loginedId);
+		
 		model.addAttribute("article", article);
 
 		return "usr/article/detail";
