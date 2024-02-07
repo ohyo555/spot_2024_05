@@ -40,13 +40,15 @@ public class UsrArticleController {
 	// 액션 메서드
 	@RequestMapping("/usr/article/list")
 	public String showList(HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int boardId,
-			@RequestParam(defaultValue = "1") int page) {
+			@RequestParam(defaultValue = "1") int page,
+			@RequestParam(defaultValue = "title,body") String searchKeywordTypeCode,
+			@RequestParam(defaultValue = "") String searchKeyword) {
 
 		Rq rq = (Rq) req.getAttribute("rq");
 
 		Board board = boardService.getBoardById(boardId);
 		
-		int articlesCount = articleService.getArticlesCount(boardId);
+		int articlesCount = articleService.getArticlesCount(boardId, searchKeywordTypeCode, searchKeyword);
 
 		if (board == null) {
 			return rq.historyBackOnView("없는 게시판이야");
@@ -66,39 +68,6 @@ public class UsrArticleController {
 		model.addAttribute("articles", articles);
 
 		return "usr/article/list";
-	}
-	
-	@RequestMapping("/usr/article/search")
-	@ResponseBody
-	public String showSearch(HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int boardId,
-			@RequestParam(defaultValue = "1") int page, String list, String content) {
-
-		System.out.println("++++++++++++++++++++++++++++"+ list);
-		
-		Rq rq = (Rq) req.getAttribute("rq");
-
-		Board board = boardService.getBoardById(boardId);
-
-		int articlesCount = articleService.getArticlesCount(boardId);
-
-		if (board == null) {
-			return rq.historyBackOnView("없는 게시판이야");
-		}
-
-		int itemsInAPage = 15;
-		
-		List<Article> articles = articleService.getForSearchPrintArticles(boardId, itemsInAPage, page, list, content);
-		
-		int pagesCount = (int) Math.ceil(articlesCount / (double) itemsInAPage);
-
-		model.addAttribute("board", board);
-		model.addAttribute("boardId", boardId);
-		model.addAttribute("page", page);
-		model.addAttribute("pagesCount", pagesCount);
-		model.addAttribute("articlesCount", articlesCount);
-		model.addAttribute("articles", articles);
-
-		return "../article/list?page=" + page + "&boardId=" + boardId + "&list=" + list + "&content=" + content;
 	}
 	
 	
