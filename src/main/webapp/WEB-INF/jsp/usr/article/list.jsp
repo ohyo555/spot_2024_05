@@ -21,12 +21,12 @@
 		<div class="badge badge-outline">${articlesCount }개</div>
 		
 		<div class="mt-3 mb-3">
-			<select id = "list" class = "text-base">
+			<select id = "searchKeywordTypeCode" class = "text-base">
 				<option value = "title">제목</option>
 				<option value = "body">내용</option>
 				<option value = "extra__writer">작성자</option>
 			</select>
-			<input type="text" placeholder="검색어를 입력하세요" class="input input-bordered w-full max-w-xs" name="content"/>
+			<input type="text" placeholder="검색어를 입력하세요" class="input input-bordered w-full max-w-xs" name="searchKeyword"/>
 			<button class="btn btn-outline" type="submit" >검색</button>
 		</div>
 		

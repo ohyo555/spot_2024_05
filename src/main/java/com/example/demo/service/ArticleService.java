@@ -85,11 +85,8 @@ public class ArticleService {
 		return ResultData.from("S-1", Ut.f("%d번 글이 삭제 되었습니다", article.getId()));
 	}
 
-	public List<Article> getNotice() {
-		return articleRepository.getNotice();
-	}
 
-	public List<Article> getForPrintArticles(int boardId, int itemsInAPage, int page) {
+	public List<Article> getForPrintArticles(int boardId, int itemsInAPage, int page, String searchKeywordTypeCode, String searchKeyword) {
 
 //		SELECT * FROM article WHERE boardId = 1 ORDER BY id DESC LIMIT 0, 10; 1page
 //		SELECT * FROM article WHERE boardId = 1 ORDER BY id DESC LIMIT 10, 10; 2page
@@ -97,14 +94,7 @@ public class ArticleService {
 		int limitFrom = (page - 1) * itemsInAPage;
 		int limitTake = itemsInAPage;
 		
-		return articleRepository.getForPrintArticles(boardId, limitFrom, limitTake);
-	}
-
-	public List<Article> getForSearchPrintArticles(int boardId, int itemsInAPage, int page, String content) {
-		int limitFrom = (page - 1) * itemsInAPage;
-		int limitTake = itemsInAPage;
-		
-		return articleRepository.getForSearchPrintArticles(boardId, limitFrom, limitTake, content);
+		return articleRepository.getForPrintArticles(boardId, limitFrom, limitTake, searchKeywordTypeCode, searchKeyword);
 	}
 
 	public int getArticlesCount(int boardId, String searchKeywordTypeCode, String searchKeyword) {

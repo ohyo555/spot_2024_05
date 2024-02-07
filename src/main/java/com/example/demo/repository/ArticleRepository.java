@@ -81,6 +81,9 @@ public interface ArticleRepository {
 			SELECT COUNT(*) AS cnt
 			FROM article AS A
 			WHERE 1
+			<if test="boardId != 0">
+				AND boardId = #{boardId}
+			</if>
 			<if test="searchKeyword != ''">
 				<choose>
 					<when test="searchKeywordTypeCode == 'title'">
@@ -99,7 +102,7 @@ public interface ArticleRepository {
 			</script>
 			""")
 	public int getArticlesCount(int boardId, String searchKeywordTypeCode, String searchKeyword);
-
+	
 	@Select("""
 			<script>
 			SELECT A.*, M.nickname AS extra__writer
@@ -110,42 +113,26 @@ public interface ArticleRepository {
 			<if test="boardId != 0">
 				AND A.boardId = #{boardId}
 			</if>
-			ORDER BY A.id DESC
-			<if test="limitFrom >= 0 ">
-				LIMIT #{limitFrom}, #{limitTake}
-			</if>
-			</script>
-			""")
-	public List<Article> getForPrintArticles(int boardId, int limitFrom, int limitTake);
-
-	@Select("""
-			<script>
-			SELECT A.*, M.nickname AS extra__writer
-			FROM article AS A
-			INNER JOIN `member` AS M
-			ON A.memberId = M.id
-			WHERE 1
-			<if test="content != ''">
+			<if test="searchKeyword != ''">
 				<choose>
-					<when test = "searchField == 'title'">
-						where title LIKE '%#{content}%'
+					<when test="searchKeywordTypeCode == 'title'">
+						AND A.title LIKE CONCAT('%',#{searchKeyword},'%')
 					</when>
-					<when test = "searchField == 'body'">
-						where `body` LIKE '%#{content}%'
+					<when test="searchKeywordTypeCode == 'body'">
+						AND A.body LIKE CONCAT('%',#{searchKeyword},'%')
 					</when>
-					<when test = "searchField == 'extra__writer'">
-						where extra__writer LIKE '%#{content}%'
-					</when>
+					<otherwise>
+						AND A.title LIKE CONCAT('%',#{searchKeyword},'%')
+						OR A.body LIKE CONCAT('%',#{searchKeyword},'%')
+					</otherwise>
 				</choose>
 			</if>
-			<if test="boardId != 0">
-				AND A.boardId = #{boardId}
-			</if>
 			ORDER BY A.id DESC
 			<if test="limitFrom >= 0 ">
 				LIMIT #{limitFrom}, #{limitTake}
 			</if>
 			</script>
 			""")
-	public List<Article> getForSearchPrintArticles(int boardId, int limitFrom, int limitTake, String content);
+	public List<Article> getForPrintArticles(int boardId, int limitFrom, int limitTake, String searchKeywordTypeCode, String searchKeyword);
+
 }

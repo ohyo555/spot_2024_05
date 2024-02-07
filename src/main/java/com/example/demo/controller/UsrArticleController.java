@@ -47,7 +47,7 @@ public class UsrArticleController {
 		Rq rq = (Rq) req.getAttribute("rq");
 
 		Board board = boardService.getBoardById(boardId);
-		
+
 		int articlesCount = articleService.getArticlesCount(boardId, searchKeywordTypeCode, searchKeyword);
 
 		if (board == null) {
@@ -56,9 +56,9 @@ public class UsrArticleController {
 
 		int itemsInAPage = 15;
 		
-		List<Article> articles = articleService.getForPrintArticles(boardId, itemsInAPage, page);
-		
 		int pagesCount = (int) Math.ceil(articlesCount / (double) itemsInAPage);
+
+		List<Article> articles = articleService.getForPrintArticles(boardId, itemsInAPage, page, searchKeywordTypeCode, searchKeyword);
 
 		model.addAttribute("board", board);
 		model.addAttribute("boardId", boardId);
@@ -70,17 +70,6 @@ public class UsrArticleController {
 		return "usr/article/list";
 	}
 	
-	
-	@RequestMapping("/usr/article/notice")
-	public String showNotice(HttpSession httpSession, Model model) {
-		
-		List<Article> articles = articleService.getNotice();
-
-		model.addAttribute("articles", articles);
-		
-		return "usr/article/list";
-		
-	}
 	
 	@RequestMapping("/usr/article/detail")
 	public String showDetail(HttpServletRequest req, Model model, int id) {
