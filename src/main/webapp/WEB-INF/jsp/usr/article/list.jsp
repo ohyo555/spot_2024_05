@@ -18,9 +18,11 @@
 	<div class="mx-auto overflow-x-auto">
 		<div class="badge badge-outline">${articlesCount }개</div>
 		<div class="mt-3 mb-3">
-		<form action="../article/list" method="POST">
+		<form action="">
 			<input type="hidden" name="boardId" value="${param.boardId }" />
 			<select class = "text-base" name = "searchKeywordTypeCode">
+		<%-- 	<select data-value="${param.searchKeywordTypeCode }" class="select select-bordered select-sm w-full max-w-xs"
+					name="searchKeywordTypeCode"> --%>
 				<option value = "title" ${searchKeywordTypeCode.equals("title") ? 'selected="selected"' : '' }>제목</option>
 				<option value = "body"${searchKeywordTypeCode.equals("body") ? 'selected="selected"' : '' }>내용</option>
 				<option value = "extra__writer"${searchKeywordTypeCode.equals("extra__writer") ? 'selected="selected"' : '' }>작성자</option>
