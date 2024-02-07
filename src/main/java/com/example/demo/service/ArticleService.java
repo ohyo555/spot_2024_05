@@ -93,7 +93,8 @@ public class ArticleService {
 
 		int limitFrom = (page - 1) * itemsInAPage;
 		int limitTake = itemsInAPage;
-		
+
+		System.out.println("******" + limitFrom);
 		return articleRepository.getForPrintArticles(boardId, limitFrom, limitTake, searchKeywordTypeCode, searchKeyword);
 	}
 

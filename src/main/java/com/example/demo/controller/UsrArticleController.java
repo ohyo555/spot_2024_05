@@ -48,7 +48,7 @@ public class UsrArticleController {
 		Board board = boardService.getBoardById(boardId);
 		
 		int articlesCount = articleService.getArticlesCount(boardId, searchKeywordTypeCode, searchKeyword);
-
+		
 		if (board == null) {
 			return rq.historyBackOnView("없는 게시판이야");
 		}
@@ -56,7 +56,7 @@ public class UsrArticleController {
 		int itemsInAPage = 15;
 		
 		int pagesCount = (int) Math.ceil(articlesCount / (double) itemsInAPage);
-		
+
 		List<Article> articles = articleService.getForPrintArticles(boardId, itemsInAPage, page, searchKeywordTypeCode, searchKeyword);
 
 		model.addAttribute("board", board);

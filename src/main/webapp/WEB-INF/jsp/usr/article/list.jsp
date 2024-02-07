@@ -14,19 +14,18 @@
 </style> -->
 
 <section class="mt-3 text-xl px-4">
-	<form action="../article/list" method="POST">
 	<input type="hidden" name="id" value="${article.id }" />
-			
 	<div class="mx-auto overflow-x-auto">
 		<div class="badge badge-outline">${articlesCount }개</div>
-		
 		<div class="mt-3 mb-3">
+		<form action="../article/list" method="POST">
+			<input type="hidden" name="boardId" value="${param.boardId }" />
 			<select class = "text-base" name = "searchKeywordTypeCode">
-				<option value = "title">제목</option>
-				<option value = "body">내용</option>
-				<option value = "extra__writer">작성자</option>
+				<option value = "title" ${searchKeywordTypeCode.equals("title") ? 'selected="selected"' : '' }>제목</option>
+				<option value = "body"${searchKeywordTypeCode.equals("body") ? 'selected="selected"' : '' }>내용</option>
+				<option value = "extra__writer"${searchKeywordTypeCode.equals("extra__writer") ? 'selected="selected"' : '' }>작성자</option>
 			</select>
-			<input type="text" placeholder="검색어를 입력하세요" class="input input-bordered w-full max-w-xs" name="searchKeyword"/>
+			<input value = "${param.searchKeyword }" type="text" placeholder="검색어를 입력하세요" class="input input-bordered w-full max-w-xs" name="searchKeyword"/>
 			<button class="btn btn-outline" type="submit" >검색</button>
 		</div>
 		
