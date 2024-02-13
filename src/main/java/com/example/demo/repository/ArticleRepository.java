@@ -69,7 +69,7 @@ public interface ArticleRepository {
 	@Update("""
 			UPDATE article SET hit = hit + 1 WHERE id = #{id}
 				""")
-	public void hitArticle(int id);
+	public int hitArticle(int id);
 	
 //	@Select("SELECT * FROM article ORDER BY id DESC")
 	@Select("""
@@ -129,7 +129,7 @@ public interface ArticleRepository {
 						AND A.body LIKE CONCAT('%',#{searchKeyword},'%')
 					</when>
 					<when test="searchKeywordTypeCode == 'extra__writer'">
-						AND A.extra__writer LIKE CONCAT('%',#{searchKeyword},'%')
+						AND M.nickname LIKE CONCAT('%',#{searchKeyword},'%')
 					</when>
 					<otherwise>
 						AND A.title LIKE CONCAT('%',#{searchKeyword},'%')
@@ -153,4 +153,10 @@ public interface ArticleRepository {
 				""")
 	public void goodArticle(int id, int good, int loginedId);
 
+	@Select("""
+			SELECT hit
+			FROM article
+			WHERE id = #{id}
+			""")
+	public int getArticleHitCount(int id);
 }

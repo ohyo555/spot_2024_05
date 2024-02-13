@@ -49,6 +49,8 @@ public class UsrArticleController {
 		
 		int articlesCount = articleService.getArticlesCount(boardId, searchKeywordTypeCode, searchKeyword);
 		
+		System.out.println("===========================" + articlesCount);
+		
 		if (board == null) {
 			return rq.historyBackOnView("없는 게시판이야");
 		}
@@ -76,16 +78,6 @@ public class UsrArticleController {
 	public String showDetail(HttpServletRequest req, Model model, int id) {
 		Rq rq = (Rq) req.getAttribute("rq");
 		
-//		if (!rq.isLogined()) {
-//			return Ut.jsHistoryBack("F-A", "로그아웃 상태입니다");
-//		}
-
-//		int good = article.getGood();
-//		int loginedId = rq.getLoginedMemberId();
-
-		articleService.hitArticle(id);
-//		articleService.goodArticle(id, good, loginedId);
-		
 		Article article = articleService.getForPrintArticle(rq.getLoginedMemberId(), id);
 		
 		model.addAttribute("article", article);
@@ -93,6 +85,17 @@ public class UsrArticleController {
 		return "usr/article/detail";
 	}
 	
+	@RequestMapping("/usr/article/doIncreaseHitCountRd")
+	@ResponseBody
+	public ResultData doIncreaseHitCountRd(int id) {
+		
+		ResultData increaseHitCountRd = articleService.hitArticle(id);
+
+		if (increaseHitCountRd.isFail()) {
+			return increaseHitCountRd;
+		}
+		return ResultData.newData(increaseHitCountRd, "hit", articleService.getArticleHitCount(id));
+	}
 	@RequestMapping("/usr/article/modify")
 	public String showModify(HttpServletRequest req, Model model, int id) {
 		Rq rq = (Rq) req.getAttribute("rq");
