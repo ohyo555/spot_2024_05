@@ -110,8 +110,14 @@ public class ArticleService {
 		return ResultData.from("S-1", "해당 게시물 조회수 증가", "id", id);
 	}
 
-	public void goodArticle(int id, int good, int loginedId) {
-		articleRepository.goodArticle(id, good, loginedId);
+	public ResultData goodArticle(int id, int loginedId) {
+		int affectedRow = articleRepository.goodArticle(id, loginedId);
+		
+		if (affectedRow == 0) {
+			return ResultData.from("F-1", "해당 게시물 없음", "id", id);
+		}
+
+		return ResultData.from("S-1", "해당 게시물 좋아요 증가", "id", id);
 	}
 
 	public Object getArticleHitCount(int id) {

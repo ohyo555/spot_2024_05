@@ -151,8 +151,15 @@ public interface ArticleRepository {
 			articleId = #{id},
 			good = 1
 				""")
-	public void goodArticle(int id, int good, int loginedId);
+	public int goodArticle(int id, int loginedId);
 
+	@Update("""
+			<if test="good != 1">
+			UPDATE good SET good = 0 WHERE id = #{id} AND memberId = #{loginedId} AND articleId = #{articleId}
+			</if>
+			""")
+	public int goodCountUpdateArticle(int id, int loginedId, int articleId);
+	
 	@Select("""
 			SELECT hit
 			FROM article

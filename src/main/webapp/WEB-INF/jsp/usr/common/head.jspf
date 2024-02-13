@@ -16,16 +16,20 @@
 <!-- daisy ui 불러오기 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/daisyui/4.6.1/full.css" />
 
+<!-- flaticon 불러오기 -->
+<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+
 <!-- 폰트어썸 불러오기 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 
 <!-- 제이쿼리 불러오기 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 </head>
 <body>
 	<header>
 		<div class="h-20 flex mx-auto items-center text-3xl">
-			<a href="/">LOGO</a>
+			<a href="/"><i class="fi fi-rr-gift-card"></i></a>
 			<div class="flex-grow"></div>
 			<ul class="flex">
 				<c:if test="${rq.loginedMemberId != 0}">

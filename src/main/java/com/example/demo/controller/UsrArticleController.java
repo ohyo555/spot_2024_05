@@ -94,7 +94,31 @@ public class UsrArticleController {
 		if (increaseHitCountRd.isFail()) {
 			return increaseHitCountRd;
 		}
-		return ResultData.newData(increaseHitCountRd, "hit", articleService.getArticleHitCount(id));
+		
+		ResultData rd = ResultData.newData(increaseHitCountRd, "hitCount", articleService.getArticleHitCount(id));
+
+		rd.setData2("id", id);
+
+		return rd;
+	}
+	
+	@RequestMapping("/usr/article/doIncreaseGoodCountRd")
+	@ResponseBody
+	public ResultData doIncreaseGoodCountRd(HttpServletRequest req, int id, int loginedId) {
+		
+		Rq rq = (Rq) req.getAttribute("rq");
+		
+		ResultData increaseGoodCountRd = articleService.goodArticle(id, rq.getLoginedMemberId());
+
+		if (increaseGoodCountRd.isFail()) {
+			return increaseGoodCountRd;
+		}
+		
+		ResultData rd = ResultData.newData(increaseGoodCountRd, "good", articleService.goodArticle(id, loginedId));
+
+		rd.setData2("id", id);
+
+		return rd;
 	}
 	@RequestMapping("/usr/article/modify")
 	public String showModify(HttpServletRequest req, Model model, int id) {
