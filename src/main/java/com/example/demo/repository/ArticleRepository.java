@@ -69,7 +69,7 @@ public interface ArticleRepository {
 	@Update("""
 			UPDATE article SET hit = hit + 1 WHERE id = #{id}
 				""")
-	public void hitArticle(int id, int hit);
+	public void hitArticle(int id);
 	
 //	@Select("SELECT * FROM article ORDER BY id DESC")
 	@Select("""

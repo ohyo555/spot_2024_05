@@ -85,7 +85,6 @@ public class ArticleService {
 		return ResultData.from("S-1", Ut.f("%d번 글이 삭제 되었습니다", article.getId()));
 	}
 
-
 	public List<Article> getForPrintArticles(int boardId, int itemsInAPage, int page, String searchKeywordTypeCode, String searchKeyword) {
 
 //		SELECT * FROM article WHERE boardId = 1 ORDER BY id DESC LIMIT 0, 10; 1page
@@ -102,8 +101,8 @@ public class ArticleService {
 		return articleRepository.getArticlesCount(boardId, searchKeywordTypeCode, searchKeyword);
 	}
 
-	public void hitArticle(int id, int hit) {
-		articleRepository.hitArticle(id, hit);
+	public void hitArticle(int id) {
+		articleRepository.hitArticle(id);
 	}
 
 	public void goodArticle(int id, int good, int loginedId) {

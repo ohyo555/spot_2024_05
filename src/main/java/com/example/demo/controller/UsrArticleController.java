@@ -76,18 +76,17 @@ public class UsrArticleController {
 	public String showDetail(HttpServletRequest req, Model model, int id) {
 		Rq rq = (Rq) req.getAttribute("rq");
 		
-		Article article = articleService.getForPrintArticle(rq.getLoginedMemberId(), id);
-		
 //		if (!rq.isLogined()) {
 //			return Ut.jsHistoryBack("F-A", "로그아웃 상태입니다");
 //		}
 
-		int hit = article.getHit();
-		int good = article.getGood();
-		int loginedId = rq.getLoginedMemberId();
+//		int good = article.getGood();
+//		int loginedId = rq.getLoginedMemberId();
 
-		articleService.hitArticle(id, hit);
-		articleService.goodArticle(id, good, loginedId);
+		articleService.hitArticle(id);
+//		articleService.goodArticle(id, good, loginedId);
+		
+		Article article = articleService.getForPrintArticle(rq.getLoginedMemberId(), id);
 		
 		model.addAttribute("article", article);
 
