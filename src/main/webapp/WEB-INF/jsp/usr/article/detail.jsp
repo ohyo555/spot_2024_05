@@ -11,6 +11,12 @@
 
 <script>
 	function ArticleDetail__doIncreaseHitCount() {
+		const localStorageKey = 'article__' + params.id + '__alreadyView';
+		if (localStorage.getItem(localStorageKey)) {
+			return;
+		}
+		localStorage.setItem(localStorageKey, true);
+		
 		$.get('../article/doIncreaseHitCountRd', {
 			id : params.id,
 			ajaxMode : 'Y'
@@ -19,6 +25,7 @@
 		}, 'json');
 	}
 	$(function() {
+// 		ArticleDetail__doIncreaseHitCount();
 // 		ArticleDetail__doIncreaseHitCount();
 		setTimeout(ArticleDetail__doIncreaseHitCount, 2000); // 부분업데이트에 대한 처리 속도
 	})
