@@ -53,15 +53,15 @@
 				</tr>
 				<tr>
 					<th>좋아요</th>
-					<td>${article.goodsum }</td>
+					<td>${article.extra__goodReactionPoint }</td>
 				</tr>
 				<tr>
 					<th>싫어요</th>
-					<td>${article.badsum }</td>
+					<td>${article.extra__badReactionPoint }</td>
 				</tr>
 				<tr>
 					<th>추천 합</th>
-					<td>${article.sum }</td>
+					<td>${article.extra__sumReactionPoint }</td>
 				</tr>
 				<tr>
 					<th>제목</th>

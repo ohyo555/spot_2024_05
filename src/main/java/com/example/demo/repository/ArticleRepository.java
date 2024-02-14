@@ -46,10 +46,10 @@ public interface ArticleRepository {
 	
 	@Select("""
 			<script>
-			SELECT A.*, M.nickname AS extra__writer,
-			IFNULL(SUM(RP.point),0) AS sum,
-			IFNULL(SUM(IF(RP.point &gt; 0, RP.point, 0)),0) AS goodsum,
-			IFNULL(SUM(IF(RP.point &lt; 0, RP.point, 0)),0) AS badsum
+			SELECT A.*,
+			IFNULL(SUM(RP.point),0) AS extra__sumReactionPoint,
+			IFNULL(SUM(IF(RP.point &gt; 0, RP.point, 0)),0) AS extra__goodReactionPoint,
+			IFNULL(SUM(IF(RP.point &lt; 0, RP.point, 0)),0) AS extra__badReactionPoint, M.nickname AS extra__writer
 			FROM article AS A
 			INNER JOIN `member` AS M
 			ON A.memberId = M.id
@@ -121,9 +121,9 @@ public interface ArticleRepository {
 	@Select("""
 			<script>
 			SELECT A.*,
-			IFNULL(SUM(RP.point),0) AS sum,
-			IFNULL(SUM(IF(RP.point &gt; 0, RP.point, 0)),0) AS goodsum,
-			IFNULL(SUM(IF(RP.point &lt; 0, RP.point, 0)),0) AS badsum, M.nickname AS extra__writer
+			IFNULL(SUM(RP.point),0) AS extra__sumReactionPoint,
+			IFNULL(SUM(IF(RP.point &gt; 0, RP.point, 0)),0) AS extra__goodReactionPoint,
+			IFNULL(SUM(IF(RP.point &lt; 0, RP.point, 0)),0) AS extra__badReactionPoint
 			FROM article AS A
 			INNER JOIN `member` AS M
 			ON A.memberId = M.id

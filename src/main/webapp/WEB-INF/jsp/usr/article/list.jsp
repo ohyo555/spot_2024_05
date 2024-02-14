@@ -66,9 +66,9 @@
 						<td><a href="detail?id=${article.id }">${article.title }</a></td>
 						<td>${article.extra__writer }</td>
 						<td>${article.hitCount }</td>
-						<td>${article.sum }</td>
-						<td>${article.goodsum }</td>
-						<td>${article.badsum }</td>
+						<td>${article.extra__sumReactionPoint }</td>
+						<td>${article.extra__goodReactionPoint }</td>
+						<td>${article.extra__badReactionPoint }</td>
 					</tr>
 				</c:forEach>
 			</tbody>

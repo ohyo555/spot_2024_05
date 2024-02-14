@@ -18,9 +18,9 @@ public class Article {
 
 	private String extra__writer;
 	
-	private String goodsum;
-	private String badsum;
-	private String sum;
+	private String extra__sumReactionPoint;
+	private String extra__goodReactionPoint;
+	private String extra__badReactionPoint;
 	
 	private boolean userCanModify;
 	private boolean userCanDelete;
