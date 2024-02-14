@@ -120,7 +120,7 @@ public interface ArticleRepository {
 	
 	@Select("""
 			<script>
-			SELECT A.*,
+			SELECT A.*, M.nickname AS extra__writer,
 			IFNULL(SUM(RP.point),0) AS extra__sumReactionPoint,
 			IFNULL(SUM(IF(RP.point &gt; 0, RP.point, 0)),0) AS extra__goodReactionPoint,
 			IFNULL(SUM(IF(RP.point &lt; 0, RP.point, 0)),0) AS extra__badReactionPoint
@@ -158,13 +158,13 @@ public interface ArticleRepository {
 			</script>
 			""")
 	public List<Article> getForPrintArticles(int boardId, int limitFrom, int limitTake, String searchKeywordTypeCode, String searchKeyword);
+	
 	/*
 	 * @Update(""" <if test="cnt = 1"> UPDATE good SET good = 0 WHERE memberId =
 	 * #{loginedId} AND articleId = #{articleId} <if test="cnt = 0"> UPDATE good SET
 	 * good = 1 WHERE memberId = #{loginedId} AND articleId = #{articleId} """)
 	 * public int goodupdateArticle(int loginedId, int articleId, int cnt);
 	 */
-	
 	@Select("""
 			SELECT hitcount
 			FROM article
@@ -197,8 +197,5 @@ public interface ArticleRepository {
 			UPDATE reactionPoint SET <if test="cnt != 1 "> point = 1, updateDate = NOW() WHERE memberId = #{loginedId} AND relId = #{articleId} 
 			""")
 	public int goodupdateArticle(int loginedId, int articleId, int cnt);
-	/*
-	 * <if test="cnt = 0"> UPDATE reactionPoint SET point = 1 WHERE memberId =
-	 * #{loginedId} AND articleId = #{articleId}
-	 */
+
 }
