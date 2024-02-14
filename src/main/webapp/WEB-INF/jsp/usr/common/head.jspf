@@ -36,7 +36,7 @@
 				<li>${rq.loginedMemberNickname } 님 <i class="fa-solid fa-face-smile fa-sm fa-spin" style="color: #efdf2e;"></i></li>
 				</c:if>
 				<li><a class="hover:underline" href="/"><i class="fa-solid fa-house-chimney"></i></a></li>
-				<li><a class="hover:underline" href="../article/list"><i class="fa-solid fa-list"></i></a>
+				<li><a class="hover:underline" href="../article/list?boardId=1&page=1"><i class="fa-solid fa-list"></i></a>
 					<ul>
 						<li><a class="hover:underline" href="../article/list?boardId=1&page=1">NOTICE</a></li>
 						<li><a class="hover:underline" href="../article/list?boardId=2&page=1">FREE</a></li>

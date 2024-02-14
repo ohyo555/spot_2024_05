@@ -110,17 +110,41 @@ public class ArticleService {
 		return ResultData.from("S-1", "해당 게시물 조회수 증가", "id", id);
 	}
 
-	public ResultData goodArticle(int id, int loginedId) {
-		int affectedRow = articleRepository.goodArticle(id, loginedId);
-		
+//	public ResultData goodArticle(int id, int loginedId, int articleId) {
+//		
+//		Good count = articleRepository.selectgoodArticle(loginedId, articleId); // good 테이블의 정보확인
+//		int affectedRow = 0;
+//		
+//		if (count != null) { // 사용자의 정보가 있으면 좋아요 업데이트
+//			int cnt = count.getGood();
+//			System.out.println("******************" + cnt);
+//			affectedRow = articleRepository.goodupdateArticle(loginedId, articleId, cnt);
+//			System.out.println("///////////////////////////////////////////////");
+//		}else {
+//			System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+//			articleRepository.goodaddArticle(loginedId, articleId);
+//			return ResultData.from("S-1", "해당 게시물 좋아요 증가", "id", id);
+//		}
+//		
+//		if (affectedRow == 0) {
+//			return ResultData.from("F-1", "해당 게시물 없음", "id", id);
+//		}
+//
+//		return ResultData.from("S-1", "해당 게시물", "id", id);
+//	}
+
+	public Object getArticleHitCount(int id) {
+		return articleRepository.getArticleHitCount(id);
+	}
+
+	public ResultData increaseHitCount(int id) {
+		int affectedRow = articleRepository.increaseHitCount(id);
+
 		if (affectedRow == 0) {
 			return ResultData.from("F-1", "해당 게시물 없음", "id", id);
 		}
 
-		return ResultData.from("S-1", "해당 게시물 좋아요 증가", "id", id);
-	}
+		return ResultData.from("S-1", "해당 게시물 조회수 증가", "id", id);
 
-	public Object getArticleHitCount(int id) {
-		return articleRepository.getArticleHitCount(id);
 	}
 }

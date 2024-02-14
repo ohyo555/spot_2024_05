@@ -52,6 +52,18 @@
 					<td>${article.extra__writer }</td>
 				</tr>
 				<tr>
+					<th>좋아요</th>
+					<td>${article.goodsum }</td>
+				</tr>
+				<tr>
+					<th>싫어요</th>
+					<td>${article.badsum }</td>
+				</tr>
+				<tr>
+					<th>추천 합</th>
+					<td>${article.sum }</td>
+				</tr>
+				<tr>
 					<th>제목</th>
 					<td>${article.title }</td>
 				</tr>
@@ -61,30 +73,19 @@
 				</tr>
 				<tr>
 					<th>조회수</th> 
-					<td><span class="article-detail__hit-count">${article.hit }</span></td>
+					<td><span class="article-detail__hit-count">${article.hitCount }</span></td>
 				</tr>
 			</tbody>
-			<button id = "click" class="article-detail__good-count btn mb-5" onclick = "addgood()">
+			<button id = "click" class="article-detail__good-count btn mb-5" onclick = "location.href='../article/doIncreaseGoodCountRd?id=${article.id }'">
 			  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
 			  좋아요
 			</button>
-			<script>
+			<!-- <script>
+				document.getElementById("click").onclick = addgood;
 				function addgood(){
-					$.get('../article/doIncreaseGoodCountRd', {
-						id : params.id,
-						ajaxMode : 'Y'
-					}, function(data) {
-						$('.article-detail__good-count').empty().html(data.data1);
-					}, 'json');
-					$('#click').click(addgood);
-					
-					if(id==null||id==""){
-						alert('아이디는 필수사항입니다.');
-						id.focus();
-						return;
-					}
+					 document.getElementById("click").innerHTML = "../article/doIncreaseGoodCountRd?id=${article.id }";
 				}
-			</script>
+			</script> -->
 	
 		</table>
 		<div class="btns mt-5 text-base">
@@ -94,7 +95,7 @@
 			</c:if>
 			
 			<c:if test="${article.userCanDelete }">
-				<a class="btn btn-outline" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;" href="../article/doDelete?id=${article.id }">삭제</a>
+				<a class="btn btn-outline" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;" href=click>삭제</a>
 			</c:if>
 		</div>
 	</div>

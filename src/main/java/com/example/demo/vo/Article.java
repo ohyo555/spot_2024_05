@@ -14,10 +14,13 @@ public class Article {
 	private int memberId;
 	private String title;
 	private String body;
-	private int hit;
-	private int good;
-	
+	private int hitCount;
+
 	private String extra__writer;
+	
+	private String goodsum;
+	private String badsum;
+	private String sum;
 	
 	private boolean userCanModify;
 	private boolean userCanDelete;

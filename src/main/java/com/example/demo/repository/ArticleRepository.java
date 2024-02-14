@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Update;
 
 import com.example.demo.vo.Article;
 
+
 @Mapper
 public interface ArticleRepository {
 
@@ -43,10 +44,16 @@ public interface ArticleRepository {
 	public List<Article> getNotice();
 	
 	@Select("""
-			SELECT A.*, M.nickname AS extra__writer
+			SELECT A.*, M.nickname AS extra__writer, IFNULL(G.sum, 0) AS `sum`, IFNULL(O.goodsum, 0) AS `goodsum`, IFNULL(X.badsum, 0) AS `badsum`
 			FROM article AS A
 			INNER JOIN `member` AS M
 			ON A.memberId = M.id
+			LEFT JOIN (SELECT SUM(`point`) AS `sum`, relId FROM reactionPoint GROUP BY relId) AS G
+			ON G.relId = A.id
+			LEFT JOIN (SELECT SUM(`point`) AS `goodsum`, relId FROM reactionPoint WHERE `point` = 1 GROUP BY relId) AS O
+			ON O.relId = A.id
+			LEFT JOIN (SELECT SUM(`point`) AS `badsum`, relId FROM reactionPoint WHERE `point` = -1 GROUP BY relId) AS `X`
+			ON X.relId = A.id
 			WHERE A.id = #{id}
 				""")
 	public Article getForPrintArticle(int id);
@@ -110,12 +117,16 @@ public interface ArticleRepository {
 	
 	@Select("""
 			<script>
-			SELECT A.*, M.nickname AS extra__writer, G.good
+			SELECT A.*, M.nickname AS extra__writer, IFNULL(G.sum, 0) AS `sum`, IFNULL(O.goodsum, 0) AS `goodsum`, IFNULL(X.badsum, 0) AS `badsum`
 			FROM article AS A
 			INNER JOIN `member` AS M
 			ON A.memberId = M.id
-			LEFT JOIN good AS G
-			ON G.memberId = M.id AND A.id = G.articleId
+			LEFT JOIN (SELECT SUM(`point`) AS `sum`, relId FROM reactionPoint GROUP BY relId) AS G
+			ON G.relId = A.id
+			LEFT JOIN (SELECT SUM(`point`) AS `goodsum`, relId FROM reactionPoint WHERE `point` = 1 GROUP BY relId) AS O
+			ON O.relId = A.id
+			LEFT JOIN (SELECT SUM(`point`) AS `badsum`, relId FROM reactionPoint WHERE `point` = -1 GROUP BY relId) AS `X`
+			ON X.relId = A.id
 			WHERE 1
 			<if test="boardId != 0">
 				AND A.boardId = #{boardId}
@@ -144,26 +155,30 @@ public interface ArticleRepository {
 			</script>
 			""")
 	public List<Article> getForPrintArticles(int boardId, int limitFrom, int limitTake, String searchKeywordTypeCode, String searchKeyword);
-
-	@Update("""
-			INSERT INTO good
-			SET memberId = #{loginedId},
-			articleId = #{id},
-			good = 1
-				""")
-	public int goodArticle(int id, int loginedId);
-
-	@Update("""
-			<if test="good != 1">
-			UPDATE good SET good = 0 WHERE id = #{id} AND memberId = #{loginedId} AND articleId = #{articleId}
-			</if>
-			""")
-	public int goodCountUpdateArticle(int id, int loginedId, int articleId);
+	/*
+	 * @Update(""" <if test="cnt = 1"> UPDATE good SET good = 0 WHERE memberId =
+	 * #{loginedId} AND articleId = #{articleId} <if test="cnt = 0"> UPDATE good SET
+	 * good = 1 WHERE memberId = #{loginedId} AND articleId = #{articleId} """)
+	 * public int goodupdateArticle(int loginedId, int articleId, int cnt);
+	 */
 	
 	@Select("""
-			SELECT hit
+			SELECT hitcount
 			FROM article
 			WHERE id = #{id}
 			""")
 	public int getArticleHitCount(int id);
+	
+	
+	@Update("""
+			INSERT INTO good SET memberId = #{loginedId}, articleId = #{articleId}, good = 1
+			""")
+	public int goodaddArticle(int loginedId, int articleId);
+
+	@Update("""
+			UPDATE article
+			SET hitCount = hitCount + 1
+			WHERE id = #{id}
+			""")
+	public int increaseHitCount(int id);
 }

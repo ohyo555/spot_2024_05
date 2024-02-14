@@ -47,6 +47,7 @@
 					<th>작성자</th>
 					<th>조회</th>
 					<th>좋아요</th>
+					<th>싫어요</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -63,8 +64,9 @@
 						<td>${article.regDate.substring(0,10) }</td>
 						<td><a href="detail?id=${article.id }">${article.title }</a></td>
 						<td>${article.extra__writer }</td>
-						<td>${article.hit }</td>
-						<td>${article.good }</td>
+						<td>${article.hitCount }</td>
+						<td>${article.goodsum }</td>
+						<td>${article.badsum }</td>
 					</tr>
 				</c:forEach>
 			</tbody>
