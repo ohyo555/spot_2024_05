@@ -89,7 +89,6 @@ public class UsrArticleController {
 	@ResponseBody
 	public ResultData doIncreaseHitCountRd(int id) {
 		
-		System.out.println("@#@#@#@#@##################");
 		ResultData increaseHitCountRd = articleService.increaseHitCount(id);
 
 		if (increaseHitCountRd.isFail()) {
@@ -103,25 +102,28 @@ public class UsrArticleController {
 		return rd;
 
 	}
-//	@RequestMapping("/usr/article/doIncreaseGoodCountRd")
-//	@ResponseBody
-//	public ResultData doIncreaseGoodCountRd(HttpServletRequest req, int id) {
-//		
-//		Rq rq = (Rq) req.getAttribute("rq");
-//		
-//		Article article = articleService.getForPrintArticle(rq.getLoginedMemberId(), id);
-//		ResultData increaseGoodCountRd = articleService.goodArticle(id, rq.getLoginedMemberId(), article.getId());
-//
-//		if (increaseGoodCountRd.isFail()) {
-//			return increaseGoodCountRd;
-//		}
-//		
-//		ResultData rd = ResultData.newData(increaseGoodCountRd, "good", articleService.goodArticle(id, rq.getLoginedMemberId(), article.getId()));
-//
-//		rd.setData2("id", id);
-//
-//		return rd;
-//	}
+	
+	@RequestMapping("/usr/article/doIncreaseGoodCountRd")
+	@ResponseBody
+	public ResultData doIncreaseGoodCountRd(HttpServletRequest req, int id) {
+		
+		Rq rq = (Rq) req.getAttribute("rq");
+
+		Article article = articleService.getForPrintArticle(rq.getLoginedMemberId(), id);
+
+		ResultData increaseGoodCountRd = articleService.goodArticle(id, rq.getLoginedMemberId(), article.getId());
+
+		if (increaseGoodCountRd.isFail()) {
+			return increaseGoodCountRd;
+		}
+		
+		ResultData rd = ResultData.newData(increaseGoodCountRd, "good", articleService.goodArticle(id, rq.getLoginedMemberId(), article.getId()));
+
+		rd.setData2("id", id);
+
+		return rd;
+	}
+	
 	@RequestMapping("/usr/article/modify")
 	public String showModify(HttpServletRequest req, Model model, int id) {
 		Rq rq = (Rq) req.getAttribute("rq");

@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.example.demo.vo.Article;
+import com.example.demo.vo.ReactionPoint;
 
 
 @Mapper
@@ -44,18 +45,20 @@ public interface ArticleRepository {
 	public List<Article> getNotice();
 	
 	@Select("""
-			SELECT A.*, M.nickname AS extra__writer, IFNULL(G.sum, 0) AS `sum`, IFNULL(O.goodsum, 0) AS `goodsum`, IFNULL(X.badsum, 0) AS `badsum`
+			<script>
+			SELECT A.*, M.nickname AS extra__writer,
+			IFNULL(SUM(RP.point),0) AS sum,
+			IFNULL(SUM(IF(RP.point &gt; 0, RP.point, 0)),0) AS goodsum,
+			IFNULL(SUM(IF(RP.point &lt; 0, RP.point, 0)),0) AS badsum
 			FROM article AS A
 			INNER JOIN `member` AS M
 			ON A.memberId = M.id
-			LEFT JOIN (SELECT SUM(`point`) AS `sum`, relId FROM reactionPoint GROUP BY relId) AS G
-			ON G.relId = A.id
-			LEFT JOIN (SELECT SUM(`point`) AS `goodsum`, relId FROM reactionPoint WHERE `point` = 1 GROUP BY relId) AS O
-			ON O.relId = A.id
-			LEFT JOIN (SELECT SUM(`point`) AS `badsum`, relId FROM reactionPoint WHERE `point` = -1 GROUP BY relId) AS `X`
-			ON X.relId = A.id
+			LEFT JOIN reactionPoint AS RP
+			ON A.id = RP.relId AND RP.relTypeCode = 'article'
 			WHERE A.id = #{id}
-				""")
+			GROUP BY A.id
+			</script>
+			""")
 	public Article getForPrintArticle(int id);
 	
 	@Delete("DELETE FROM article WHERE id = #{id}")
@@ -117,16 +120,15 @@ public interface ArticleRepository {
 	
 	@Select("""
 			<script>
-			SELECT A.*, M.nickname AS extra__writer, IFNULL(G.sum, 0) AS `sum`, IFNULL(O.goodsum, 0) AS `goodsum`, IFNULL(X.badsum, 0) AS `badsum`
+			SELECT A.*,
+			IFNULL(SUM(RP.point),0) AS sum,
+			IFNULL(SUM(IF(RP.point &gt; 0, RP.point, 0)),0) AS goodsum,
+			IFNULL(SUM(IF(RP.point &lt; 0, RP.point, 0)),0) AS badsum, M.nickname AS extra__writer
 			FROM article AS A
 			INNER JOIN `member` AS M
 			ON A.memberId = M.id
-			LEFT JOIN (SELECT SUM(`point`) AS `sum`, relId FROM reactionPoint GROUP BY relId) AS G
-			ON G.relId = A.id
-			LEFT JOIN (SELECT SUM(`point`) AS `goodsum`, relId FROM reactionPoint WHERE `point` = 1 GROUP BY relId) AS O
-			ON O.relId = A.id
-			LEFT JOIN (SELECT SUM(`point`) AS `badsum`, relId FROM reactionPoint WHERE `point` = -1 GROUP BY relId) AS `X`
-			ON X.relId = A.id
+			LEFT JOIN reactionPoint AS RP
+			ON A.id = RP.relId AND RP.relTypeCode = 'article'
 			WHERE 1
 			<if test="boardId != 0">
 				AND A.boardId = #{boardId}
@@ -148,6 +150,7 @@ public interface ArticleRepository {
 					</otherwise>
 				</choose>
 			</if>
+			GROUP BY A.id
 			ORDER BY A.id DESC
 			<if test="limitFrom >= 0 ">
 				LIMIT #{limitFrom}, #{limitTake}
@@ -181,4 +184,21 @@ public interface ArticleRepository {
 			WHERE id = #{id}
 			""")
 	public int increaseHitCount(int id);
+
+	@Select("""
+			SELECT *
+			FROM reactionPoint
+			WHERE memberId = #{loginedId}
+			AND relId = #{articleId}
+			""")
+	public ReactionPoint selectgoodArticle(int loginedId, int articleId);
+	
+	@Update("""
+			UPDATE reactionPoint SET <if test="cnt != 1 "> point = 1, updateDate = NOW() WHERE memberId = #{loginedId} AND relId = #{articleId} 
+			""")
+	public int goodupdateArticle(int loginedId, int articleId, int cnt);
+	/*
+	 * <if test="cnt = 0"> UPDATE reactionPoint SET point = 1 WHERE memberId =
+	 * #{loginedId} AND articleId = #{articleId}
+	 */
 }

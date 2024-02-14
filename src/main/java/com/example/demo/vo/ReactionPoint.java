@@ -9,10 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ReactionPoint {
 	private int id;
-	private int regDate;
-	private int updateDate;
 	private int memberId;
-	private int relTypeCode;
 	private int relId;
 	private int point;
 }
