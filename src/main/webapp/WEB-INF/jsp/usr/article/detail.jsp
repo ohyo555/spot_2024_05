@@ -28,7 +28,7 @@
 // 		ArticleDetail__doIncreaseHitCount();
 // 		ArticleDetail__doIncreaseHitCount();
 		setTimeout(ArticleDetail__doIncreaseHitCount, 2000); // 부분업데이트에 대한 처리 속도
-	})
+	});
 </script>
  
  <section class="mt-8 text-xl px-4">
@@ -52,25 +52,22 @@
 					<td>${article.extra__writer }</td>
 				</tr>
 				<tr>
-					<th>좋아요</th>
-					<td>${article.extra__goodReactionPoint }</td>
+					<th class="reaction">좋아요</th>
+					<td>${article.goodReactionPoint }</td>
 				</tr>
 				<tr>
 					<th>싫어요</th>
-					<td>${article.extra__badReactionPoint }</td>
-				</tr>
-				<tr>
-					<th>추천 합</th>
-					<td>${article.extra__sumReactionPoint }</td>
+					<td>${article.badReactionPoint }</td>
 				</tr>
 				<tr>
 					<th>추천</th>
-					<td><button class="btn btn-square" onclick = "location.href='../article/doIncreaseGoodCountRd?id=${article.id }'">
-						  △
-						</button>
-						<button class="btn btn-square">
-						  ▽
-					</button></td>
+					<td><a
+							href="/usr/reactionPoint/doGoodReaction?relTypeCode=article&relId=${param.id }&replaceUri=${rq.currentUri}"
+							class="reaction btn btn-outline btn-success">△</a> &nbsp;&nbsp; 
+							<a href="/usr/reactionPoint/doBadReaction"
+							href="/usr/reactionPoint/doGoodReaction?relTypeCode=article&relId=${param.id }&replaceUri=${rq.currentUri}"
+							class="reaction btn btn-outline btn-error">▽</a>
+					</td>
 				</tr>
 				<tr>
 					<th>제목</th>

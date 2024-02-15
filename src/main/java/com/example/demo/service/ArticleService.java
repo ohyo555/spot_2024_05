@@ -147,4 +147,15 @@ public class ArticleService {
 		return ResultData.from("S-1", "해당 게시물 조회수 증가", "id", id);
 
 	}
+	
+	public ResultData increaseGoodReactionPoint(int relId) {
+		int affectedRow = articleRepository.increaseGoodReactionPoint(relId);
+
+		if (affectedRow == 0) {
+			return ResultData.from("F-1", "없는 게시물");
+		}
+
+		return ResultData.from(null, null);
+	}
+
 }
