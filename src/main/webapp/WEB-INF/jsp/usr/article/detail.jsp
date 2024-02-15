@@ -61,11 +61,11 @@
 				</tr>
 				<tr>
 					<th>추천</th>
-					<td><a
-							href="/usr/reactionPoint/doGoodReaction?relTypeCode=article&relId=${param.id }&replaceUri=${rq.currentUri}"
-							class="reaction btn btn-outline btn-success">△</a> &nbsp;&nbsp; 
-							<a href="/usr/reactionPoint/doBadReaction"
-							href="/usr/reactionPoint/doGoodReaction?relTypeCode=article&relId=${param.id }&replaceUri=${rq.currentUri}"
+					<td>
+						<a href="/usr/reactionPoint/doGoodReaction?relTypeCode=article&relId=${param.id }&replaceUri=${rq.currentUri}"
+							class="reaction btn btn-outline btn-success">△</a>
+						&nbsp;&nbsp;
+						<a href="/usr/reactionPoint/doBadReaction?relTypeCode=article&relId=${param.id }&replaceUri=${rq.currentUri}"
 							class="reaction btn btn-outline btn-error">▽</a>
 					</td>
 				</tr>
@@ -79,7 +79,9 @@
 				</tr>
 				<tr>
 					<th>조회수</th> 
-					<td><span class="article-detail__hit-count">${article.hitCount }</span></td>
+					<td>
+						<span class="article-detail__hit-count">${article.hitCount }</span>
+					</td>
 				</tr>
 			</tbody>
 			<!-- <script>
