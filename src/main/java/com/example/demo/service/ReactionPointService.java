@@ -98,7 +98,7 @@ public class ReactionPointService {
 		if (getPointTypeCodeByMemberId > 0) {
 			return true;
 		}
-
+	
 		return false;
 	}
 

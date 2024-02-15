@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Update;
 public interface ReactionPointRepository {
 
 	@Select("""
-			SELECT IFNULL(SUM(RP.point),2)
+			SELECT IFNULL(SUM(RP.point),0)
 			FROM reactionPoint AS RP
 			WHERE RP.relTypeCode = #{relTypeCode}
 			AND RP.relId = #{relId}

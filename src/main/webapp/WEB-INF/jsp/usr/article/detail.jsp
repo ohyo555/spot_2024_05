@@ -62,11 +62,17 @@
 				<tr>
 					<th>추천</th>
 					<td>
-						<a href="/usr/reactionPoint/doGoodReaction?relTypeCode=article&relId=${param.id }&replaceUri=${rq.currentUri}"
-							class="reaction btn btn-outline btn-success">△</a>
-						&nbsp;&nbsp;
-						<a href="/usr/reactionPoint/doBadReaction?relTypeCode=article&relId=${param.id }&replaceUri=${rq.currentUri}"
-							class="reaction btn btn-outline btn-error">▽</a>
+						<c:choose>
+							<c:when test="${isAlreadyAddGoodRp}"> <a href="/usr/reactionPoint/doGoodReaction?relTypeCode=article&relId=${param.id }&replaceUri=${rq.currentUri}"
+								class="reaction btn btn-success">△</a>&nbsp;&nbsp; <a href="/usr/reactionPoint/doBadReaction?relTypeCode=article&relId=${param.id }&replaceUri=${rq.currentUri}"
+								class="reaction btn btn-outline btn-error">▽</a> </c:when>
+							<c:when test="${isAlreadyAddBadRp}"> <a href="/usr/reactionPoint/doGoodReaction?relTypeCode=article&relId=${param.id }&replaceUri=${rq.currentUri}"
+								class="reaction btn btn-outline btn-success">△</a>&nbsp;&nbsp; <a href="/usr/reactionPoint/doBadReaction?relTypeCode=article&relId=${param.id }&replaceUri=${rq.currentUri}"
+								class="reaction btn btn-error">▽</a> </c:when>
+							<c:otherwise> <a href="/usr/reactionPoint/doGoodReaction?relTypeCode=article&relId=${param.id }&replaceUri=${rq.currentUri}"
+							class="reaction btn btn-outline btn-success">△</a>&nbsp;&nbsp; <a href="/usr/reactionPoint/doBadReaction?relTypeCode=article&relId=${param.id }&replaceUri=${rq.currentUri}"
+								class="reaction btn btn-outline btn-error">▽</a></c:otherwise>	
+						</c:choose>	
 					</td>
 				</tr>
 				<tr>
