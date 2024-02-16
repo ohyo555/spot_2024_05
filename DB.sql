@@ -219,8 +219,59 @@ ON A.id = RP_SUM.relId
 SET A.goodReactionPoint = RP_SUM.goodReactionPoint,
 A.badReactionPoint = RP_SUM.badReactionPoint;
 
+# coment 테이블 생성
+CREATE TABLE `comment`(
+    id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    regDate DATETIME NOT NULL,
+    updateDate DATETIME NOT NULL,
+    `comment` TEXT NOT NULL,
+    memberId INT(10) UNSIGNED NOT NULL,
+    `level` INT(10) UNSIGNED NOT NULL,
+    relId INT(10) NOT NULL COMMENT '관련 데이터 번호'
+);
 
+INSERT INTO `comment`
+SET regDate = NOW(),
+updateDate = NOW(),
+`comment` = '댓글1',
+memberId = 1,
+`level` = 1,
+relId = 1;
+
+INSERT INTO `comment`
+SET regDate = NOW(),
+updateDate = NOW(),
+`comment` = '댓글2',
+memberId = 2,
+`level` = 1,
+relId = 1;
+
+
+DROP TABLE `comment`
 ###############################################
+
+SELECT *
+FROM `comment`;
+
+SELECT `body`
+FROM `comment`
+WHERE relId = 1
+ORDER BY regDate DESC;
+
+
+SELECT A.*, M.nickname AS extra__writer, IFNULL(G.sum, 0) AS `sum`, IFNULL(O.goodsum, 0) AS `goodsum`, IFNULL(X.badsum, 0) AS `badsum`
+FROM article AS A
+INNER JOIN `member` AS M
+ON A.memberId = M.id
+LEFT JOIN (SELECT SUM(`point`) AS `sum`, relId FROM reactionPoint GROUP BY relId) AS G
+ON G.relId = A.id
+LEFT JOIN (SELECT SUM(`point`) AS `goodsum`, relId FROM reactionPoint WHERE `point` = 1 GROUP BY relId) AS O
+ON O.relId = A.id
+LEFT JOIN (SELECT SUM(`point`) AS `badsum`, relId FROM reactionPoint WHERE `point` = -1 GROUP BY relId) AS `X`
+ON X.relId = A.id
+
+SELECT SUM(`point`) AS `goodsum`, relId FROM reactionPoint WHERE `point` = 1 GROUP BY relId
+SELECT SUM(`point`) AS `badsum`, relId FROM reactionPoint WHERE `point` = -1 GROUP BY relId
 
 SELECT * FROM article;
 
@@ -229,6 +280,15 @@ SELECT * FROM `member`;
 SELECT * FROM `board`;
 
 SELECT * FROM reactionPoint;
+
+DELETE FROM reactionPoint WHERE id = 8;
+
+SELECT *
+FROM reactionPoint
+WHERE memberId = 2
+AND relId = 2
+			
+UPDATE reactionPoint SET `point` = 0 WHERE relId = 4 AND memberId = 2
 
 INSERT INTO article
 (
@@ -285,55 +345,7 @@ SELECT hitCount
 FROM article
 WHERE id = 374;
 
-SELECT A.*
-FROM article AS A
-WHERE A.id = 1
-
-SELECT A.*, M.nickname AS extra__writer
-FROM article AS A
-INNER JOIN `member` AS M
-ON A.memberId = M.id
-WHERE A.id = 1
-
-# LEFT JOIN
-SELECT A.*, M.nickname AS extra__writer, RP.point
-FROM article AS A
-INNER JOIN `member` AS M
-ON A.memberId = M.id
-LEFT JOIN reactionPoint AS RP
-ON A.id = RP.relId AND RP.relTypeCode = 'article'
-GROUP BY A.id
-ORDER BY A.id DESC;
-
-# 서브쿼리
-SELECT A.*,
-IFNULL(SUM(RP.point),0) AS extra__sumReactionPoint,
-IFNULL(SUM(IF(RP.point > 0, RP.point, 0)),0) AS extra__goodReactionPoint,
-IFNULL(SUM(IF(RP.point < 0, RP.point, 0)),0) AS extra__badReactionPoint
-FROM (
-    SELECT A.*, M.nickname AS extra__writer 
-    FROM article AS A
-    INNER JOIN `member` AS M
-    ON A.memberId = M.id
-    ) AS A
-LEFT JOIN reactionPoint AS RP
-ON A.id = RP.relId AND RP.relTypeCode = 'article'
-GROUP BY A.id
-ORDER BY A.id DESC;
-
-# 조인
-SELECT A.*, M.nickname AS extra__writer,
-IFNULL(SUM(RP.point),0) AS extra__sumReactionPoint,
-IFNULL(SUM(IF(RP.point > 0, RP.point, 0)),0) AS extra__goodReactionPoint,
-IFNULL(SUM(IF(RP.point < 0, RP.point, 0)),0) AS extra__badReactionPoint
-FROM article AS A
-INNER JOIN `member` AS M
-ON A.memberId = M.id
-LEFT JOIN reactionPoint AS RP
-ON A.id = RP.relId AND RP.relTypeCode = 'article'
-GROUP BY A.id
-ORDER BY A.id DESC;
-
+UPDATE reactionPoint SET POINT = 1, updateDate = NOW() WHERE memberId = 2 AND relId = 2
 
 SELECT *, COUNT(*)
 FROM reactionPoint AS RP
