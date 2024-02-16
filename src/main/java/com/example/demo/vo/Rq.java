@@ -38,6 +38,7 @@ public class Rq {
 		if (httpSession.getAttribute("loginedMemberId") != null) {
 			isLogined = true;
 			loginedMemberId = (int) httpSession.getAttribute("loginedMemberId");
+			loginedMemberNickname = (String) httpSession.getAttribute("loginedMemberNickname");
 		}
 
 		this.req.setAttribute("rq", this);
