@@ -86,13 +86,13 @@ public class UsrArticleController {
 		
 		List<Comment> comments = articleService.getForPrintComment(id);
 		
-		System.out.println("************************" +  rq.getLoginedMemberId());
-		System.out.println("************************" +  rq.getLoginedMemberNickname());
-		
 		if (usersReactionRd.isSuccess()) {
 			model.addAttribute("userCanMakeReaction", usersReactionRd.isSuccess());
 		}
 
+		System.out.println("^^^^^^^^^^^^^^^^^^^^" + rq.getLoginedMemberId());
+		
+		model.addAttribute("loginedMember", rq.getLoginedMemberId());
 		model.addAttribute("loginedMemberNickname", rq.getLoginedMemberNickname());
 		model.addAttribute("article", article);
 		model.addAttribute("comments", comments);
@@ -101,6 +101,21 @@ public class UsrArticleController {
 
 		return "usr/article/detail";
 	}
+	
+	@RequestMapping("/usr/article/comment")
+	public String showComment(HttpServletRequest req, Model model, String comment, int id) {
+
+		Rq rq = (Rq) req.getAttribute("rq");
+		
+		if (Ut.isNullOrEmpty(comment)) {
+			return Ut.jsHistoryBack("F-1", "댓글을 입력해주세요");
+		}
+		
+		ResultData<Integer> writeCommentRd = articleService.doWriteComment(comment, rq.getLoginedMemberId(), id);
+		
+		return Ut.jsReplace(writeCommentRd.getResultCode(), writeCommentRd.getMsg(), "../article/detail?id=" + id);
+	}
+
 	
 	@RequestMapping("/usr/article/doIncreaseHitCountRd")
 	@ResponseBody
@@ -197,6 +212,27 @@ public class UsrArticleController {
 
 		if (loginedMemberCanModifyRd.isSuccess()) {
 			articleService.modifyArticle(id, title, body);
+		}
+
+		return Ut.jsReplace(loginedMemberCanModifyRd.getResultCode(), loginedMemberCanModifyRd.getMsg(), "../article/detail?id="+article.getId());
+	}
+	
+	@RequestMapping("/usr/article/doCommentModify")
+	@ResponseBody
+	public String doCommentModify(HttpServletRequest req, Model model, int id, String title, String body) {
+		Rq rq = (Rq) req.getAttribute("rq");
+
+		Article article = articleService.getArticle(id);
+		Comment comment = articleService.getComment(id);
+
+		if (comment == null) {
+			return Ut.jsHistoryBack("F-1", Ut.f("%d번 댓글은 존재하지 않습니다", id));
+		}
+
+		ResultData loginedMemberCanModifyRd = articleService.userCommentCanModify(rq.getLoginedMemberId(), comment);
+
+		if (loginedMemberCanModifyRd.isSuccess()) {
+			articleService.modifyComment(id, title, body);
 		}
 
 		return Ut.jsReplace(loginedMemberCanModifyRd.getResultCode(), loginedMemberCanModifyRd.getMsg(), "../article/detail?id="+article.getId());

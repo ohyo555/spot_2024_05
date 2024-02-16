@@ -59,8 +59,7 @@ public interface ArticleRepository {
 	
 	@Delete("DELETE FROM article WHERE id = #{id}")
 	public void deleteArticle(int id);
-
-//	@Update("UPDATE article SET updateDate = NOW(), title = #{title}, `body` = #{body} WHERE id = #{id}")
+	
 	@Update("""
 			UPDATE article
 				<set>
@@ -72,9 +71,10 @@ public interface ArticleRepository {
 				""")
 	public void modifyArticle(int id, String title, String body);
 
+
 	@Update("""
 			UPDATE article SET hit = hit + 1 WHERE id = #{id}
-				""")
+			""")
 	public int hitArticle(int id);
 	
 //	@Select("SELECT * FROM article ORDER BY id DESC")
@@ -240,5 +240,34 @@ public interface ArticleRepository {
 			WHERE id = #{relId}
 			""")
 	public int getBadRP(int relId);
+
+	@Insert("""
+			INSERT INTO
+			`comment` SET
+			regDate = NOW(),
+			updateDate = NOW(),
+			`comment` = #{comment},
+			memberId = #{memberId},
+			level = 1,
+			relId = #{relId}
+			""")
+	public void doWriteComment(String comment, int memberId, int relId);
+
+	@Select("""
+			SELECT *
+			FROM `comment`
+			WHERE id = #{id}
+			""")
+	public Comment getComment(int id);
+
+	@Update("""
+			UPDATE `comment`
+				<set>
+					<if test="commnet != null and title != ''">`comment` = #{comment},</if>
+					updateDate = NOW()
+				</set>
+			WHERE id = #{id}
+				""")
+	public void modifyComment(int id, String title, String body);
 
 }

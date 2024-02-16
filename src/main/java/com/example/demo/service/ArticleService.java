@@ -84,9 +84,27 @@ public class ArticleService {
 			return ResultData.from("F-2", Ut.f("%d번 글에 대한 수정 권한이 없습니다", article.getId()));
 		}
 
-		return ResultData.from("S-1", Ut.f("%d번 글이 삭제 되었습니다", article.getId()));
+		return ResultData.from("S-1", "댓글이 삭제 되었습니다");
+	}
+	
+	public ResultData userCommentCanModify(int loginedMemberId, Comment comment) {
+
+		if (comment.getMemberId() != loginedMemberId) {
+			return ResultData.from("F-2", Ut.f("%d번 글에 대한 권한이 없습니다", comment.getId()));
+		}
+
+		return ResultData.from("S-1", "댓글을 수정했습니다");
 	}
 
+	public ResultData useCommentrCanDelete(int loginedMemberId, Comment comment) {
+
+		if (comment.getMemberId() != loginedMemberId) {
+			return ResultData.from("F-2", Ut.f("%d번 글에 대한 수정 권한이 없습니다", comment.getId()));
+		}
+
+		return ResultData.from("S-1", Ut.f("%d번 글이 삭제 되었습니다", comment.getId()));
+	}
+	
 	public List<Article> getForPrintArticles(int boardId, int itemsInAPage, int page, String searchKeywordTypeCode, String searchKeyword) {
 
 //		SELECT * FROM article WHERE boardId = 1 ORDER BY id DESC LIMIT 0, 10; 1page
@@ -200,6 +218,23 @@ public class ArticleService {
 
 	public int getBadRP(int relId) {
 		return articleRepository.getBadRP(relId);
+	}
+
+	public ResultData<Integer> doWriteComment(String comment, int memberId, int relId) {
+		
+		int id = articleRepository.getLastInsertId();
+		
+		articleRepository.doWriteComment(comment, memberId, relId);
+
+		return ResultData.from("S-1", "댓글 성공");
+	}
+
+	public Comment getComment(int id) {
+		return articleRepository.getComment(id);
+	}
+
+	public void modifyComment(int id, String title, String body) {
+		articleRepository.modifyComment(id, title, body);
 	}
 
 }
