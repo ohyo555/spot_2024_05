@@ -10,18 +10,19 @@ import com.example.demo.vo.ResultData;
 public class ReactionPointService {
 
 	@Autowired
-	private ReactionPointRepository reactionPointRepository;
+	private ArticleService articleService;
 
 	@Autowired
-	private ArticleService articleService;
-	
+	private ReactionPointRepository reactionPointRepository;
+
 	public ReactionPointService(ReactionPointRepository reactionPointRepository) {
 		this.reactionPointRepository = reactionPointRepository;
 	}
 
+	
+
 	public ResultData usersReaction(int loginedMemberId, String relTypeCode, int relId) {
 
-		// 로그인 x
 		if (loginedMemberId == 0) {
 			return ResultData.from("F-L", "로그인 하고 써야해");
 		}
@@ -39,6 +40,8 @@ public class ReactionPointService {
 	public ResultData addGoodReactionPoint(int loginedMemberId, String relTypeCode, int relId) {
 
 		int affectedRow = reactionPointRepository.addGoodReactionPoint(loginedMemberId, relTypeCode, relId);
+		
+		System.err.println(affectedRow);
 		
 		if (affectedRow != 1) {
 			return ResultData.from("F-1", "좋아요 실패");
@@ -98,7 +101,7 @@ public class ReactionPointService {
 		if (getPointTypeCodeByMemberId > 0) {
 			return true;
 		}
-	
+
 		return false;
 	}
 

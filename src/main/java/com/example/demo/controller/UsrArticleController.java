@@ -15,6 +15,7 @@ import com.example.demo.service.ReactionPointService;
 import com.example.demo.util.Ut;
 import com.example.demo.vo.Article;
 import com.example.demo.vo.Board;
+import com.example.demo.vo.Comment;
 import com.example.demo.vo.ResultData;
 import com.example.demo.vo.Rq;
 
@@ -84,16 +85,18 @@ public class UsrArticleController {
 		
 		ResultData usersReactionRd = reactionPointService.usersReaction(rq.getLoginedMemberId(), "article", id);
 
+		List<Comment> comments = articleService.getForPrintComment(id);
+		
 		if (usersReactionRd.isSuccess()) {
 			model.addAttribute("userCanMakeReaction", usersReactionRd.isSuccess());
 		}
-		
-		
+		System.out.println();
+		model.addAttribute("loginedmember", rq.getLoginedMemberNickname());
 		model.addAttribute("article", article);
+		model.addAttribute("comments", comments);
 		model.addAttribute("isAlreadyAddGoodRp",reactionPointService.isAlreadyAddGoodRp(rq.getLoginedMemberId(), id, "article"));
 		model.addAttribute("isAlreadyAddBadRp",reactionPointService.isAlreadyAddBadRp(rq.getLoginedMemberId(), id, "article"));
 
-		System.out.println("SKDKDKDKDKDKKDKDKDKDK" + reactionPointService.isAlreadyAddGoodRp(rq.getLoginedMemberId(), id, "article"));
 		return "usr/article/detail";
 	}
 	

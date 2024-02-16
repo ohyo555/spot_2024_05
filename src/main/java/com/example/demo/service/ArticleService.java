@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.repository.ArticleRepository;
 import com.example.demo.util.Ut;
 import com.example.demo.vo.Article;
+import com.example.demo.vo.Comment;
 import com.example.demo.vo.ReactionPoint;
 import com.example.demo.vo.ResultData;
 
@@ -186,6 +187,19 @@ public class ArticleService {
 		}
 
 		return ResultData.from("S-1", "싫어요 감소", "affectedRow", affectedRow);
+	}
+
+	public List<Comment> getForPrintComment(int relId) {
+
+		return articleRepository.getForPrintComment(relId);
+	}
+
+	public int getGoodRP(int relId) {
+		return articleRepository.getGoodRP(relId);
+	}
+
+	public int getBadRP(int relId) {
+		return articleRepository.getBadRP(relId);
 	}
 
 }

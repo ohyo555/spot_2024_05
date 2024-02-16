@@ -12,34 +12,34 @@ import com.example.demo.interceptor.NeedLogoutInterceptor;
 
 @Configuration
 public class MyWebMVCConfigurer implements WebMvcConfigurer {
-	
+
 	// BeforeActionInterceptor 불러오기(연결)
 	@Autowired
 	BeforeActionInterceptor beforeActionInterceptor;
-	
+
 	// NeedLoginInterceptor 불러오기(연결)
 	@Autowired
 	NeedLoginInterceptor needLoginInterceptor;
-	
+
 	// NeedLogoutInterceptor 불러오기(연결)
 	@Autowired
 	NeedLogoutInterceptor needLogoutInterceptor;
-	
+
 	// 인터셉터 등록(적용)
 	public void addInterceptors(InterceptorRegistry registry) {
-		//		registry.addInterceptor(beforeActionInterceptor).addPathPatterns("/**").excludePathPatterns("/resource/**")
-		//		.excludePathPatterns("/error");
-		//
-		//registry.addInterceptor(needLoginInterceptor).addPathPatterns("/usr/article/write")
-		//		.addPathPatterns("/usr/article/doWrite").addPathPatterns("/usr/article/modify")
-		//		.addPathPatterns("/usr/article/doModify").addPathPatterns("/usr/article/doDelete");
-		//
-		//registry.addInterceptor(needLogoutInterceptor).addPathPatterns("/usr/member/login")
-		//		.addPathPatterns("/usr/member/doLogin").addPathPatterns("/usr/member/join")
-		//		.addPathPatterns("/usr/member/doJoin");
-		
+//		registry.addInterceptor(beforeActionInterceptor).addPathPatterns("/**").excludePathPatterns("/resource/**")
+//				.excludePathPatterns("/error");
+//
+//		registry.addInterceptor(needLoginInterceptor).addPathPatterns("/usr/article/write")
+//				.addPathPatterns("/usr/article/doWrite").addPathPatterns("/usr/article/modify")
+//				.addPathPatterns("/usr/article/doModify").addPathPatterns("/usr/article/doDelete");
+//
+//		registry.addInterceptor(needLogoutInterceptor).addPathPatterns("/usr/member/login")
+//				.addPathPatterns("/usr/member/doLogin").addPathPatterns("/usr/member/join")
+//				.addPathPatterns("/usr/member/doJoin");
+
 		InterceptorRegistration ir;
-		
+
 		ir = registry.addInterceptor(beforeActionInterceptor);
 		ir.addPathPatterns("/**");
 		ir.addPathPatterns("/favicon.ico");
@@ -61,8 +61,6 @@ public class MyWebMVCConfigurer implements WebMvcConfigurer {
 		ir.addPathPatterns("/usr/member/doLogin");
 		ir.addPathPatterns("/usr/member/join");
 		ir.addPathPatterns("/usr/member/doJoin");
-		
-
 	}
 
 }

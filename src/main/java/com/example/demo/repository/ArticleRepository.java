@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.example.demo.vo.Article;
+import com.example.demo.vo.Comment;
 import com.example.demo.vo.ReactionPoint;
 
 
@@ -215,5 +216,29 @@ public interface ArticleRepository {
 			WHERE id = #{relId}
 			""")
 	public int decreaseBadReactionPoint(int relId);
+
+	@Select("""
+			SELECT C.*, M.nickname AS extra__writer
+			FROM `comment` AS C
+			INNER JOIN `member` AS M
+			ON C.memberId = M.id
+			WHERE relId = #{relId}
+			ORDER BY regDate DESC
+			""")
+	public List<Comment> getForPrintComment(int relId);
+	
+	@Select("""
+			SELECT goodReactionPoint
+			FROM article
+			WHERE id = #{relId}
+			""")
+	public int getGoodRP(int relId);
+
+	@Select("""
+			SELECT badReactionPoint
+			FROM article
+			WHERE id = #{relId}
+			""")
+	public int getBadRP(int relId);
 
 }
