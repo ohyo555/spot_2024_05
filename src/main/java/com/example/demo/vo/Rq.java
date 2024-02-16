@@ -20,9 +20,8 @@ public class Rq {
 	private boolean isLogined;
 	@Getter
 	private int loginedMemberId;
-
 	@Getter
-	private int loginedMemberNickname;
+	private String loginedMemberNickname;
 	
 	private HttpSession session;
 

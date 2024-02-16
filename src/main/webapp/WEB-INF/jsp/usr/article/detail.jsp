@@ -21,138 +21,138 @@
 
 <!-- 조회수 -->
 <script>
-function ArticleDetail__doIncreaseHitCount() {
-	const localStorageKey = 'article__' + params.id + '__alreadyView';
+	function ArticleDetail__doIncreaseHitCount() {
+		const localStorageKey = 'article__' + params.id + '__alreadyView';
 
-	if (localStorage.getItem(localStorageKey)) {
-		return;
+		if (localStorage.getItem(localStorageKey)) {
+			return;
+		}
+
+		localStorage.setItem(localStorageKey, true);
+
+		$.get('../article/doIncreaseHitCountRd', {
+			id : params.id,
+			ajaxMode : 'Y'
+		}, function(data) {
+			$('.article-detail__hit-count').empty().html(data.data1);
+		}, 'json');
 	}
 
-	localStorage.setItem(localStorageKey, true);
-
-	$.get('../article/doIncreaseHitCountRd', {
-		id : params.id,
-		ajaxMode : 'Y'
-	}, function(data) {
-		$('.article-detail__hit-count').empty().html(data.data1);
-	}, 'json');
-}
-
-$(function() {
-	// 		ArticleDetail__doIncreaseHitCount();
-	setTimeout(ArticleDetail__doIncreaseHitCount, 2000);
-});
+	$(function() {
+		// 		ArticleDetail__doIncreaseHitCount();
+		setTimeout(ArticleDetail__doIncreaseHitCount, 2000);
+	});
 </script>
 
 <!-- 좋아요 싫어요  -->
 <script>
-<!-- 좋아요 싫어요 버튼	-->
-function checkRP() {
-	if(isAlreadyAddGoodRp == true){
-		$('#likeButton').toggleClass('btn-outline');
-	}else if(isAlreadyAddBadRp == true){
-		$('#DislikeButton').toggleClass('btn-outline');
-	}else {
-		return;
+	<!-- 좋아요 싫어요 버튼	-->
+	function checkRP() {
+		if(isAlreadyAddGoodRp == true){
+			$('#likeButton').toggleClass('btn-outline');
+		}else if(isAlreadyAddBadRp == true){
+			$('#DislikeButton').toggleClass('btn-outline');
+		}else {
+			return;
+		}
 	}
-}
 
-////////////////articleContoller에서 애초에 count 값을 같이 model에 포함시켜서 보내자
-function doGoodReaction(articleId) {
-	
-	$.ajax({
-		url: '/usr/reactionPoint/doGoodReaction',
-		type: 'POST',
-		data: {relTypeCode: 'article', relId: articleId},
-		dataType: 'json',
-		success: function(data){
-			console.log(data);
-			console.log('data.data1Name : ' + data.data1Name);
-			console.log('data.data1 : ' + data.data1);
-			console.log('data.data2Name : ' + data.data2Name);
-			console.log('data.data2 : ' + data.data2);
-			if(data.resultCode.startsWith('S-')){
-				var likeButton = $('#likeButton');
-				var likeCount = $('#likeCount');
-				var DislikeButton = $('#DislikeButton');
-				var DislikeCount = $('#DislikeCount');
-				
-				if(data.resultCode == 'S-1'){
-					likeButton.toggleClass('btn-outline');
-					likeCount.text(data.data1);
-				}else if(data.resultCode == 'S-2'){
-					DislikeButton.toggleClass('btn-outline');
-					DislikeCount.text(data.data2);
-					likeButton.toggleClass('btn-outline');
-					likeCount.text(data.data1);
-				}else {
-					likeButton.toggleClass('btn-outline');
-					likeCount.text(data.data1);
-				}
-				
-			}else {
-				alert(data.msg);
-			}
-	
-		},
-		error: function(jqXHR,textStatus,errorThrown) {
-			alert('좋아요 오류 발생 : ' + textStatus);
 
-		}
+	function doGoodReaction(articleId) {
 		
-	});
-}
-
-
-
-function doBadReaction(articleId) {
-	
- $.ajax({
-		url: '/usr/reactionPoint/doBadReaction',
-		type: 'POST',
-		data: {relTypeCode: 'article', relId: articleId},
-		dataType: 'json',
-		success: function(data){
-			console.log(data);
-			console.log('data.data1Name : ' + data.data1Name);
-			console.log('data.data1 : ' + data.data1);
-			console.log('data.data2Name : ' + data.data2Name);
-			console.log('data.data2 : ' + data.data2);
-			if(data.resultCode.startsWith('S-')){
-				var likeButton = $('#likeButton');
-				var likeCount = $('#likeCount');
-				var DislikeButton = $('#DislikeButton');
-				var DislikeCount = $('#DislikeCount');
-				
-				if(data.resultCode == 'S-1'){
-					DislikeButton.toggleClass('btn-outline');
-					DislikeCount.text(data.data2);
-				}else if(data.resultCode == 'S-2'){
-					likeButton.toggleClass('btn-outline');
-					likeCount.text(data.data1);
-					DislikeButton.toggleClass('btn-outline');
-					DislikeCount.text(data.data2);
+		$.ajax({
+			url: '/usr/reactionPoint/doGoodReaction',
+			type: 'POST',
+			data: {relTypeCode: 'article', relId: articleId},
+			dataType: 'json',
+			success: function(data){
+				console.log(data);
+				console.log('data.data1Name : ' + data.data1Name);
+				console.log('data.data1 : ' + data.data1);
+				console.log('data.data2Name : ' + data.data2Name);
+				console.log('data.data2 : ' + data.data2);
+				if(data.resultCode.startsWith('S-')){
+					var likeButton = $('#likeButton');
+					var likeCount = $('#likeCount');
+					var DislikeButton = $('#DislikeButton');
+					var DislikeCount = $('#DislikeCount');
+					
+					if(data.resultCode == 'S-1'){
+						likeButton.toggleClass('btn-outline');
+						likeCount.text(data.data1);
+					}else if(data.resultCode == 'S-2'){
+						DislikeButton.toggleClass('btn-outline');
+						DislikeCount.text(data.data2);
+						likeButton.toggleClass('btn-outline');
+						likeCount.text(data.data1);
+					}else {
+						likeButton.toggleClass('btn-outline');
+						likeCount.text(data.data1);
+					}
+					
 				}else {
-					DislikeButton.toggleClass('btn-outline');
-					DislikeCount.text(data.data2);
+					alert(data.msg);
 				}
 		
-			}else {
-				alert(data.msg);
-			}
-		},
-		error: function(jqXHR,textStatus,errorThrown) {
-			alert('싫어요 오류 발생 : ' + textStatus);
-		}
-		
-	});
-}
+			},
+			error: function(jqXHR,textStatus,errorThrown) {
+				alert('좋아요 오류 발생 : ' + textStatus);
 
-$(function() {
-	checkRP();
-});
+			}
+			
+		});
+	}
+	
+	
+	
+	function doBadReaction(articleId) {
+		
+	 $.ajax({
+			url: '/usr/reactionPoint/doBadReaction',
+			type: 'POST',
+			data: {relTypeCode: 'article', relId: articleId},
+			dataType: 'json',
+			success: function(data){
+				console.log(data);
+				console.log('data.data1Name : ' + data.data1Name);
+				console.log('data.data1 : ' + data.data1);
+				console.log('data.data2Name : ' + data.data2Name);
+				console.log('data.data2 : ' + data.data2);
+				if(data.resultCode.startsWith('S-')){
+					var likeButton = $('#likeButton');
+					var likeCount = $('#likeCount');
+					var DislikeButton = $('#DislikeButton');
+					var DislikeCount = $('#DislikeCount');
+					
+					if(data.resultCode == 'S-1'){
+						DislikeButton.toggleClass('btn-outline');
+						DislikeCount.text(data.data2);
+					}else if(data.resultCode == 'S-2'){
+						likeButton.toggleClass('btn-outline');
+						likeCount.text(data.data1);
+						DislikeButton.toggleClass('btn-outline');
+						DislikeCount.text(data.data2);
+		
+					}else {
+						DislikeButton.toggleClass('btn-outline');
+						DislikeCount.text(data.data2);
+					}
+			
+				}else {
+					alert(data.msg);
+				}
+			},
+			error: function(jqXHR,textStatus,errorThrown) {
+				alert('싫어요 오류 발생 : ' + textStatus);
+			}
+			
+		});
+	}
+	
+	$(function() {
+		checkRP();
+	});
 </script>
-
 
 
 
@@ -177,12 +177,12 @@ $(function() {
 					<td>${article.extra__writer }</td>
 				</tr>
 				<tr>
-					<th class="reaction">좋아요</th>
-					<td>${article.goodReactionPoint }</td>
+					<th>좋아요</th>
+					<td id="likeCount">${article.goodReactionPoint }</td>
 				</tr>
 				<tr>
 					<th>싫어요</th>
-					<td>${article.badReactionPoint }</td>
+					<td id="DislikeCount">${article.badReactionPoint }</td>
 				</tr>
 				<tr>
 					<th>추천</th>

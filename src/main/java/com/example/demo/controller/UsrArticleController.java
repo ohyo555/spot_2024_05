@@ -80,17 +80,17 @@ public class UsrArticleController {
 	@RequestMapping("/usr/article/detail")
 	public String showDetail(HttpServletRequest req, Model model, int id) {
 		Rq rq = (Rq) req.getAttribute("rq");
-		
+		System.out.println("************************" +  rq.getLoginedMemberNickname());
 		Article article = articleService.getForPrintArticle(rq.getLoginedMemberId(), id);
 		
 		ResultData usersReactionRd = reactionPointService.usersReaction(rq.getLoginedMemberId(), "article", id);
 
 		List<Comment> comments = articleService.getForPrintComment(id);
-		
+		System.out.println("************************" +  rq.getLoginedMemberNickname());
 		if (usersReactionRd.isSuccess()) {
 			model.addAttribute("userCanMakeReaction", usersReactionRd.isSuccess());
 		}
-		System.out.println();
+
 		model.addAttribute("loginedmember", rq.getLoginedMemberNickname());
 		model.addAttribute("article", article);
 		model.addAttribute("comments", comments);
