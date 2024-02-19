@@ -119,11 +119,11 @@ public interface ArticleRepository {
 	
 	@Select("""
 			<script>
-			SELECT A.*, M.nickname AS extra__writer, IFNULL(C.cnt,0) AS cnt
+			SELECT A.*, M.nickname AS extra__writer, IFNULL(COUNT(C.id),0) AS cnt
 			FROM article AS A
 			INNER JOIN `member` AS M
 			ON A.memberId = M.id
-			LEFT JOIN (SELECT relId, COUNT(*) AS cnt FROM `comment` GROUP BY relId) AS C
+			LEFT JOIN `comment` AS C
 			ON A.id = C.relId
 			WHERE 1
 			<if test="boardId != 0">

@@ -21,7 +21,7 @@
 
 <!-- 폰트어썸 불러오기 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-
+  
 <!-- 제이쿼리 불러오기 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
@@ -48,7 +48,7 @@
 				</c:if>
 				<c:if test="${rq.loginedMemberId != 0}">
 				<li><a class="hover:underline" href="../article/write"><i class="fa-solid fa-pen-to-square"></i></a></li>
-				<li><a class="hover:underline" href="../member/modify"><i class="fi fi-br-address-book"></i>■</a></li>
+				<li><a class="hover:underline" href="../member/modify"><i class="fa-solid fa-user-pen"></i></a></li>
 				<li><a onclick="if(confirm('로그아웃 할래?') == false) return false;" class="hover:underline"
 							href="../member/doLogout"><i class="fa-solid fa-right-from-bracket"></i></a></li>
 				</c:if>

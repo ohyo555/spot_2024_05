@@ -185,6 +185,29 @@ a {
 	});
 </script>
 
+<!-- 댓글 -->
+	<script>
+		var CommentWrite__submitDone = false;
+		function CommentWrite__submit(form) {
+			if (CommentWrite__submitDone) {
+				alert('이미 처리중입니다');
+				return;
+			}
+			console.log(123);
+			
+			console.log(form.body.value);
+			
+			if (form.body.value.length < 3) {
+				alert('댓글은 3글자 이상 입력해');
+				form.body.focus();
+				return;
+			}
+			CommentWrite__submitDone = true;
+			form.submit();
+		}
+	</script>
+
+
 <!-- 댓글 수정, 삭제 -->
 <script>
 	function doModify(commentId) {
@@ -251,9 +274,9 @@ a {
 						</c:choose></td> --%>
 					<td>
 						<!-- href="/usr/reactionPoint/doGoodReaction?relTypeCode=article&relId=${param.id }&replaceUri=${rq.currentUri}" -->
-						<button id="likeButton" class="btn btn-outline btn-success" onclick="doGoodReaction(${param.id})">좋아요</button>
+						<button id="likeButton" class="btn btn-outline btn-success" onclick="doGoodReaction(${param.id})">▲</button>
 
-						<button id="DislikeButton" class="btn btn-outline btn-error" onclick="doBadReaction(${param.id})">싫어요</button>
+						<button id="DislikeButton" class="btn btn-outline btn-error" onclick="doBadReaction(${param.id})">▼</button>
 					</td>
 				</tr>
 				<tr>
@@ -284,7 +307,7 @@ a {
 </section>
 <section>
 	<c:if test="${rq.isLogined() }">
-		<form action="../comment/doWrite" method="POST">
+		<form action="../comment/doWrite" method="POST" onsubmit="ReplyWrite__submit(this); return false;">
 			<input type="hidden" name="relTypeCode" value="article" /> <input type="hidden" name="relId" value="${article.id }" />
 			<label class="form-control">
 				<div class="comment dropdown dropdown-end ">
@@ -318,7 +341,7 @@ a {
 				</div>
 				<div class="chat-header">
 					${comments.extra__writer }
-					<time class="text-xs opacity-50">${comments.updateDate }</time>
+					<time class="text-xs opacity-50">${comments.updateDate.substring(0,10) }</time>
 				</div>
 				<div class = "rr">
 				<div class="chat-bubble">${comments.comment }</div>

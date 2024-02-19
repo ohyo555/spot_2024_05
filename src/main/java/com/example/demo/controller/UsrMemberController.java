@@ -174,8 +174,7 @@ public class UsrMemberController {
 		}
 		
 		memberService.setMember(id, loginPw, name, nickname, cellphoneNum, email);
-//		Member member = memberService.getMember(id);
-//		rq.login(member);
+		req.setAttribute(nickname, nickname);
 		
 		return Ut.jsReplace("S-1", "회원정보가 수정되었습니다", "/");
 	}
