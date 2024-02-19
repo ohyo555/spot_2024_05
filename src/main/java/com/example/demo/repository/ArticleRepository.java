@@ -119,10 +119,12 @@ public interface ArticleRepository {
 	
 	@Select("""
 			<script>
-			SELECT A.*, M.nickname AS extra__writer
+			SELECT A.*, M.nickname AS extra__writer, IFNULL(C.cnt,0) AS cnt
 			FROM article AS A
 			INNER JOIN `member` AS M
 			ON A.memberId = M.id
+			LEFT JOIN (SELECT relId, COUNT(*) AS cnt FROM `comment` GROUP BY relId) AS C
+			ON A.id = C.relId
 			WHERE 1
 			<if test="boardId != 0">
 				AND A.boardId = #{boardId}
@@ -219,16 +221,6 @@ public interface ArticleRepository {
 			WHERE id = #{relId}
 			""")
 	public int decreaseBadReactionPoint(int relId);
-
-	@Select("""
-			SELECT C.*, M.nickname AS extra__writer
-			FROM `comment` AS C
-			INNER JOIN `member` AS M
-			ON C.memberId = M.id
-			WHERE relId = #{relId}
-			ORDER BY regDate DESC
-			""")
-	public List<Comment> getForPrintComment(int relId);
 	
 	@Select("""
 			SELECT goodReactionPoint
@@ -243,34 +235,5 @@ public interface ArticleRepository {
 			WHERE id = #{relId}
 			""")
 	public int getBadRP(int relId);
-
-	@Insert("""
-			INSERT INTO
-			`comment` SET
-			regDate = NOW(),
-			updateDate = NOW(),
-			`comment` = #{comment},
-			memberId = #{memberId},
-			level = 1,
-			relId = #{relId}
-			""")
-	public void doWriteComment(String comment, int memberId, int relId);
-
-	@Select("""
-			SELECT *
-			FROM `comment`
-			WHERE id = #{id}
-			""")
-	public Comment getComment(int id);
-
-	@Update("""
-			UPDATE `comment`
-				<set>
-					<if test="commnet != null and title != ''">`comment` = #{comment},</if>
-					updateDate = NOW()
-				</set>
-			WHERE id = #{id}
-				""")
-	public void modifyComment(int id, String title, String body);
 
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.repository.ArticleRepository;
 import com.example.demo.service.ArticleService;
 import com.example.demo.service.BoardService;
+import com.example.demo.service.CommentService;
 import com.example.demo.service.ReactionPointService;
 import com.example.demo.util.Ut;
 import com.example.demo.vo.Article;
@@ -33,6 +34,9 @@ public class UsrArticleController {
 	
 	@Autowired
 	private ArticleService articleService;
+	
+	@Autowired
+	private CommentService commentService;
 
 	@Autowired
 	private ReactionPointService reactionPointService;
@@ -60,9 +64,9 @@ public class UsrArticleController {
 		int itemsInAPage = 15;
 		
 		int pagesCount = (int) Math.ceil(articlesCount / (double) itemsInAPage);
-
+		
 		List<Article> articles = articleService.getForPrintArticles(boardId, itemsInAPage, page, searchKeywordTypeCode, searchKeyword);
-
+		
 		model.addAttribute("board", board);
 		model.addAttribute("boardId", boardId);
 		model.addAttribute("page", page);
@@ -82,36 +86,24 @@ public class UsrArticleController {
 		
 		ResultData usersReactionRd = reactionPointService.usersReaction(rq.getLoginedMemberId(), "article", id);
 		
-		List<Comment> comments = articleService.getForPrintComment(id);
-		
 		if (usersReactionRd.isSuccess()) {
 			model.addAttribute("userCanMakeReaction", usersReactionRd.isSuccess());
 		}
 		
+		List<Comment> comments = commentService.getForPrintComments(rq.getLoginedMemberId(), "article", id);
+		
+		int commentsCount = comments.size();
+	
 		model.addAttribute("loginedMember", rq.getLoginedMemberId());
 		model.addAttribute("loginedMemberNickname", rq.getLoginedMemberNickname());
 		model.addAttribute("article", article);
 		model.addAttribute("comments", comments);
+		model.addAttribute("commentsCount", commentsCount);
 		model.addAttribute("isAlreadyAddGoodRp",reactionPointService.isAlreadyAddGoodRp(rq.getLoginedMemberId(), id, "article"));
 		model.addAttribute("isAlreadyAddBadRp",reactionPointService.isAlreadyAddBadRp(rq.getLoginedMemberId(), id, "article"));
 
 		return "usr/article/detail";
 	}
-	
-	@RequestMapping("/usr/article/comment")
-	public String showComment(HttpServletRequest req, Model model, String comment, int id) {
-
-		Rq rq = (Rq) req.getAttribute("rq");
-		
-		if (Ut.isNullOrEmpty(comment)) {
-			return Ut.jsHistoryBack("F-1", "댓글을 입력해주세요");
-		}
-		
-		ResultData<Integer> writeCommentRd = articleService.doWriteComment(comment, rq.getLoginedMemberId(), id);
-		
-		return Ut.jsReplace(writeCommentRd.getResultCode(), writeCommentRd.getMsg(), "../article/detail?id=" + id);
-	}
-
 	
 	@RequestMapping("/usr/article/doIncreaseHitCountRd")
 	@ResponseBody
@@ -208,27 +200,6 @@ public class UsrArticleController {
 
 		if (loginedMemberCanModifyRd.isSuccess()) {
 			articleService.modifyArticle(id, title, body);
-		}
-
-		return Ut.jsReplace(loginedMemberCanModifyRd.getResultCode(), loginedMemberCanModifyRd.getMsg(), "../article/detail?id="+article.getId());
-	}
-	
-	@RequestMapping("/usr/article/doCommentModify")
-	@ResponseBody
-	public String doCommentModify(HttpServletRequest req, Model model, int id, String title, String body) {
-		Rq rq = (Rq) req.getAttribute("rq");
-
-		Article article = articleService.getArticle(id);
-		Comment comment = articleService.getComment(id);
-
-		if (comment == null) {
-			return Ut.jsHistoryBack("F-1", Ut.f("%d번 댓글은 존재하지 않습니다", id));
-		}
-
-		ResultData loginedMemberCanModifyRd = articleService.userCommentCanModify(rq.getLoginedMemberId(), comment);
-
-		if (loginedMemberCanModifyRd.isSuccess()) {
-			articleService.modifyComment(id, title, body);
 		}
 
 		return Ut.jsReplace(loginedMemberCanModifyRd.getResultCode(), loginedMemberCanModifyRd.getMsg(), "../article/detail?id="+article.getId());

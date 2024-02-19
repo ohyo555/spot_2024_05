@@ -51,5 +51,9 @@ public class MemberService {
 	public Member getMember(int id) {
 		return memberRepository.getMember(id);
 	}
+	
+	public void setMember(int id, String loginPw, String name, String nickname, String cellphoneNum, String email) {
+		memberRepository.setMember(id, loginPw, name, nickname, cellphoneNum, email);
+	}
 
 }

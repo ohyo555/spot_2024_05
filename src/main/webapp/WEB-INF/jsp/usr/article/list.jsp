@@ -62,7 +62,12 @@
 					<tr class="hover">
 						<td>${article.id }</td>
 						<td>${article.regDate.substring(0,10) }</td>
+						<c:if test = "${article.cnt == 0}" >
 						<td><a href="detail?id=${article.id }">${article.title }</a></td>
+						</c:if>
+						<c:if test = "${article.cnt != 0}" >
+						<td><a href="detail?id=${article.id }">${article.title }</a><div class = "text-pink-600 inline-block">[${article.cnt }]</div></td>
+						</c:if>
 						<td>${article.extra__writer }</td>
 						<td>${article.hitCount }</td>
 						<td>${article.goodReactionPoint }</td>

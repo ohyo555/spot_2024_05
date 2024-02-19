@@ -15,7 +15,8 @@ public class Article {
 	private String title;
 	private String body;
 	private int hitCount;
-
+	private int cnt;
+	
 	private int goodReactionPoint;
 	private int badReactionPoint;
 	

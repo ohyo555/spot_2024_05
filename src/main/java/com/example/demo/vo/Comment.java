@@ -12,11 +12,16 @@ public class Comment {
 	private String regDate;
 	private String updateDate;
 	private int memberId;
+	private String relTypeCode;
 	private int level;
 	private String comment;
 	private int relId;
-	private int hitCount;
+	private int goodReactionPoint;
+	private int badReactionPoint;
 	
 	private String extra__writer;
+	
+	private boolean userCanModify;
+	private boolean userCanDelete;
 
 }

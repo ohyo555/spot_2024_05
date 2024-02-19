@@ -206,10 +206,6 @@ public class ArticleService {
 		return ResultData.from("S-1", "싫어요 감소", "affectedRow", affectedRow);
 	}
 
-	public List<Comment> getForPrintComment(int relId) {
-
-		return articleRepository.getForPrintComment(relId);
-	}
 
 	public int getGoodRP(int relId) {
 		return articleRepository.getGoodRP(relId);
@@ -219,21 +215,5 @@ public class ArticleService {
 		return articleRepository.getBadRP(relId);
 	}
 
-	public ResultData<Integer> doWriteComment(String comment, int memberId, int relId) {
-		
-		int id = articleRepository.getLastInsertId();
-		
-		articleRepository.doWriteComment(comment, memberId, relId);
-
-		return ResultData.from("S-1", "댓글 성공");
-	}
-
-	public Comment getComment(int id) {
-		return articleRepository.getComment(id);
-	}
-
-	public void modifyComment(int id, String title, String body) {
-		articleRepository.modifyComment(id, title, body);
-	}
 
 }

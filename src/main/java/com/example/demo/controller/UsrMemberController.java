@@ -2,11 +2,13 @@ package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.service.MemberService;
 import com.example.demo.util.Ut;
+import com.example.demo.vo.Article;
 import com.example.demo.vo.Member;
 import com.example.demo.vo.ResultData;
 import com.example.demo.vo.Rq;
@@ -133,4 +135,49 @@ public class UsrMemberController {
 
 		return Ut.jsReplace(joinRd.getResultCode(), joinRd.getMsg(), "../member/login");
 	}
+	
+	@RequestMapping("/usr/member/modify")
+	public String showModify(HttpServletRequest req, Model model) {
+		
+		Rq rq = (Rq) req.getAttribute("rq");
+		int id = rq.getLoginedMemberId();
+		
+		Member member = memberService.getMember(id);
+		
+		model.addAttribute("member", member);
+		
+		return "usr/member/modify";
+	}
+	
+	@RequestMapping("/usr/member/doModify")
+	@ResponseBody
+	public String doModify(HttpServletRequest req, String loginPw, String name, String nickname,
+			String cellphoneNum, String email) {
+		
+		Rq rq = (Rq) req.getAttribute("rq");
+		int id = rq.getLoginedMemberId();
+		
+		if (Ut.isNullOrEmpty(loginPw)) {
+			return Ut.jsHistoryBack("F-1", "비밀번호를 입력해주세요");
+		}
+		if (Ut.isNullOrEmpty(name)) {
+			return Ut.jsHistoryBack("F-2", "이름을 입력해주세요");
+		}
+		if (Ut.isNullOrEmpty(nickname)) {
+			return Ut.jsHistoryBack("F-3", "닉네임을 입력해주세요");
+		}
+		if (Ut.isNullOrEmpty(cellphoneNum)) {
+			return Ut.jsHistoryBack("F-4", "전화번호를 입력해주세요");
+		}
+		if (Ut.isNullOrEmpty(email)) {
+			return Ut.jsHistoryBack("F-5", "이메일을 입력해주세요");
+		}
+		
+		memberService.setMember(id, loginPw, name, nickname, cellphoneNum, email);
+//		Member member = memberService.getMember(id);
+//		rq.login(member);
+		
+		return Ut.jsReplace("S-1", "회원정보가 수정되었습니다", "/");
+	}
+	
 }
