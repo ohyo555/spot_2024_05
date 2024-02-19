@@ -276,7 +276,7 @@
 							<time class="text-xs opacity-50">${comments.updateDate }</time>
 						</div>
 						<div class="chat-bubble">${comments.comment }</div>
-						 <c:if test = "${comments.memberId } == "${loginedMember }"><div class="chat-footer opacity-50">
+						 <c:if test = "${comments.memberId == rq.loginedMemberId }"><div class="chat-footer opacity-50">
 						    수정</c:if>
 						  </div>
 					</div>

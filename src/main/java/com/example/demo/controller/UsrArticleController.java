@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.demo.repository.ArticleRepository;
 import com.example.demo.service.ArticleService;
 import com.example.demo.service.BoardService;
 import com.example.demo.service.ReactionPointService;
@@ -52,8 +53,6 @@ public class UsrArticleController {
 		
 		int articlesCount = articleService.getArticlesCount(boardId, searchKeywordTypeCode, searchKeyword);
 		
-		System.out.println("===========================" + articlesCount);
-		
 		if (board == null) {
 			return rq.historyBackOnView("없는 게시판이야");
 		}
@@ -76,7 +75,6 @@ public class UsrArticleController {
 		return "usr/article/list";
 	}
 	
-	
 	@RequestMapping("/usr/article/detail")
 	public String showDetail(HttpServletRequest req, Model model, int id) {
 		Rq rq = (Rq) req.getAttribute("rq");
@@ -89,8 +87,6 @@ public class UsrArticleController {
 		if (usersReactionRd.isSuccess()) {
 			model.addAttribute("userCanMakeReaction", usersReactionRd.isSuccess());
 		}
-
-		System.out.println("^^^^^^^^^^^^^^^^^^^^" + rq.getLoginedMemberId());
 		
 		model.addAttribute("loginedMember", rq.getLoginedMemberId());
 		model.addAttribute("loginedMemberNickname", rq.getLoginedMemberNickname());
@@ -178,9 +174,9 @@ public class UsrArticleController {
 	
 	@RequestMapping("/usr/article/doWrite")
 	@ResponseBody
-	public String doWrite(HttpServletRequest req, Model model, String title, String body) {
+	public String doWrite(HttpServletRequest req, Model model, String title, String body, int boardId) {
 		Rq rq = (Rq) req.getAttribute("rq");
-
+		
 		if (Ut.isNullOrEmpty(title)) {
 			return Ut.jsHistoryBack("F-1", "제목을 입력해주세요");
 		}
@@ -188,7 +184,7 @@ public class UsrArticleController {
 			return Ut.jsHistoryBack("F-1", "내용을 입력해주세요");
 		}
 		
-		ResultData<Integer> writeArticleRd = articleService.writeArticle(rq.getLoginedMemberId(), title, body);
+		ResultData<Integer> writeArticleRd = articleService.writeArticle(rq.getLoginedMemberId(), title, body, boardId);
 		int id = (int) writeArticleRd.getData1();
 
 		Article article = articleService.getArticle(id);
