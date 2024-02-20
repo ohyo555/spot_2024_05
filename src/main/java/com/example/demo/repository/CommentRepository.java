@@ -16,11 +16,14 @@ import com.example.demo.vo.ReactionPoint;
 public interface CommentRepository {
 
 	@Select("""
-			SELECT C.*, M.nickname AS extra__writer
+			SELECT C.*, M.nickname AS extra__writer, SUM(C.goodreactionPoint) AS `sum`
 			FROM `comment` AS C
 			INNER JOIN `member` AS M
 			ON C.memberId = M.id
-			WHERE relId = #{relId}
+			LEFT JOIN reactionPoint AS R
+			ON C.id = R.commentId
+			WHERE C.relId = #{relId}
+			GROUP BY C.id
 			ORDER BY regDate DESC
 			""")
 	List<Comment> getForPrintComments(int loginedMemberId, String relTypeCode, int relId);
@@ -57,4 +60,7 @@ public interface CommentRepository {
 			WHERE id = #{id}
 				""")
 	void modifyComment(int id, String comment);
+
+	@Delete("DELETE FROM `comment` WHERE id = #{id}")
+	void deleteComment(int id);
 }

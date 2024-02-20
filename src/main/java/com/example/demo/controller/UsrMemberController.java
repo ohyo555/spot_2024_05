@@ -136,6 +136,19 @@ public class UsrMemberController {
 		return Ut.jsReplace(joinRd.getResultCode(), joinRd.getMsg(), "../member/login");
 	}
 	
+	@RequestMapping("/usr/member/mypage")
+	public String showMypage(HttpServletRequest req, Model model) {
+		
+		Rq rq = (Rq) req.getAttribute("rq");
+		int id = rq.getLoginedMemberId();
+		
+		Member member = memberService.getMember(id);
+		
+		model.addAttribute("member", member);
+		
+		return "usr/member/mypage";
+	}
+	
 	@RequestMapping("/usr/member/modify")
 	public String showModify(HttpServletRequest req, Model model) {
 		

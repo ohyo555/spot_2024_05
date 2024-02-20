@@ -66,7 +66,7 @@
 						<td><a href="detail?id=${article.id }">${article.title }</a></td>
 						</c:if>
 						<c:if test = "${article.cnt != 0}" >
-						<td><a href="detail?id=${article.id }">${article.title }</a><div class = "text-pink-600 inline-block">[${article.cnt }]</div></td>
+						<td><a href="detail?id=${article.id }">${article.title }</a><div class = "inline-block"  style="color:#e0316e">[${article.cnt }]</div></td>
 						</c:if>
 						<td>${article.extra__writer }</td>
 						<td>${article.hitCount }</td>

@@ -92,6 +92,12 @@ public class UsrArticleController {
 		
 		List<Comment> comments = commentService.getForPrintComments(rq.getLoginedMemberId(), "article", id);
 		
+//		ResultData usersCommentReactionRd = reactionPointService.usersReaction(rq.getLoginedMemberId(), "comment", id);
+		
+		if (usersReactionRd.isSuccess()) {
+			model.addAttribute("userCanMakeReaction", usersReactionRd.isSuccess());
+		}
+		
 		int commentsCount = comments.size();
 	
 		model.addAttribute("loginedMember", rq.getLoginedMemberId());

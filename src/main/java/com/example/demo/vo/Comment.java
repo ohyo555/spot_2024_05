@@ -18,6 +18,7 @@ public class Comment {
 	private int relId;
 	private int goodReactionPoint;
 	private int badReactionPoint;
+	private int sum;
 	
 	private String extra__writer;
 	

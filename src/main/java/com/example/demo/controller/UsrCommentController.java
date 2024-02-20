@@ -75,5 +75,20 @@ public class UsrCommentController {
 
 		return Ut.jsReplace("S-1", "댓글 수정 성공", "../article/detail?id=" + com.getRelId());
 	}
+	
+	@RequestMapping("/usr/comment/doDelete")
+	@ResponseBody
+	public String doDelete(HttpServletRequest req, int id) {
+		Rq rq = (Rq) req.getAttribute("rq");
+
+		Comment com = commentService.getComment(id);
+		if (com == null) {
+			return Ut.jsHistoryBack("F-1", Ut.f("%d번 댓글은 존재하지 않습니다", id));
+		}
+
+		commentService.deleteComment(id);
+		
+		return Ut.jsReplace("S-1", "댓글 삭제","../article/detail?id=" + com.getRelId());
+	}
 
 }

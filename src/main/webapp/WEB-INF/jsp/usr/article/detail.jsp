@@ -25,19 +25,25 @@ a {
 .rr >ul>li {
 	margin-right: 0px;
 	margin-left: auto;
+	position: relative;
 }
 
 .comment ul>li>ul {
 	display: none;
 	position: absolute;
+	left: auto;
+	right: 20px;
 	background-color: white;
 }
 
 .comment ul>li:hover>ul {
 	display: block;
-	position: relative;
 	width: 100%;
-	background-color: red;
+	white-space:nowrap;
+}
+
+.reaction {
+	display: inline;
 }
 </style>
 
@@ -183,6 +189,48 @@ a {
 	$(function() {
 		checkRP();
 	});
+	
+	/* 댓글 좋아요 */
+		function doGoodCommentReaction(articleId, commentId) {
+		
+		$.ajax({
+			url: '/usr/reactionPoint/doGoodCommentReaction',
+			type: 'POST',
+			data: {relTypeCode: 'comment', relId: articleId, Id: commentId},
+			dataType: 'json',
+			success: function(data){
+				console.log(data);
+				console.log('data.data1Name : ' + data.data1Name);
+				console.log('data.data1 : ' + data.data1);
+				console.log('data.data2Name : ' + data.data2Name);
+				console.log('data.data2 : ' + data.data2);
+				if(data.resultCode.startsWith('S-')){
+					var likeButton = $('#likeButton');
+					var likeCount = $('#likeCount');
+					
+					if(data.resultCode == 'S-1'){
+						likeButton.toggleClass('btn-outline');
+						likeCount.text(data.data1);
+					}else if(data.resultCode == 'S-2'){
+						likeButton.toggleClass('btn-outline');
+						likeCount.text(data.data1);
+					}else {
+						likeButton.toggleClass('btn-outline');
+						likeCount.text(data.data1);
+					}
+					
+				}else {
+					alert(data.msg);
+				}
+		
+			},
+			error: function(jqXHR,textStatus,errorThrown) {
+				alert('좋아요 오류 발생 : ' + textStatus);
+
+			}
+			
+		});
+	}
 </script>
 
 <!-- 댓글 -->
@@ -300,7 +348,7 @@ a {
 				<a class="btn btn-outline" href="../article/modify?id=${article.id }">수정</a>
 			</c:if>
 			<c:if test="${article.userCanDelete }">
-				<a class="btn btn-outline" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;" href=click>삭제</a>
+				<a class="btn btn-outline" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;" href="../article/doDelete?id=${article.id }">삭제</a>
 			</c:if>
 		</div>
 	</div>
@@ -317,7 +365,7 @@ a {
 								src="https://health.chosun.com/site/data/img_dir/2023/07/17/2023071701753_0.jpg" />
 						</div>
 					</div>
-					<div class="comment">${rq.loginedMemberNickname }</div>
+					<%-- <div class="comment">${rq.loginedMemberNickname }</div> --%>
 				</div>
 				<div class="flex-none gap-2 m-3 ">
 					<div class="form-control">
@@ -345,12 +393,15 @@ a {
 				</div>
 				<div class = "rr">
 				<div class="chat-bubble">${comments.comment }</div>
+				<button id="likeButton" onclick="doCommentGoodReaction(${param.id},)" style="color:#e0316e" class = "reaction text-xl">♡</button>
+				<c:if test="${comments.goodReactionPoint > 0}"><div class = "reaction" style="color:#e0316e" >[${comments.sum }]</div></c:if>
 				<c:if test="${comments.memberId == rq.loginedMemberId }">
+				<div>${CommentGoodCnt }</div>
 					<ul class="flex">
 						<li><a class="hover:underline" href="#">···</a>
 							<ul>
-								<li><button onclick="doModify(${comment.id })">수정</button></li>
-								<li><a class="hover:underline" href="#">삭제</a></li>
+								<li><button onclick="doModify(${comments.id })">수정</button></li>
+								<li><a onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;" href="../comment/doDelete?id=${comments.id }">삭제</a></li>
 							</ul></li>
 					</ul>
 				</c:if>

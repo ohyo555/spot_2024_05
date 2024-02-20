@@ -137,9 +137,7 @@ public class ArticleService {
 		if (count != null) { // 사용자의 정보가 있으면 좋아요 업데이트
 			int cnt = count.getPoint();
 			affectedRow = articleRepository.goodupdateArticle(loginedId, articleId, cnt);
-			System.out.println("///////////////////////////////////////////////");
 		}else {
-			System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 			articleRepository.goodaddArticle(loginedId, articleId);
 			return ResultData.from("S-1", "해당 게시물 좋아요 증가", "id", id);
 		}

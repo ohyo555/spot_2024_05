@@ -6,7 +6,7 @@
 <section class="mt-8 text-xl px-4">
 	<div class="mx-auto">
 		<form action="../member/doModify" method="POST">
-			<table class="join-box table-box-1" border="1">
+			<table class="modify-box table-box-1" border="1">
 				<tbody>
 					<tr>
 						<th>아이디</th>
