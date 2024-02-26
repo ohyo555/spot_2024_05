@@ -3,6 +3,22 @@
 <c:set var="pageTitle" value="MEMBER JOIN"></c:set>
 <%@ include file="../common/head.jspf"%>
 
+<script>
+	function callByAjax(loginId) {
+		
+		
+		var action = "../member/doAction";
+		var a = 123;
+		console.log(a);
+		
+		$.get(action, {
+			loginId : loginId,
+		}, function(data) {
+			$('.msg').text(data);
+		}, 'html');
+		console.log(a);
+	}
+</script>
 <section class="mt-8 text-xl px-4">
 	<div class="mx-auto">
 		<form action="../member/doJoin" method="POST">
@@ -10,11 +26,12 @@
 				<tbody>
 					<tr>
 						<th>아이디</th>
-						<td><input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text" placeholder="아이디를 입력해주세요" name="loginId" /></td>
+						<td><input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text" placeholder="아이디를 입력해주세요" name="loginId" /><div class="msg"></div></td>
 					</tr>
+					<!-- <form name="form1" method="POST" action="../member/doAction"> -->
 					<tr>
 						<th>비밀번호</th>
-						<td><input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text" placeholder="비밀번호를 입력해주세요" name="loginPw" /></td>
+						<td><input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text" placeholder="비밀번호를 입력해주세요" name="loginPw" onclick="callByAjax();"/></td>
 					</tr>
 					<tr>
 						<th>이름</th>

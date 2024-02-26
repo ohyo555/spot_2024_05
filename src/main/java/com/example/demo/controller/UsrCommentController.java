@@ -37,10 +37,10 @@ public class UsrCommentController {
 		Rq rq = (Rq) req.getAttribute("rq");
 
 		if (Ut.isNullOrEmpty(relTypeCode)) {
-			return Ut.jsHistoryBack("F-1", "내용을 입력해주세요");
+			return Ut.jsHistoryBack("F-1", "relTypeCode을 입력해주세요");
 		}
 		if (Ut.isEmpty(relId)) {
-			return Ut.jsHistoryBack("F-2", "내용을 입력해주세요");
+			return Ut.jsHistoryBack("F-2", "relId을 입력해주세요");
 		}
 		if (Ut.isNullOrEmpty(comment)) {
 			return Ut.jsHistoryBack("F-3", "내용을 입력해주세요");
@@ -78,7 +78,7 @@ public class UsrCommentController {
 	
 	@RequestMapping("/usr/comment/doDelete")
 	@ResponseBody
-	public String doDelete(HttpServletRequest req, int id) {
+	public String doDelete(HttpServletRequest req, int id, String replaceUri) {
 		Rq rq = (Rq) req.getAttribute("rq");
 
 		Comment com = commentService.getComment(id);
@@ -86,9 +86,21 @@ public class UsrCommentController {
 			return Ut.jsHistoryBack("F-1", Ut.f("%d번 댓글은 존재하지 않습니다", id));
 		}
 
-		commentService.deleteComment(id);
+		ResultData loginedMemberCanDeleteRd = commentService.userCanDelete(rq.getLoginedMemberId(), com);
+
+		if (loginedMemberCanDeleteRd.isSuccess()) {
+			commentService.deleteComment(id);
+		}
+
+		if (Ut.isNullOrEmpty(replaceUri)) {
+			switch (com.getRelTypeCode()) {
+			case "article":
+				replaceUri = Ut.f("../article/detail?id=%d", com.getRelId());
+				break;
+			}
+		}
 		
-		return Ut.jsReplace("S-1", "댓글 삭제","../article/detail?id=" + com.getRelId());
+		return Ut.jsReplace(loginedMemberCanDeleteRd.getResultCode(), loginedMemberCanDeleteRd.getMsg(), replaceUri);
 	}
 
 }

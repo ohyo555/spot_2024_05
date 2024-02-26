@@ -18,19 +18,19 @@
 	<div class="mx-auto overflow-x-auto">
 		<div class="badge badge-outline">${articlesCount }개</div>
 		<div class="mt-3 mb-3">
-		<form action="">
-			<input type="hidden" name="boardId" value="${param.boardId }" />
-			<select class = "text-base" name = "searchKeywordTypeCode">
-		<%-- 	<select data-value="${param.searchKeywordTypeCode }" class="select select-bordered select-sm w-full max-w-xs"
+			<form action="">
+				<input type="hidden" name="boardId" value="${param.boardId }" /> <select class="text-base"
+					name="searchKeywordTypeCode">
+					<%-- 	<select data-value="${param.searchKeywordTypeCode }" class="select select-bordered select-sm w-full max-w-xs"
 					name="searchKeywordTypeCode"> --%>
-				<option value = "title" ${searchKeywordTypeCode.equals("title") ? 'selected="selected"' : '' }>제목</option>
-				<option value = "body"${searchKeywordTypeCode.equals("body") ? 'selected="selected"' : '' }>내용</option>
-				<option value = "extra__writer"${searchKeywordTypeCode.equals("extra__writer") ? 'selected="selected"' : '' }>작성자</option>
-			</select>
-			<input value = "${param.searchKeyword }" type="text" placeholder="검색어를 입력하세요" class="input input-bordered w-full max-w-xs" name="searchKeyword"/>
-			<button class="btn btn-outline" type="submit" >검색</button>
+					<option value="title" ${searchKeywordTypeCode.equals("title") ? 'selected="selected"' : '' }>제목</option>
+					<option value="body" ${searchKeywordTypeCode.equals("body") ? 'selected="selected"' : '' }>내용</option>
+					<option value="extra__writer" ${searchKeywordTypeCode.equals("extra__writer") ? 'selected="selected"' : '' }>작성자</option>
+				</select> <input value="${param.searchKeyword }" type="text" placeholder="검색어를 입력하세요"
+					class="input input-bordered w-full max-w-xs" name="searchKeyword" />
+				<button class="btn btn-outline" type="submit">검색</button>
 		</div>
-		
+
 		<table class="table-box-1 table" border="1">
 			<colgroup>
 				<col style="width: 10%" />
@@ -38,7 +38,7 @@
 				<col style="width: 60%" />
 				<col style="width: 10%" />
 			</colgroup>
-		
+
 			<thead>
 				<tr>
 					<th>번호</th>
@@ -51,22 +51,23 @@
 				</tr>
 			</thead>
 			<tbody>
-				
+
 				<c:if test="${articles.size() == 0 }">
 					<tr>
-						<td colspan="6">게시글 없어</td>
+						<td colspan="7">게시글 없어</td>
 					</tr>
 				</c:if>
-			
+
 				<c:forEach var="article" items="${articles }">
 					<tr class="hover">
 						<td>${article.id }</td>
 						<td>${article.regDate.substring(0,10) }</td>
-						<c:if test = "${article.cnt == 0}" >
-						<td><a href="detail?id=${article.id }">${article.title }</a></td>
+						<c:if test="${article.cnt == 0}">
+							<td><a href="detail?id=${article.id }">${article.title }</a></td>
 						</c:if>
-						<c:if test = "${article.cnt != 0}" >
-						<td><a href="detail?id=${article.id }">${article.title }</a><div class = "inline-block"  style="color:#e0316e">[${article.cnt }]</div></td>
+						<c:if test="${article.cnt != 0}">
+							<td><a href="detail?id=${article.id }">${article.title }</a>
+							<div class="inline-block" style="color: #e0316e">[${article.cnt }]</div></td>
 						</c:if>
 						<td>${article.extra__writer }</td>
 						<td>${article.hitCount }</td>
@@ -77,7 +78,7 @@
 			</tbody>
 		</table>
 	</div>
-		<div class="pagination flex justify-center mt-3">
+	<div class="pagination flex justify-center mt-3">
 		<c:set var="paginationLen" value="3" />
 		<c:set var="startPage" value="${page -  paginationLen  >= 1 ? page - paginationLen : 1}" />
 		<c:set var="endPage" value="${page +  paginationLen  <= pagesCount ? page + paginationLen : pagesCount}" />
@@ -85,7 +86,7 @@
 		<c:set var="baseUri" value="?boardId=${boardId }" />
 		<c:set var="baseUri" value="${baseUri }&searchKeywordTypeCode=${searchKeywordTypeCode}" />
 		<c:set var="baseUri" value="${baseUri }&searchKeyword=${searchKeyword}" />
-		
+
 		<c:if test="${startPage > 1 }">
 			<a class="btn btn-sm" href="${baseUri }&page=1">1</a>
 			<button class="btn btn-sm btn-disabled">...</button>

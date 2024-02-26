@@ -54,7 +54,7 @@ public interface CommentRepository {
 	@Update("""
 			UPDATE `comment`
 				<set>
-					<if test="commnet != null and title != ''">`comment` = #{comment},</if>
+					<if test="commnet != null and commnet != ''">`comment` = #{comment},</if>
 					updateDate = NOW()
 				</set>
 			WHERE id = #{id}

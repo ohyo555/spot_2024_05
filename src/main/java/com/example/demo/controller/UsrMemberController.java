@@ -192,4 +192,82 @@ public class UsrMemberController {
 		return Ut.jsReplace("S-1", "회원정보가 수정되었습니다", "/");
 	}
 	
+	@RequestMapping("/usr/member/findId")
+	public String showFindId(HttpServletRequest req) {
+
+		Rq rq = (Rq) req.getAttribute("rq");
+
+		if (rq.isLogined()) {
+			return Ut.jsHistoryBack("F-A", "이미 로그인 함");
+		}
+
+		return "usr/member/findId";
+	}
+	
+	@RequestMapping("/usr/member/dofindId")
+	@ResponseBody
+	public String doFindId(HttpServletRequest req, String name, String cellphoneNum, String email) {
+		
+		Rq rq = (Rq) req.getAttribute("rq");
+		int id = rq.getLoginedMemberId();
+		
+		if (Ut.isNullOrEmpty(name)) {
+			return Ut.jsHistoryBack("F-1", "이름을 입력해주세요");
+		}
+		if (Ut.isNullOrEmpty(cellphoneNum)) {
+			return Ut.jsHistoryBack("F-2", "전화번호를 입력해주세요");
+		}
+		
+//		memberService.setMember(id, loginPw, name, nickname, cellphoneNum, email);
+//		req.setAttribute(nickname, nickname);
+		
+		return Ut.jsReplace("S-1", "회원정보가 수정되었습니다", "/");
+	}
+	
+	@RequestMapping("/usr/member/findPw")
+	public String showFindPw(HttpServletRequest req) {
+
+		Rq rq = (Rq) req.getAttribute("rq");
+
+		if (rq.isLogined()) {
+			return Ut.jsHistoryBack("F-A", "이미 로그인 함");
+		}
+
+		return "usr/member/findPw";
+	}
+	
+	@RequestMapping("/usr/member/dofindPw")
+	@ResponseBody
+	public String doFindPw(HttpServletRequest req, String loginId) {
+		
+//		Rq rq = (Rq) req.getAttribute("rq");
+//		
+//		int id = rq.getLoginedMemberId();
+		
+		if (Ut.isNullOrEmpty(loginId)) {
+			return Ut.jsHistoryBack("F-1", "아이디를 입력해주세요");
+		}
+		
+//		memberService.setMember(id, loginPw, name, nickname, cellphoneNum, email);
+//		req.setAttribute(nickname, nickname);
+		
+		return Ut.jsReplace("S-1", "회원정보가 수정되었습니다", "/");
+	}
+	
+	@RequestMapping("/usr/member/doAction")
+	@ResponseBody
+	public String doAction(String loginId) {
+
+		Member existsMember = memberService.getMemberByLoginId(loginId);
+		
+		String msg = "사용가능한 아이디입니다.";
+		
+		if (existsMember != null) {
+			msg = "중복된 아이디가 존재";
+			return msg;
+		}
+		return msg;
+	}
+
+	
 }
