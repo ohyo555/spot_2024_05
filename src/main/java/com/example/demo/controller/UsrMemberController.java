@@ -254,18 +254,22 @@ public class UsrMemberController {
 		return Ut.jsReplace("S-1", "회원정보가 수정되었습니다", "/");
 	}
 	
+	@SuppressWarnings("unused")
 	@RequestMapping("/usr/member/doAction")
 	@ResponseBody
 	public String doAction(String loginId) {
-
+		
 		Member existsMember = memberService.getMemberByLoginId(loginId);
 		
-		String msg = "사용가능한 아이디입니다.";
+		String msg = "중복된 아이디가 존재";
 		
-		if (existsMember != null) {
-			msg = "중복된 아이디가 존재";
+		if (existsMember == null) {
+			
+			msg = "사용가능한 아이디입니다.";
+			
 			return msg;
 		}
+
 		return msg;
 	}
 
