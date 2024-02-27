@@ -18,8 +18,8 @@
 		}, 'html');
 		
 	}
-	
 </script>
+
 <section class="mt-8 text-xl px-4">
 	<div class="mx-auto">
 		<form name="form1" action="../member/doJoin" method="POST">

@@ -57,7 +57,7 @@ public class UsrCommentController {
 
 	@RequestMapping("/usr/comment/doModify")
 	@ResponseBody
-	public String doCommentModify(HttpServletRequest req, Model model, int id, String comment) {
+	public String doModify(HttpServletRequest req, int id, String comment) {
 		Rq rq = (Rq) req.getAttribute("rq");
 
 		Comment com = commentService.getComment(id); // 댓글에 해당하는 정보를 가져와
@@ -65,15 +65,16 @@ public class UsrCommentController {
 		if (com == null) {
 			return Ut.jsHistoryBack("F-1", Ut.f("%d번 댓글은 존재하지 않습니다", id));
 		}
+		
+		ResultData loginedMemberCanModifyRd = commentService.userCanModify(rq.getLoginedMemberId(), com);
+		
+		if (loginedMemberCanModifyRd.isSuccess()) {
+			commentService.modifyComment(id, comment);
+		}
+		
+		com = commentService.getComment(id);
 
-		commentService.modifyComment(id, comment);
-//		ResultData loginedMemberCanModifyRd = commentService.userCommentCanModify(rq.getLoginedMemberId(), comment);
-//
-//		if (loginedMemberCanModifyRd.isSuccess()) {
-//			commentService.modifyComment(id, title, body);
-//		}
-
-		return Ut.jsReplace("S-1", "댓글 수정 성공", "../article/detail?id=" + com.getRelId());
+		return com.getComment();
 	}
 	
 	@RequestMapping("/usr/comment/doDelete")

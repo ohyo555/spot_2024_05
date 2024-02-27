@@ -53,10 +53,8 @@ public interface CommentRepository {
 
 	@Update("""
 			UPDATE `comment`
-				<set>
-					<if test="commnet != null and commnet != ''">`comment` = #{comment},</if>
-					updateDate = NOW()
-				</set>
+			SET `comment` = #{comment},
+			updateDate = NOW()
 			WHERE id = #{id}
 				""")
 	void modifyComment(int id, String comment);

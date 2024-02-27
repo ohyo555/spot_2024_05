@@ -236,22 +236,10 @@ public class UsrMemberController {
 		return "usr/member/findPw";
 	}
 	
-	@RequestMapping("/usr/member/dofindPw")
-	@ResponseBody
-	public String doFindPw(HttpServletRequest req, String loginId) {
-		
-//		Rq rq = (Rq) req.getAttribute("rq");
-//		
-//		int id = rq.getLoginedMemberId();
-		
-		if (Ut.isNullOrEmpty(loginId)) {
-			return Ut.jsHistoryBack("F-1", "아이디를 입력해주세요");
-		}
-		
-//		memberService.setMember(id, loginPw, name, nickname, cellphoneNum, email);
-//		req.setAttribute(nickname, nickname);
-		
-		return Ut.jsReplace("S-1", "회원정보가 수정되었습니다", "/");
+	@RequestMapping("/usr/member/checkPw")
+	public String showCheckPw() {
+
+		return "usr/member/checkPw";
 	}
 	
 	@SuppressWarnings("unused")

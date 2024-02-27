@@ -73,11 +73,6 @@ public class CommentService {
 		return commentRepository.getComment(id);
 	}
 
-	public ResultData userCommentCanModify(int loginedMemberId, String comment) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public void modifyComment(int id, String comment) {
 		commentRepository.modifyComment(id, comment);
 	}
