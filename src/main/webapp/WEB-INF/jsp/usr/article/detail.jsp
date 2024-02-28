@@ -6,6 +6,7 @@
 <!-- <iframe src="http://localhost:8081/usr/article/doIncreaseHitCountRd?id=372" frameborder="0"></iframe> -->
 <style>
 /* 2차메뉴 */
+    
 body, ul, li {
 	margin: 0;
 	padding: 0;
@@ -299,7 +300,7 @@ a {
 		
 	    $.post({
 	    	url: '/usr/comment/doModify', // 수정된 URL
-	        type: 'GET', // GET에서 POST로 변경
+	        type: 'POST', // GET에서 POST로 변경
 	        data: { id: commentId, comment: text }, // 서버에 전송할 데이터
 	        success: function(data) {
 	        	$('#modify-form-'+commentId).hide();
@@ -313,7 +314,7 @@ a {
 	        }
 		})
 	}
-	</script>
+</script>
 
 <section class="mt-8 text-xl px-4">
 	<div class="mx-auto">
@@ -398,6 +399,7 @@ a {
 				</div>
 				<button class="btn btn-outline m-3" type="submit">댓글등록</button>
 			</label>
+			</form>
 	</c:if>
 	<c:if test="${!rq.isLogined() }">
 		<a class="btn btn-outline btn-ghost" href="../member/login">LOGIN</a> 하고 댓글 써
@@ -417,8 +419,8 @@ a {
 				</div>
 				<div class="rr">
 					<span class="chat-bubble" id="comment-${comments.id }">${comments.comment }</span>
-					<form method="POST" id="modify-form-${comments.id }" style="display: none" action="/usr/comment/doModify">
-						<input class="chat-bubble" value="${comments.comment }" name="comment-text-${comments.id }" />
+					<form method="POST" id="modify-form-${comments.id }" style="display: none;" action="/usr/comment/doModify">
+						<input class="chat-bubble" type="text" value="${comments.comment }" name="comment-text-${comments.id }" />
 					</form>
 					<button id="likeButton" onclick="doCommentGoodReaction(${param.id},)" style="color: #e0316e"
 						class="reaction text-xl">♡</button>
@@ -451,9 +453,6 @@ a {
 		</c:forEach>
 	</div>
 </section>
-
-
-</div>
 
 
 <%@ include file="../common/foot.jspf"%>
