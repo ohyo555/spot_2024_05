@@ -12,7 +12,6 @@
 		const data = await response.json();
 		console.log("data", data);
 	}
-	
 	getData();
 	
 	async function getData2() {
@@ -22,8 +21,18 @@
 		const data = await response.json();
 		console.log("data", data);
 	}
-	
+
 	getData2();
+	
+	/* async function getData3() {
+		const API_KEY = 'GaIsshaSFEYi26kJI6DX9%2FXG2R3URF2G9S7ClOR9u5OLnzKlavzogonKihLPrXaaUCcIJWmfGvwmud75c1k3nw%3D%3D';
+		const url = 'https://apis.data.go.kr/6300000/openapi2022/midHighSchInfo/getshard?serviceKey='+ API_KEY +'&pageNo=1&numOfRows=5';
+		const response = await fetch(url);
+		const data = await response.json();
+		console.log("data", data);
+	}
+	
+	getData3(); */
 </script>
 
 <%@ include file="../common/foot.jspf"%>
