@@ -11,6 +11,7 @@ import com.example.demo.vo.Article;
 import com.example.demo.vo.Comment;
 import com.example.demo.vo.ReactionPoint;
 import com.example.demo.vo.ResultData;
+import com.example.demo.vo.Spot;
 
 @Service
 public class ArticleService {
@@ -211,6 +212,10 @@ public class ArticleService {
 
 	public int getBadRP(int relId) {
 		return articleRepository.getBadRP(relId);
+	}
+
+	public List<Spot> getForPrintSpots() {
+		return articleRepository.getForPrintSpots();
 	}
 
 

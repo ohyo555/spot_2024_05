@@ -11,6 +11,7 @@ import org.apache.ibatis.annotations.Update;
 import com.example.demo.vo.Article;
 import com.example.demo.vo.Comment;
 import com.example.demo.vo.ReactionPoint;
+import com.example.demo.vo.Spot;
 
 
 @Mapper
@@ -235,5 +236,11 @@ public interface ArticleRepository {
 			WHERE id = #{relId}
 			""")
 	public int getBadRP(int relId);
+
+	@Select("""
+			SELECT *
+			FROM spot
+			""")
+	public List<Spot> getForPrintSpots();
 
 }
