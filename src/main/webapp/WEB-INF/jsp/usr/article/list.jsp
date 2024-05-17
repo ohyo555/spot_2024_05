@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value="#{board.code } ARTICLE LIST"></c:set>
+<c:set var="pageTitle" value="#{board.code } spot LIST"></c:set>
 <link rel="stylesheet" href="/resource/background.css" />
 <%@ include file="../common/head.jspf"%>
 
@@ -66,7 +66,7 @@ form {
 	font-weight: 600;
 }
 
-.articlecnt {
+.spotcnt {
 	margin-right: 320px;
 }
 
@@ -95,7 +95,7 @@ form > button:hover {
 	border-radius: 10px;
 }
 
-.article {
+.spot {
 	width: 80px;
 	height: 30px;
 	margin: 0px auto;
@@ -157,16 +157,16 @@ form > button:hover {
 </style>
 
 <script>
-    function openModal(articleId) {
+    function openModal(spotId) {
         var modal = document.getElementById('myModal');
         var inputPassword = document.getElementById('loginPw');
         inputPassword.value = ''; // 초기화
-        inputPassword.dataset.articleId = articleId; // articleId 설정
+        inputPassword.dataset.spotId = spotId; // spotId 설정
         modal.style.display = 'block';
 
-     	// 모달 열릴 때 articleId를 form의 hidden input에 설정
+     	// 모달 열릴 때 spotId를 form의 hidden input에 설정
         var a = document.getElementById('id');
-        a.value = articleId;
+        a.value = spotId;
     }
 
     function closeModal() {
@@ -181,15 +181,15 @@ form > button:hover {
         var links = document.querySelectorAll('a[href^="detail?id="]');
         links.forEach(function(link) {
             link.addEventListener('click', function(event) {
-            	var articleId = this.getAttribute('href').match(/\d+$/)[0];
+            	var spotId = this.getAttribute('href').match(/\d+$/)[0];
                 var boardId = this.getAttribute('data-boardId');
                 
                 var inputPassword = document.getElementById('loginPw');
-                //inputPassword.dataset.articleId = articleId;
+                //inputPassword.dataset.spotId = spotId;
                 
                 if (boardId === '3') {
                     event.preventDefault(); 
-                    openModal(articleId); 
+                    openModal(spotId); 
                 }
             });
         });
@@ -210,7 +210,7 @@ form > button:hover {
 </script>
 
 
-<form action="../article/doAction" method="POST">
+<form action="../spot/doAction" method="POST">
 	<div id="myModal" class="myModal">
 		<input id ="id" type="hidden" name="id" value="" />
 	      <span class="modal_close_btn" onclick="closeModal()">&times;</span>
@@ -226,7 +226,7 @@ form > button:hover {
 </form>
 
 <section class="text-xl px-4">
-	<%-- <input type="hidden" name="id" value="${article.id }" /> --%>
+	<%-- <input type="hidden" name="id" value="${spot.id }" /> --%>
 	<div class="list mx-auto overflow-x-auto">
 		
 		<div class="search-bar">
@@ -275,30 +275,12 @@ form > button:hover {
 						</tr>
 					</c:if>
 
-					<c:forEach var="article" items="${spots }">
+					<c:forEach var="spot" items="${spots }">
 						<tr >
-							<td>${article.id }</td>
-							<c:if test="${board.id == 4}">
-								<td>${article.type }</td>
-							</c:if>							
-							<td>${article.regDate.substring(0,10) }</td>
-							<c:if test="${article.cnt == 0}">
-								<td><a href="detail?id=${article.id }" data-boardId="${article.boardId }">${article.title }</a></td>
-							</c:if>
-							<c:if test="${article.cnt != 0}">
-								<td><a href="detail?id=${article.id }" data-boardId="${article.boardId }">${article.title }</a>
-									<div class="inline-block" style="color: #e0316e">[${article.cnt }]</div></td>
-							</c:if>
-							<td>${article.loginId }</td>
-							<td class="article-detail__hit-count">${article.hitCount }</td>
-							<c:choose>
-								<c:when test="${board.id == 3 && article.cnt != 0}">
-									<td>완료</td>
-								</c:when>
-								<c:when test="${board.id == 3 && article.cnt == 0}">
-									<td>대기</td>
-								</c:when>
-							</c:choose>
+							<td>${spot.id }</td>			
+							<td>${spot.city }</td>
+							<td>${spot.spot_name }</td>
+							<td>${spot.location }</td>
 						</tr>
 					</c:forEach>
 				</tbody>
