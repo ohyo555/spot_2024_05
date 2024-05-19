@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class Spot {
 	private int id;
 	private String city;
+	private String e_city;
 	private String spot_name;
 	private String location;
 	private String initialDate;

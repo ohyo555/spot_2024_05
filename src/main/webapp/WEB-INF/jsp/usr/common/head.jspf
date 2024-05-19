@@ -31,28 +31,6 @@
 		<div class="h-20 flex mx-auto items-center text-3xl">
 			<a href="/"><i class="fi fi-rr-gift-card"></i></a>
 			<div class="flex-grow"></div>
-			<ul class="flex">
-				<c:if test="${rq.loginedMemberId != 0}">
-				<li>${rq.loginedMemberNickname } 님 <i class="fa-solid fa-face-smile fa-sm fa-spin" style="color: #efdf2e;"></i></li>
-				</c:if>
-				<li><a class="hover:underline" href="/"><i class="fa-solid fa-house-chimney"></i></a></li>
-				<li><a class="hover:underline" href="../article/list?boardId=1&page=1"><i class="fa-solid fa-list"></i></a>
-					<ul>
-						<li><a class="hover:underline" href="../article/list?boardId=1&page=1">NOTICE</a></li>
-						<li><a class="hover:underline" href="../article/list?boardId=2&page=1">FREE</a></li>
-						<li><a class="hover:underline" href="../article/list?boardId=3&page=1">QnA</a></li>
-					</ul></li>
-				<c:if test="${rq.loginedMemberId == 0}">
-				<li><a class="hover:underline" href="../member/login"><i class="fa-solid fa-right-to-bracket"></i></a></li>
-				<li><a class="hover:underline" href="../member/join"><i class="fa-solid fa-address-card"></i></a></li>
-				</c:if>
-				<c:if test="${rq.loginedMemberId != 0}">
-				<li><a class="hover:underline" href="../article/write"><i class="fa-solid fa-pen-to-square"></i></a></li>
-				<li><a class="hover:underline" href="../member/mypage"><i class="fa-solid fa-user-pen"></i></a></li>
-				<li><a onclick="if(confirm('로그아웃 할래?') == false) return false;" class="hover:underline"
-							href="../member/doLogout"><i class="fa-solid fa-right-from-bracket"></i></a></li>
-				</c:if>
-			</ul>
 		</div>
 	</header>
 	<h1>${pageTitle }</h1>

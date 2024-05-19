@@ -1,0 +1,861 @@
+2024-05-18 00:00:03 [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2024-05-18 00:00:03 [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@54a8700e] was not registered for synchronization because synchronization is not active
+2024-05-18 00:00:03 [DEBUG] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+2024-05-18 00:00:03 [DEBUG] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@448729453 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@25e49cdb] will not be managed by Spring
+2024-05-18 00:00:03 [DEBUG] c.e.d.r.A.getForPrintSpots - ==>  Preparing: SELECT * FROM spot
+2024-05-18 00:00:03 [DEBUG] c.e.d.r.A.getForPrintSpots - ==> Parameters: 
+2024-05-18 00:00:03 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT *
+FROM spot
+ {executed in 1 msec}
+2024-05-18 00:00:03 [INFO ] jdbc.resultsettable - 
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|id |city |spot_name |location |initialdate |updatedate |area    |etc                                    |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|1  |충주시  |세계무술공원    |금릉동      |1980-10-30  |2016-12-09 |617325  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|2  |충주시  |충주호체험     |가금면 탑평리  |2004-08-13  |2016-07-08 |223134  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|3  |충주시  |능암온천      |앙성면 능암리  |1989-12-14  |2016-06-10 |199210  |탄산온천                                   |
+|4  |충주시  |충온온천      |앙성면 돈산리  |1989-12-14  |2011-02-18 |224825  |탄산온천                                   |
+|5  |제천시  |교리        |청풍면 교리   |1989-12-28  |2020-08-14 |310853  |청풍리조트                                  |
+|6  |제천시  |능강        |수산면 능강리  |1997-06-27  |2008-04-18 |136818  |E.S리조트                                 |
+|7  |제천시  |금월봉       |금성면 월굴리  |1998-05-29  |2016-03-25 |92514   |콘도, 수석공원, 수상레저시설                       |
+|8  |제천시  |계산        |청풍면 계산리  |1998-07-24  |2018-01-24 |135806  |펜션,조각공원,눈썰매장,모노레일                      |
+|9  |제천시  |제천온천      |수산면 내리   |2002-01-16  |2011-01-16 |296700  |온천                                     |
+|10 |제천시  |만남의광장     |청풍면 교리   |2004-08-27  |2012-12-27 |147440  |번지점프, 인공암벽, 휴게소, 야생화원                  |
+|11 |제천시  |KBS 촬영장   |금성면 성내리  |2004-08-27  |2018-12-14 |100272  |촬영장, 휴게쉼터                              |
+|12 |보은군  |구병산       |마로면 적암리  |2007-08-21  |2008-09-01 |146276  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|13 |보은군  |속리산레저     |속리산면 상판리 |1996-10-04  |2007-06-22 |130191  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|14 |옥천군  |장계        |안내면 장계리  |1986-06-07  |2010-05-04 |198705  |향토전시관, 육영수생가, 정지용 생가 및 문학관             |
+|15 |영동군  |레인보우힐링    |영동읍 매천리  |2010-10-08  |2022-08-12 |1750523 |과일나라테마공원, 와인터널,와인연구소,복합문화예술회관          |
+|16 |영동군  |송호        |양산면 송호리  |1977-10-31  |2013-10-21 |284000  |금강수변, 솔밭 및 양산팔경                        |
+|17 |괴산군  |괴강        |괴산읍 검승리  |2000-12-27  |2007-08-03 |238132  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 충민사     |
+|18 |괴산군  |수옥정       |연풍면 원풍리  |1995-12-08  |2021-12-17 |225818  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 조령산 휴양림 |
+|19 |음성군  |무극전적      |음성읍 소여리  |1985-06-08  |2010-08-11 |18499   |전승기념관 및 기념비, 전승탑, 충혼탑                  |
+|20 |단양군  |다리안       |단양읍 천동리  |1969-01-21  |2016-11-25 |154737  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|21 |단양군  |천 동       |단양읍 천동리  |1969-01-21  |2016-01-08 |120982  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|22 |단양군  |온 달       |영춘면  하리  |1994-09-06  |2013-06-21 |97576   |구인사, 온달산성, 온달동굴, 남천계곡, 소백산             |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+
+2024-05-18 00:00:03 [DEBUG] c.e.d.r.A.getForPrintSpots - <==      Total: 22
+2024-05-18 00:00:03 [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@54a8700e]
+2024-05-18 00:00:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:00:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:00:22 [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2024-05-18 00:00:22 [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@51edbe68] was not registered for synchronization because synchronization is not active
+2024-05-18 00:00:22 [DEBUG] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+2024-05-18 00:00:22 [DEBUG] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@30138037 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@25e49cdb] will not be managed by Spring
+2024-05-18 00:00:22 [DEBUG] c.e.d.r.A.getForPrintSpots - ==>  Preparing: SELECT * FROM spot
+2024-05-18 00:00:22 [DEBUG] c.e.d.r.A.getForPrintSpots - ==> Parameters: 
+2024-05-18 00:00:22 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT *
+FROM spot
+ {executed in 1 msec}
+2024-05-18 00:00:22 [INFO ] jdbc.resultsettable - 
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|id |city |spot_name |location |initialdate |updatedate |area    |etc                                    |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|1  |충주시  |세계무술공원    |금릉동      |1980-10-30  |2016-12-09 |617325  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|2  |충주시  |충주호체험     |가금면 탑평리  |2004-08-13  |2016-07-08 |223134  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|3  |충주시  |능암온천      |앙성면 능암리  |1989-12-14  |2016-06-10 |199210  |탄산온천                                   |
+|4  |충주시  |충온온천      |앙성면 돈산리  |1989-12-14  |2011-02-18 |224825  |탄산온천                                   |
+|5  |제천시  |교리        |청풍면 교리   |1989-12-28  |2020-08-14 |310853  |청풍리조트                                  |
+|6  |제천시  |능강        |수산면 능강리  |1997-06-27  |2008-04-18 |136818  |E.S리조트                                 |
+|7  |제천시  |금월봉       |금성면 월굴리  |1998-05-29  |2016-03-25 |92514   |콘도, 수석공원, 수상레저시설                       |
+|8  |제천시  |계산        |청풍면 계산리  |1998-07-24  |2018-01-24 |135806  |펜션,조각공원,눈썰매장,모노레일                      |
+|9  |제천시  |제천온천      |수산면 내리   |2002-01-16  |2011-01-16 |296700  |온천                                     |
+|10 |제천시  |만남의광장     |청풍면 교리   |2004-08-27  |2012-12-27 |147440  |번지점프, 인공암벽, 휴게소, 야생화원                  |
+|11 |제천시  |KBS 촬영장   |금성면 성내리  |2004-08-27  |2018-12-14 |100272  |촬영장, 휴게쉼터                              |
+|12 |보은군  |구병산       |마로면 적암리  |2007-08-21  |2008-09-01 |146276  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|13 |보은군  |속리산레저     |속리산면 상판리 |1996-10-04  |2007-06-22 |130191  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|14 |옥천군  |장계        |안내면 장계리  |1986-06-07  |2010-05-04 |198705  |향토전시관, 육영수생가, 정지용 생가 및 문학관             |
+|15 |영동군  |레인보우힐링    |영동읍 매천리  |2010-10-08  |2022-08-12 |1750523 |과일나라테마공원, 와인터널,와인연구소,복합문화예술회관          |
+|16 |영동군  |송호        |양산면 송호리  |1977-10-31  |2013-10-21 |284000  |금강수변, 솔밭 및 양산팔경                        |
+|17 |괴산군  |괴강        |괴산읍 검승리  |2000-12-27  |2007-08-03 |238132  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 충민사     |
+|18 |괴산군  |수옥정       |연풍면 원풍리  |1995-12-08  |2021-12-17 |225818  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 조령산 휴양림 |
+|19 |음성군  |무극전적      |음성읍 소여리  |1985-06-08  |2010-08-11 |18499   |전승기념관 및 기념비, 전승탑, 충혼탑                  |
+|20 |단양군  |다리안       |단양읍 천동리  |1969-01-21  |2016-11-25 |154737  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|21 |단양군  |천 동       |단양읍 천동리  |1969-01-21  |2016-01-08 |120982  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|22 |단양군  |온 달       |영춘면  하리  |1994-09-06  |2013-06-21 |97576   |구인사, 온달산성, 온달동굴, 남천계곡, 소백산             |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+
+2024-05-18 00:00:22 [DEBUG] c.e.d.r.A.getForPrintSpots - <==      Total: 22
+2024-05-18 00:00:22 [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@51edbe68]
+2024-05-18 00:00:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:00:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:01:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:01:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:01:25 [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2024-05-18 00:01:25 [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@70bee6f8] was not registered for synchronization because synchronization is not active
+2024-05-18 00:01:25 [DEBUG] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+2024-05-18 00:01:25 [DEBUG] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@2080738160 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@25e49cdb] will not be managed by Spring
+2024-05-18 00:01:25 [DEBUG] c.e.d.r.A.getForPrintSpots - ==>  Preparing: SELECT * FROM spot
+2024-05-18 00:01:25 [DEBUG] c.e.d.r.A.getForPrintSpots - ==> Parameters: 
+2024-05-18 00:01:25 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT *
+FROM spot
+ {executed in 0 msec}
+2024-05-18 00:01:25 [INFO ] jdbc.resultsettable - 
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|id |city |spot_name |location |initialdate |updatedate |area    |etc                                    |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|1  |충주시  |세계무술공원    |금릉동      |1980-10-30  |2016-12-09 |617325  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|2  |충주시  |충주호체험     |가금면 탑평리  |2004-08-13  |2016-07-08 |223134  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|3  |충주시  |능암온천      |앙성면 능암리  |1989-12-14  |2016-06-10 |199210  |탄산온천                                   |
+|4  |충주시  |충온온천      |앙성면 돈산리  |1989-12-14  |2011-02-18 |224825  |탄산온천                                   |
+|5  |제천시  |교리        |청풍면 교리   |1989-12-28  |2020-08-14 |310853  |청풍리조트                                  |
+|6  |제천시  |능강        |수산면 능강리  |1997-06-27  |2008-04-18 |136818  |E.S리조트                                 |
+|7  |제천시  |금월봉       |금성면 월굴리  |1998-05-29  |2016-03-25 |92514   |콘도, 수석공원, 수상레저시설                       |
+|8  |제천시  |계산        |청풍면 계산리  |1998-07-24  |2018-01-24 |135806  |펜션,조각공원,눈썰매장,모노레일                      |
+|9  |제천시  |제천온천      |수산면 내리   |2002-01-16  |2011-01-16 |296700  |온천                                     |
+|10 |제천시  |만남의광장     |청풍면 교리   |2004-08-27  |2012-12-27 |147440  |번지점프, 인공암벽, 휴게소, 야생화원                  |
+|11 |제천시  |KBS 촬영장   |금성면 성내리  |2004-08-27  |2018-12-14 |100272  |촬영장, 휴게쉼터                              |
+|12 |보은군  |구병산       |마로면 적암리  |2007-08-21  |2008-09-01 |146276  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|13 |보은군  |속리산레저     |속리산면 상판리 |1996-10-04  |2007-06-22 |130191  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|14 |옥천군  |장계        |안내면 장계리  |1986-06-07  |2010-05-04 |198705  |향토전시관, 육영수생가, 정지용 생가 및 문학관             |
+|15 |영동군  |레인보우힐링    |영동읍 매천리  |2010-10-08  |2022-08-12 |1750523 |과일나라테마공원, 와인터널,와인연구소,복합문화예술회관          |
+|16 |영동군  |송호        |양산면 송호리  |1977-10-31  |2013-10-21 |284000  |금강수변, 솔밭 및 양산팔경                        |
+|17 |괴산군  |괴강        |괴산읍 검승리  |2000-12-27  |2007-08-03 |238132  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 충민사     |
+|18 |괴산군  |수옥정       |연풍면 원풍리  |1995-12-08  |2021-12-17 |225818  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 조령산 휴양림 |
+|19 |음성군  |무극전적      |음성읍 소여리  |1985-06-08  |2010-08-11 |18499   |전승기념관 및 기념비, 전승탑, 충혼탑                  |
+|20 |단양군  |다리안       |단양읍 천동리  |1969-01-21  |2016-11-25 |154737  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|21 |단양군  |천 동       |단양읍 천동리  |1969-01-21  |2016-01-08 |120982  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|22 |단양군  |온 달       |영춘면  하리  |1994-09-06  |2013-06-21 |97576   |구인사, 온달산성, 온달동굴, 남천계곡, 소백산             |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+
+2024-05-18 00:01:25 [DEBUG] c.e.d.r.A.getForPrintSpots - <==      Total: 22
+2024-05-18 00:01:25 [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@70bee6f8]
+2024-05-18 00:01:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:01:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:02:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:02:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:02:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:02:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:03:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:03:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:03:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:03:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:04:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:04:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:04:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:04:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:05:07 [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2024-05-18 00:05:07 [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@350515da] was not registered for synchronization because synchronization is not active
+2024-05-18 00:05:07 [DEBUG] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+2024-05-18 00:05:07 [DEBUG] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@1726777437 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@25e49cdb] will not be managed by Spring
+2024-05-18 00:05:07 [DEBUG] c.e.d.r.A.getForPrintSpots - ==>  Preparing: SELECT * FROM spot
+2024-05-18 00:05:07 [DEBUG] c.e.d.r.A.getForPrintSpots - ==> Parameters: 
+2024-05-18 00:05:07 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT *
+FROM spot
+ {executed in 0 msec}
+2024-05-18 00:05:07 [INFO ] jdbc.resultsettable - 
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|id |city |spot_name |location |initialdate |updatedate |area    |etc                                    |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|1  |충주시  |세계무술공원    |금릉동      |1980-10-30  |2016-12-09 |617325  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|2  |충주시  |충주호체험     |가금면 탑평리  |2004-08-13  |2016-07-08 |223134  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|3  |충주시  |능암온천      |앙성면 능암리  |1989-12-14  |2016-06-10 |199210  |탄산온천                                   |
+|4  |충주시  |충온온천      |앙성면 돈산리  |1989-12-14  |2011-02-18 |224825  |탄산온천                                   |
+|5  |제천시  |교리        |청풍면 교리   |1989-12-28  |2020-08-14 |310853  |청풍리조트                                  |
+|6  |제천시  |능강        |수산면 능강리  |1997-06-27  |2008-04-18 |136818  |E.S리조트                                 |
+|7  |제천시  |금월봉       |금성면 월굴리  |1998-05-29  |2016-03-25 |92514   |콘도, 수석공원, 수상레저시설                       |
+|8  |제천시  |계산        |청풍면 계산리  |1998-07-24  |2018-01-24 |135806  |펜션,조각공원,눈썰매장,모노레일                      |
+|9  |제천시  |제천온천      |수산면 내리   |2002-01-16  |2011-01-16 |296700  |온천                                     |
+|10 |제천시  |만남의광장     |청풍면 교리   |2004-08-27  |2012-12-27 |147440  |번지점프, 인공암벽, 휴게소, 야생화원                  |
+|11 |제천시  |KBS 촬영장   |금성면 성내리  |2004-08-27  |2018-12-14 |100272  |촬영장, 휴게쉼터                              |
+|12 |보은군  |구병산       |마로면 적암리  |2007-08-21  |2008-09-01 |146276  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|13 |보은군  |속리산레저     |속리산면 상판리 |1996-10-04  |2007-06-22 |130191  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|14 |옥천군  |장계        |안내면 장계리  |1986-06-07  |2010-05-04 |198705  |향토전시관, 육영수생가, 정지용 생가 및 문학관             |
+|15 |영동군  |레인보우힐링    |영동읍 매천리  |2010-10-08  |2022-08-12 |1750523 |과일나라테마공원, 와인터널,와인연구소,복합문화예술회관          |
+|16 |영동군  |송호        |양산면 송호리  |1977-10-31  |2013-10-21 |284000  |금강수변, 솔밭 및 양산팔경                        |
+|17 |괴산군  |괴강        |괴산읍 검승리  |2000-12-27  |2007-08-03 |238132  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 충민사     |
+|18 |괴산군  |수옥정       |연풍면 원풍리  |1995-12-08  |2021-12-17 |225818  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 조령산 휴양림 |
+|19 |음성군  |무극전적      |음성읍 소여리  |1985-06-08  |2010-08-11 |18499   |전승기념관 및 기념비, 전승탑, 충혼탑                  |
+|20 |단양군  |다리안       |단양읍 천동리  |1969-01-21  |2016-11-25 |154737  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|21 |단양군  |천 동       |단양읍 천동리  |1969-01-21  |2016-01-08 |120982  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|22 |단양군  |온 달       |영춘면  하리  |1994-09-06  |2013-06-21 |97576   |구인사, 온달산성, 온달동굴, 남천계곡, 소백산             |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+
+2024-05-18 00:05:07 [DEBUG] c.e.d.r.A.getForPrintSpots - <==      Total: 22
+2024-05-18 00:05:07 [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@350515da]
+2024-05-18 00:05:16 [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2024-05-18 00:05:16 [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@b546c03] was not registered for synchronization because synchronization is not active
+2024-05-18 00:05:16 [DEBUG] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+2024-05-18 00:05:16 [DEBUG] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@2054680784 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@25e49cdb] will not be managed by Spring
+2024-05-18 00:05:16 [DEBUG] c.e.d.r.A.getForPrintSpots - ==>  Preparing: SELECT * FROM spot
+2024-05-18 00:05:16 [DEBUG] c.e.d.r.A.getForPrintSpots - ==> Parameters: 
+2024-05-18 00:05:16 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT *
+FROM spot
+ {executed in 1 msec}
+2024-05-18 00:05:16 [INFO ] jdbc.resultsettable - 
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|id |city |spot_name |location |initialdate |updatedate |area    |etc                                    |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|1  |충주시  |세계무술공원    |금릉동      |1980-10-30  |2016-12-09 |617325  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|2  |충주시  |충주호체험     |가금면 탑평리  |2004-08-13  |2016-07-08 |223134  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|3  |충주시  |능암온천      |앙성면 능암리  |1989-12-14  |2016-06-10 |199210  |탄산온천                                   |
+|4  |충주시  |충온온천      |앙성면 돈산리  |1989-12-14  |2011-02-18 |224825  |탄산온천                                   |
+|5  |제천시  |교리        |청풍면 교리   |1989-12-28  |2020-08-14 |310853  |청풍리조트                                  |
+|6  |제천시  |능강        |수산면 능강리  |1997-06-27  |2008-04-18 |136818  |E.S리조트                                 |
+|7  |제천시  |금월봉       |금성면 월굴리  |1998-05-29  |2016-03-25 |92514   |콘도, 수석공원, 수상레저시설                       |
+|8  |제천시  |계산        |청풍면 계산리  |1998-07-24  |2018-01-24 |135806  |펜션,조각공원,눈썰매장,모노레일                      |
+|9  |제천시  |제천온천      |수산면 내리   |2002-01-16  |2011-01-16 |296700  |온천                                     |
+|10 |제천시  |만남의광장     |청풍면 교리   |2004-08-27  |2012-12-27 |147440  |번지점프, 인공암벽, 휴게소, 야생화원                  |
+|11 |제천시  |KBS 촬영장   |금성면 성내리  |2004-08-27  |2018-12-14 |100272  |촬영장, 휴게쉼터                              |
+|12 |보은군  |구병산       |마로면 적암리  |2007-08-21  |2008-09-01 |146276  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|13 |보은군  |속리산레저     |속리산면 상판리 |1996-10-04  |2007-06-22 |130191  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|14 |옥천군  |장계        |안내면 장계리  |1986-06-07  |2010-05-04 |198705  |향토전시관, 육영수생가, 정지용 생가 및 문학관             |
+|15 |영동군  |레인보우힐링    |영동읍 매천리  |2010-10-08  |2022-08-12 |1750523 |과일나라테마공원, 와인터널,와인연구소,복합문화예술회관          |
+|16 |영동군  |송호        |양산면 송호리  |1977-10-31  |2013-10-21 |284000  |금강수변, 솔밭 및 양산팔경                        |
+|17 |괴산군  |괴강        |괴산읍 검승리  |2000-12-27  |2007-08-03 |238132  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 충민사     |
+|18 |괴산군  |수옥정       |연풍면 원풍리  |1995-12-08  |2021-12-17 |225818  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 조령산 휴양림 |
+|19 |음성군  |무극전적      |음성읍 소여리  |1985-06-08  |2010-08-11 |18499   |전승기념관 및 기념비, 전승탑, 충혼탑                  |
+|20 |단양군  |다리안       |단양읍 천동리  |1969-01-21  |2016-11-25 |154737  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|21 |단양군  |천 동       |단양읍 천동리  |1969-01-21  |2016-01-08 |120982  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|22 |단양군  |온 달       |영춘면  하리  |1994-09-06  |2013-06-21 |97576   |구인사, 온달산성, 온달동굴, 남천계곡, 소백산             |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+
+2024-05-18 00:05:16 [DEBUG] c.e.d.r.A.getForPrintSpots - <==      Total: 22
+2024-05-18 00:05:16 [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@b546c03]
+2024-05-18 00:05:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:05:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:05:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:05:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:06:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:06:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:06:21 [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2024-05-18 00:06:21 [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@63b8e0ea] was not registered for synchronization because synchronization is not active
+2024-05-18 00:06:21 [DEBUG] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+2024-05-18 00:06:21 [DEBUG] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@1190498595 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@25e49cdb] will not be managed by Spring
+2024-05-18 00:06:21 [DEBUG] c.e.d.r.A.getForPrintSpots - ==>  Preparing: SELECT * FROM spot
+2024-05-18 00:06:21 [DEBUG] c.e.d.r.A.getForPrintSpots - ==> Parameters: 
+2024-05-18 00:06:21 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT *
+FROM spot
+ {executed in 1 msec}
+2024-05-18 00:06:21 [INFO ] jdbc.resultsettable - 
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|id |city |spot_name |location |initialdate |updatedate |area    |etc                                    |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|1  |충주시  |세계무술공원    |금릉동      |1980-10-30  |2016-12-09 |617325  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|2  |충주시  |충주호체험     |가금면 탑평리  |2004-08-13  |2016-07-08 |223134  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|3  |충주시  |능암온천      |앙성면 능암리  |1989-12-14  |2016-06-10 |199210  |탄산온천                                   |
+|4  |충주시  |충온온천      |앙성면 돈산리  |1989-12-14  |2011-02-18 |224825  |탄산온천                                   |
+|5  |제천시  |교리        |청풍면 교리   |1989-12-28  |2020-08-14 |310853  |청풍리조트                                  |
+|6  |제천시  |능강        |수산면 능강리  |1997-06-27  |2008-04-18 |136818  |E.S리조트                                 |
+|7  |제천시  |금월봉       |금성면 월굴리  |1998-05-29  |2016-03-25 |92514   |콘도, 수석공원, 수상레저시설                       |
+|8  |제천시  |계산        |청풍면 계산리  |1998-07-24  |2018-01-24 |135806  |펜션,조각공원,눈썰매장,모노레일                      |
+|9  |제천시  |제천온천      |수산면 내리   |2002-01-16  |2011-01-16 |296700  |온천                                     |
+|10 |제천시  |만남의광장     |청풍면 교리   |2004-08-27  |2012-12-27 |147440  |번지점프, 인공암벽, 휴게소, 야생화원                  |
+|11 |제천시  |KBS 촬영장   |금성면 성내리  |2004-08-27  |2018-12-14 |100272  |촬영장, 휴게쉼터                              |
+|12 |보은군  |구병산       |마로면 적암리  |2007-08-21  |2008-09-01 |146276  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|13 |보은군  |속리산레저     |속리산면 상판리 |1996-10-04  |2007-06-22 |130191  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|14 |옥천군  |장계        |안내면 장계리  |1986-06-07  |2010-05-04 |198705  |향토전시관, 육영수생가, 정지용 생가 및 문학관             |
+|15 |영동군  |레인보우힐링    |영동읍 매천리  |2010-10-08  |2022-08-12 |1750523 |과일나라테마공원, 와인터널,와인연구소,복합문화예술회관          |
+|16 |영동군  |송호        |양산면 송호리  |1977-10-31  |2013-10-21 |284000  |금강수변, 솔밭 및 양산팔경                        |
+|17 |괴산군  |괴강        |괴산읍 검승리  |2000-12-27  |2007-08-03 |238132  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 충민사     |
+|18 |괴산군  |수옥정       |연풍면 원풍리  |1995-12-08  |2021-12-17 |225818  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 조령산 휴양림 |
+|19 |음성군  |무극전적      |음성읍 소여리  |1985-06-08  |2010-08-11 |18499   |전승기념관 및 기념비, 전승탑, 충혼탑                  |
+|20 |단양군  |다리안       |단양읍 천동리  |1969-01-21  |2016-11-25 |154737  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|21 |단양군  |천 동       |단양읍 천동리  |1969-01-21  |2016-01-08 |120982  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|22 |단양군  |온 달       |영춘면  하리  |1994-09-06  |2013-06-21 |97576   |구인사, 온달산성, 온달동굴, 남천계곡, 소백산             |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+
+2024-05-18 00:06:21 [DEBUG] c.e.d.r.A.getForPrintSpots - <==      Total: 22
+2024-05-18 00:06:21 [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@63b8e0ea]
+2024-05-18 00:06:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:06:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:07:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:07:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:07:17 [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2024-05-18 00:07:17 [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4cda146d] was not registered for synchronization because synchronization is not active
+2024-05-18 00:07:17 [DEBUG] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+2024-05-18 00:07:17 [DEBUG] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@277667323 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@25e49cdb] will not be managed by Spring
+2024-05-18 00:07:17 [DEBUG] c.e.d.r.A.getForPrintSpots - ==>  Preparing: SELECT * FROM spot
+2024-05-18 00:07:17 [DEBUG] c.e.d.r.A.getForPrintSpots - ==> Parameters: 
+2024-05-18 00:07:17 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT *
+FROM spot
+ {executed in 0 msec}
+2024-05-18 00:07:17 [INFO ] jdbc.resultsettable - 
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|id |city |spot_name |location |initialdate |updatedate |area    |etc                                    |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|1  |충주시  |세계무술공원    |금릉동      |1980-10-30  |2016-12-09 |617325  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|2  |충주시  |충주호체험     |가금면 탑평리  |2004-08-13  |2016-07-08 |223134  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|3  |충주시  |능암온천      |앙성면 능암리  |1989-12-14  |2016-06-10 |199210  |탄산온천                                   |
+|4  |충주시  |충온온천      |앙성면 돈산리  |1989-12-14  |2011-02-18 |224825  |탄산온천                                   |
+|5  |제천시  |교리        |청풍면 교리   |1989-12-28  |2020-08-14 |310853  |청풍리조트                                  |
+|6  |제천시  |능강        |수산면 능강리  |1997-06-27  |2008-04-18 |136818  |E.S리조트                                 |
+|7  |제천시  |금월봉       |금성면 월굴리  |1998-05-29  |2016-03-25 |92514   |콘도, 수석공원, 수상레저시설                       |
+|8  |제천시  |계산        |청풍면 계산리  |1998-07-24  |2018-01-24 |135806  |펜션,조각공원,눈썰매장,모노레일                      |
+|9  |제천시  |제천온천      |수산면 내리   |2002-01-16  |2011-01-16 |296700  |온천                                     |
+|10 |제천시  |만남의광장     |청풍면 교리   |2004-08-27  |2012-12-27 |147440  |번지점프, 인공암벽, 휴게소, 야생화원                  |
+|11 |제천시  |KBS 촬영장   |금성면 성내리  |2004-08-27  |2018-12-14 |100272  |촬영장, 휴게쉼터                              |
+|12 |보은군  |구병산       |마로면 적암리  |2007-08-21  |2008-09-01 |146276  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|13 |보은군  |속리산레저     |속리산면 상판리 |1996-10-04  |2007-06-22 |130191  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|14 |옥천군  |장계        |안내면 장계리  |1986-06-07  |2010-05-04 |198705  |향토전시관, 육영수생가, 정지용 생가 및 문학관             |
+|15 |영동군  |레인보우힐링    |영동읍 매천리  |2010-10-08  |2022-08-12 |1750523 |과일나라테마공원, 와인터널,와인연구소,복합문화예술회관          |
+|16 |영동군  |송호        |양산면 송호리  |1977-10-31  |2013-10-21 |284000  |금강수변, 솔밭 및 양산팔경                        |
+|17 |괴산군  |괴강        |괴산읍 검승리  |2000-12-27  |2007-08-03 |238132  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 충민사     |
+|18 |괴산군  |수옥정       |연풍면 원풍리  |1995-12-08  |2021-12-17 |225818  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 조령산 휴양림 |
+|19 |음성군  |무극전적      |음성읍 소여리  |1985-06-08  |2010-08-11 |18499   |전승기념관 및 기념비, 전승탑, 충혼탑                  |
+|20 |단양군  |다리안       |단양읍 천동리  |1969-01-21  |2016-11-25 |154737  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|21 |단양군  |천 동       |단양읍 천동리  |1969-01-21  |2016-01-08 |120982  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|22 |단양군  |온 달       |영춘면  하리  |1994-09-06  |2013-06-21 |97576   |구인사, 온달산성, 온달동굴, 남천계곡, 소백산             |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+
+2024-05-18 00:07:17 [DEBUG] c.e.d.r.A.getForPrintSpots - <==      Total: 22
+2024-05-18 00:07:17 [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4cda146d]
+2024-05-18 00:07:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:07:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:07:58 [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2024-05-18 00:07:58 [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4f880a0f] was not registered for synchronization because synchronization is not active
+2024-05-18 00:07:58 [DEBUG] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+2024-05-18 00:07:58 [DEBUG] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@84700105 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@25e49cdb] will not be managed by Spring
+2024-05-18 00:07:58 [DEBUG] c.e.d.r.A.getForPrintSpots - ==>  Preparing: SELECT * FROM spot
+2024-05-18 00:07:58 [DEBUG] c.e.d.r.A.getForPrintSpots - ==> Parameters: 
+2024-05-18 00:07:58 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT *
+FROM spot
+ {executed in 1 msec}
+2024-05-18 00:07:58 [INFO ] jdbc.resultsettable - 
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|id |city |spot_name |location |initialdate |updatedate |area    |etc                                    |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|1  |충주시  |세계무술공원    |금릉동      |1980-10-30  |2016-12-09 |617325  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|2  |충주시  |충주호체험     |가금면 탑평리  |2004-08-13  |2016-07-08 |223134  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|3  |충주시  |능암온천      |앙성면 능암리  |1989-12-14  |2016-06-10 |199210  |탄산온천                                   |
+|4  |충주시  |충온온천      |앙성면 돈산리  |1989-12-14  |2011-02-18 |224825  |탄산온천                                   |
+|5  |제천시  |교리        |청풍면 교리   |1989-12-28  |2020-08-14 |310853  |청풍리조트                                  |
+|6  |제천시  |능강        |수산면 능강리  |1997-06-27  |2008-04-18 |136818  |E.S리조트                                 |
+|7  |제천시  |금월봉       |금성면 월굴리  |1998-05-29  |2016-03-25 |92514   |콘도, 수석공원, 수상레저시설                       |
+|8  |제천시  |계산        |청풍면 계산리  |1998-07-24  |2018-01-24 |135806  |펜션,조각공원,눈썰매장,모노레일                      |
+|9  |제천시  |제천온천      |수산면 내리   |2002-01-16  |2011-01-16 |296700  |온천                                     |
+|10 |제천시  |만남의광장     |청풍면 교리   |2004-08-27  |2012-12-27 |147440  |번지점프, 인공암벽, 휴게소, 야생화원                  |
+|11 |제천시  |KBS 촬영장   |금성면 성내리  |2004-08-27  |2018-12-14 |100272  |촬영장, 휴게쉼터                              |
+|12 |보은군  |구병산       |마로면 적암리  |2007-08-21  |2008-09-01 |146276  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|13 |보은군  |속리산레저     |속리산면 상판리 |1996-10-04  |2007-06-22 |130191  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|14 |옥천군  |장계        |안내면 장계리  |1986-06-07  |2010-05-04 |198705  |향토전시관, 육영수생가, 정지용 생가 및 문학관             |
+|15 |영동군  |레인보우힐링    |영동읍 매천리  |2010-10-08  |2022-08-12 |1750523 |과일나라테마공원, 와인터널,와인연구소,복합문화예술회관          |
+|16 |영동군  |송호        |양산면 송호리  |1977-10-31  |2013-10-21 |284000  |금강수변, 솔밭 및 양산팔경                        |
+|17 |괴산군  |괴강        |괴산읍 검승리  |2000-12-27  |2007-08-03 |238132  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 충민사     |
+|18 |괴산군  |수옥정       |연풍면 원풍리  |1995-12-08  |2021-12-17 |225818  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 조령산 휴양림 |
+|19 |음성군  |무극전적      |음성읍 소여리  |1985-06-08  |2010-08-11 |18499   |전승기념관 및 기념비, 전승탑, 충혼탑                  |
+|20 |단양군  |다리안       |단양읍 천동리  |1969-01-21  |2016-11-25 |154737  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|21 |단양군  |천 동       |단양읍 천동리  |1969-01-21  |2016-01-08 |120982  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|22 |단양군  |온 달       |영춘면  하리  |1994-09-06  |2013-06-21 |97576   |구인사, 온달산성, 온달동굴, 남천계곡, 소백산             |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+
+2024-05-18 00:07:58 [DEBUG] c.e.d.r.A.getForPrintSpots - <==      Total: 22
+2024-05-18 00:07:58 [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4f880a0f]
+2024-05-18 00:08:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:08:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:08:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:08:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:09:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:09:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:09:21 [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2024-05-18 00:09:21 [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5301c380] was not registered for synchronization because synchronization is not active
+2024-05-18 00:09:21 [DEBUG] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+2024-05-18 00:09:21 [DEBUG] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@789391586 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@25e49cdb] will not be managed by Spring
+2024-05-18 00:09:21 [DEBUG] c.e.d.r.A.getForPrintSpots - ==>  Preparing: SELECT * FROM spot
+2024-05-18 00:09:21 [DEBUG] c.e.d.r.A.getForPrintSpots - ==> Parameters: 
+2024-05-18 00:09:21 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT *
+FROM spot
+ {executed in 0 msec}
+2024-05-18 00:09:21 [INFO ] jdbc.resultsettable - 
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|id |city |spot_name |location |initialdate |updatedate |area    |etc                                    |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|1  |충주시  |세계무술공원    |금릉동      |1980-10-30  |2016-12-09 |617325  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|2  |충주시  |충주호체험     |가금면 탑평리  |2004-08-13  |2016-07-08 |223134  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|3  |충주시  |능암온천      |앙성면 능암리  |1989-12-14  |2016-06-10 |199210  |탄산온천                                   |
+|4  |충주시  |충온온천      |앙성면 돈산리  |1989-12-14  |2011-02-18 |224825  |탄산온천                                   |
+|5  |제천시  |교리        |청풍면 교리   |1989-12-28  |2020-08-14 |310853  |청풍리조트                                  |
+|6  |제천시  |능강        |수산면 능강리  |1997-06-27  |2008-04-18 |136818  |E.S리조트                                 |
+|7  |제천시  |금월봉       |금성면 월굴리  |1998-05-29  |2016-03-25 |92514   |콘도, 수석공원, 수상레저시설                       |
+|8  |제천시  |계산        |청풍면 계산리  |1998-07-24  |2018-01-24 |135806  |펜션,조각공원,눈썰매장,모노레일                      |
+|9  |제천시  |제천온천      |수산면 내리   |2002-01-16  |2011-01-16 |296700  |온천                                     |
+|10 |제천시  |만남의광장     |청풍면 교리   |2004-08-27  |2012-12-27 |147440  |번지점프, 인공암벽, 휴게소, 야생화원                  |
+|11 |제천시  |KBS 촬영장   |금성면 성내리  |2004-08-27  |2018-12-14 |100272  |촬영장, 휴게쉼터                              |
+|12 |보은군  |구병산       |마로면 적암리  |2007-08-21  |2008-09-01 |146276  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|13 |보은군  |속리산레저     |속리산면 상판리 |1996-10-04  |2007-06-22 |130191  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|14 |옥천군  |장계        |안내면 장계리  |1986-06-07  |2010-05-04 |198705  |향토전시관, 육영수생가, 정지용 생가 및 문학관             |
+|15 |영동군  |레인보우힐링    |영동읍 매천리  |2010-10-08  |2022-08-12 |1750523 |과일나라테마공원, 와인터널,와인연구소,복합문화예술회관          |
+|16 |영동군  |송호        |양산면 송호리  |1977-10-31  |2013-10-21 |284000  |금강수변, 솔밭 및 양산팔경                        |
+|17 |괴산군  |괴강        |괴산읍 검승리  |2000-12-27  |2007-08-03 |238132  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 충민사     |
+|18 |괴산군  |수옥정       |연풍면 원풍리  |1995-12-08  |2021-12-17 |225818  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 조령산 휴양림 |
+|19 |음성군  |무극전적      |음성읍 소여리  |1985-06-08  |2010-08-11 |18499   |전승기념관 및 기념비, 전승탑, 충혼탑                  |
+|20 |단양군  |다리안       |단양읍 천동리  |1969-01-21  |2016-11-25 |154737  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|21 |단양군  |천 동       |단양읍 천동리  |1969-01-21  |2016-01-08 |120982  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|22 |단양군  |온 달       |영춘면  하리  |1994-09-06  |2013-06-21 |97576   |구인사, 온달산성, 온달동굴, 남천계곡, 소백산             |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+
+2024-05-18 00:09:21 [DEBUG] c.e.d.r.A.getForPrintSpots - <==      Total: 22
+2024-05-18 00:09:21 [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5301c380]
+2024-05-18 00:09:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:09:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:10:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:10:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:10:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:10:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:11:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:11:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:11:24 [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2024-05-18 00:11:24 [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@58070c64] was not registered for synchronization because synchronization is not active
+2024-05-18 00:11:24 [DEBUG] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+2024-05-18 00:11:24 [DEBUG] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@672619908 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@25e49cdb] will not be managed by Spring
+2024-05-18 00:11:24 [DEBUG] c.e.d.r.A.getForPrintSpots - ==>  Preparing: SELECT * FROM spot
+2024-05-18 00:11:24 [DEBUG] c.e.d.r.A.getForPrintSpots - ==> Parameters: 
+2024-05-18 00:11:24 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT *
+FROM spot
+ {executed in 1 msec}
+2024-05-18 00:11:24 [INFO ] jdbc.resultsettable - 
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|id |city |spot_name |location |initialdate |updatedate |area    |etc                                    |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|1  |충주시  |세계무술공원    |금릉동      |1980-10-30  |2016-12-09 |617325  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|2  |충주시  |충주호체험     |가금면 탑평리  |2004-08-13  |2016-07-08 |223134  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|3  |충주시  |능암온천      |앙성면 능암리  |1989-12-14  |2016-06-10 |199210  |탄산온천                                   |
+|4  |충주시  |충온온천      |앙성면 돈산리  |1989-12-14  |2011-02-18 |224825  |탄산온천                                   |
+|5  |제천시  |교리        |청풍면 교리   |1989-12-28  |2020-08-14 |310853  |청풍리조트                                  |
+|6  |제천시  |능강        |수산면 능강리  |1997-06-27  |2008-04-18 |136818  |E.S리조트                                 |
+|7  |제천시  |금월봉       |금성면 월굴리  |1998-05-29  |2016-03-25 |92514   |콘도, 수석공원, 수상레저시설                       |
+|8  |제천시  |계산        |청풍면 계산리  |1998-07-24  |2018-01-24 |135806  |펜션,조각공원,눈썰매장,모노레일                      |
+|9  |제천시  |제천온천      |수산면 내리   |2002-01-16  |2011-01-16 |296700  |온천                                     |
+|10 |제천시  |만남의광장     |청풍면 교리   |2004-08-27  |2012-12-27 |147440  |번지점프, 인공암벽, 휴게소, 야생화원                  |
+|11 |제천시  |KBS 촬영장   |금성면 성내리  |2004-08-27  |2018-12-14 |100272  |촬영장, 휴게쉼터                              |
+|12 |보은군  |구병산       |마로면 적암리  |2007-08-21  |2008-09-01 |146276  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|13 |보은군  |속리산레저     |속리산면 상판리 |1996-10-04  |2007-06-22 |130191  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|14 |옥천군  |장계        |안내면 장계리  |1986-06-07  |2010-05-04 |198705  |향토전시관, 육영수생가, 정지용 생가 및 문학관             |
+|15 |영동군  |레인보우힐링    |영동읍 매천리  |2010-10-08  |2022-08-12 |1750523 |과일나라테마공원, 와인터널,와인연구소,복합문화예술회관          |
+|16 |영동군  |송호        |양산면 송호리  |1977-10-31  |2013-10-21 |284000  |금강수변, 솔밭 및 양산팔경                        |
+|17 |괴산군  |괴강        |괴산읍 검승리  |2000-12-27  |2007-08-03 |238132  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 충민사     |
+|18 |괴산군  |수옥정       |연풍면 원풍리  |1995-12-08  |2021-12-17 |225818  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 조령산 휴양림 |
+|19 |음성군  |무극전적      |음성읍 소여리  |1985-06-08  |2010-08-11 |18499   |전승기념관 및 기념비, 전승탑, 충혼탑                  |
+|20 |단양군  |다리안       |단양읍 천동리  |1969-01-21  |2016-11-25 |154737  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|21 |단양군  |천 동       |단양읍 천동리  |1969-01-21  |2016-01-08 |120982  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|22 |단양군  |온 달       |영춘면  하리  |1994-09-06  |2013-06-21 |97576   |구인사, 온달산성, 온달동굴, 남천계곡, 소백산             |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+
+2024-05-18 00:11:24 [DEBUG] c.e.d.r.A.getForPrintSpots - <==      Total: 22
+2024-05-18 00:11:24 [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@58070c64]
+2024-05-18 00:11:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:11:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:12:06 [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2024-05-18 00:12:06 [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6f0c5fdb] was not registered for synchronization because synchronization is not active
+2024-05-18 00:12:06 [DEBUG] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+2024-05-18 00:12:06 [DEBUG] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@1466603098 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@25e49cdb] will not be managed by Spring
+2024-05-18 00:12:06 [DEBUG] c.e.d.r.A.getForPrintSpots - ==>  Preparing: SELECT * FROM spot
+2024-05-18 00:12:06 [DEBUG] c.e.d.r.A.getForPrintSpots - ==> Parameters: 
+2024-05-18 00:12:06 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT *
+FROM spot
+ {executed in 1 msec}
+2024-05-18 00:12:06 [INFO ] jdbc.resultsettable - 
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|id |city |spot_name |location |initialdate |updatedate |area    |etc                                    |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|1  |충주시  |세계무술공원    |금릉동      |1980-10-30  |2016-12-09 |617325  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|2  |충주시  |충주호체험     |가금면 탑평리  |2004-08-13  |2016-07-08 |223134  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|3  |충주시  |능암온천      |앙성면 능암리  |1989-12-14  |2016-06-10 |199210  |탄산온천                                   |
+|4  |충주시  |충온온천      |앙성면 돈산리  |1989-12-14  |2011-02-18 |224825  |탄산온천                                   |
+|5  |제천시  |교리        |청풍면 교리   |1989-12-28  |2020-08-14 |310853  |청풍리조트                                  |
+|6  |제천시  |능강        |수산면 능강리  |1997-06-27  |2008-04-18 |136818  |E.S리조트                                 |
+|7  |제천시  |금월봉       |금성면 월굴리  |1998-05-29  |2016-03-25 |92514   |콘도, 수석공원, 수상레저시설                       |
+|8  |제천시  |계산        |청풍면 계산리  |1998-07-24  |2018-01-24 |135806  |펜션,조각공원,눈썰매장,모노레일                      |
+|9  |제천시  |제천온천      |수산면 내리   |2002-01-16  |2011-01-16 |296700  |온천                                     |
+|10 |제천시  |만남의광장     |청풍면 교리   |2004-08-27  |2012-12-27 |147440  |번지점프, 인공암벽, 휴게소, 야생화원                  |
+|11 |제천시  |KBS 촬영장   |금성면 성내리  |2004-08-27  |2018-12-14 |100272  |촬영장, 휴게쉼터                              |
+|12 |보은군  |구병산       |마로면 적암리  |2007-08-21  |2008-09-01 |146276  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|13 |보은군  |속리산레저     |속리산면 상판리 |1996-10-04  |2007-06-22 |130191  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|14 |옥천군  |장계        |안내면 장계리  |1986-06-07  |2010-05-04 |198705  |향토전시관, 육영수생가, 정지용 생가 및 문학관             |
+|15 |영동군  |레인보우힐링    |영동읍 매천리  |2010-10-08  |2022-08-12 |1750523 |과일나라테마공원, 와인터널,와인연구소,복합문화예술회관          |
+|16 |영동군  |송호        |양산면 송호리  |1977-10-31  |2013-10-21 |284000  |금강수변, 솔밭 및 양산팔경                        |
+|17 |괴산군  |괴강        |괴산읍 검승리  |2000-12-27  |2007-08-03 |238132  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 충민사     |
+|18 |괴산군  |수옥정       |연풍면 원풍리  |1995-12-08  |2021-12-17 |225818  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 조령산 휴양림 |
+|19 |음성군  |무극전적      |음성읍 소여리  |1985-06-08  |2010-08-11 |18499   |전승기념관 및 기념비, 전승탑, 충혼탑                  |
+|20 |단양군  |다리안       |단양읍 천동리  |1969-01-21  |2016-11-25 |154737  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|21 |단양군  |천 동       |단양읍 천동리  |1969-01-21  |2016-01-08 |120982  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|22 |단양군  |온 달       |영춘면  하리  |1994-09-06  |2013-06-21 |97576   |구인사, 온달산성, 온달동굴, 남천계곡, 소백산             |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+
+2024-05-18 00:12:06 [DEBUG] c.e.d.r.A.getForPrintSpots - <==      Total: 22
+2024-05-18 00:12:06 [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6f0c5fdb]
+2024-05-18 00:12:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:12:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:12:25 [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2024-05-18 00:12:25 [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6b9b1e25] was not registered for synchronization because synchronization is not active
+2024-05-18 00:12:25 [DEBUG] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+2024-05-18 00:12:25 [DEBUG] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@169097016 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@25e49cdb] will not be managed by Spring
+2024-05-18 00:12:25 [DEBUG] c.e.d.r.A.getForPrintSpots - ==>  Preparing: SELECT * FROM spot
+2024-05-18 00:12:25 [DEBUG] c.e.d.r.A.getForPrintSpots - ==> Parameters: 
+2024-05-18 00:12:25 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT *
+FROM spot
+ {executed in 0 msec}
+2024-05-18 00:12:25 [INFO ] jdbc.resultsettable - 
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|id |city |spot_name |location |initialdate |updatedate |area    |etc                                    |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|1  |충주시  |세계무술공원    |금릉동      |1980-10-30  |2016-12-09 |617325  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|2  |충주시  |충주호체험     |가금면 탑평리  |2004-08-13  |2016-07-08 |223134  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|3  |충주시  |능암온천      |앙성면 능암리  |1989-12-14  |2016-06-10 |199210  |탄산온천                                   |
+|4  |충주시  |충온온천      |앙성면 돈산리  |1989-12-14  |2011-02-18 |224825  |탄산온천                                   |
+|5  |제천시  |교리        |청풍면 교리   |1989-12-28  |2020-08-14 |310853  |청풍리조트                                  |
+|6  |제천시  |능강        |수산면 능강리  |1997-06-27  |2008-04-18 |136818  |E.S리조트                                 |
+|7  |제천시  |금월봉       |금성면 월굴리  |1998-05-29  |2016-03-25 |92514   |콘도, 수석공원, 수상레저시설                       |
+|8  |제천시  |계산        |청풍면 계산리  |1998-07-24  |2018-01-24 |135806  |펜션,조각공원,눈썰매장,모노레일                      |
+|9  |제천시  |제천온천      |수산면 내리   |2002-01-16  |2011-01-16 |296700  |온천                                     |
+|10 |제천시  |만남의광장     |청풍면 교리   |2004-08-27  |2012-12-27 |147440  |번지점프, 인공암벽, 휴게소, 야생화원                  |
+|11 |제천시  |KBS 촬영장   |금성면 성내리  |2004-08-27  |2018-12-14 |100272  |촬영장, 휴게쉼터                              |
+|12 |보은군  |구병산       |마로면 적암리  |2007-08-21  |2008-09-01 |146276  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|13 |보은군  |속리산레저     |속리산면 상판리 |1996-10-04  |2007-06-22 |130191  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|14 |옥천군  |장계        |안내면 장계리  |1986-06-07  |2010-05-04 |198705  |향토전시관, 육영수생가, 정지용 생가 및 문학관             |
+|15 |영동군  |레인보우힐링    |영동읍 매천리  |2010-10-08  |2022-08-12 |1750523 |과일나라테마공원, 와인터널,와인연구소,복합문화예술회관          |
+|16 |영동군  |송호        |양산면 송호리  |1977-10-31  |2013-10-21 |284000  |금강수변, 솔밭 및 양산팔경                        |
+|17 |괴산군  |괴강        |괴산읍 검승리  |2000-12-27  |2007-08-03 |238132  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 충민사     |
+|18 |괴산군  |수옥정       |연풍면 원풍리  |1995-12-08  |2021-12-17 |225818  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 조령산 휴양림 |
+|19 |음성군  |무극전적      |음성읍 소여리  |1985-06-08  |2010-08-11 |18499   |전승기념관 및 기념비, 전승탑, 충혼탑                  |
+|20 |단양군  |다리안       |단양읍 천동리  |1969-01-21  |2016-11-25 |154737  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|21 |단양군  |천 동       |단양읍 천동리  |1969-01-21  |2016-01-08 |120982  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|22 |단양군  |온 달       |영춘면  하리  |1994-09-06  |2013-06-21 |97576   |구인사, 온달산성, 온달동굴, 남천계곡, 소백산             |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+
+2024-05-18 00:12:25 [DEBUG] c.e.d.r.A.getForPrintSpots - <==      Total: 22
+2024-05-18 00:12:25 [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6b9b1e25]
+2024-05-18 00:12:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:12:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:13:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:13:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:13:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:13:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:14:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:14:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:14:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:14:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:15:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:15:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:15:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:15:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:16:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:16:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:16:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:16:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:17:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:17:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:17:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:17:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:18:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:18:17 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:18:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:18:47 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:19:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:19:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:19:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:19:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:20:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:20:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:20:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:20:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:21:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:21:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:21:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:21:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:22:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:22:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:22:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:22:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:23:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:23:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:23:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:23:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:24:03 [DEBUG] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Closing connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@6bff01e0: (connection has passed maxLifetime)
+2024-05-18 00:24:03 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@7631a829
+2024-05-18 00:24:04 [DEBUG] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Closing connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@bd0feaf: (connection has passed maxLifetime)
+2024-05-18 00:24:04 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@370ca212
+2024-05-18 00:24:07 [DEBUG] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Closing connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@7d6261f2: (connection has passed maxLifetime)
+2024-05-18 00:24:07 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@6f176a3
+2024-05-18 00:24:07 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Add connection elided, waiting=0, adders pending/running=1
+2024-05-18 00:24:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:24:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:24:24 [DEBUG] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Closing connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@3a915291: (connection has passed maxLifetime)
+2024-05-18 00:24:24 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@1091a906
+2024-05-18 00:24:29 [DEBUG] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Closing connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@4aedf494: (connection has passed maxLifetime)
+2024-05-18 00:24:29 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@21cb5f2d
+2024-05-18 00:24:30 [DEBUG] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Closing connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@201c8ef7: (connection has passed maxLifetime)
+2024-05-18 00:24:30 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@70be5649
+2024-05-18 00:24:30 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Add connection elided, waiting=0, adders pending/running=1
+2024-05-18 00:24:30 [DEBUG] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Closing connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@2ea7e484: (connection has passed maxLifetime)
+2024-05-18 00:24:30 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@4b62bd80
+2024-05-18 00:24:41 [DEBUG] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Closing connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@25e49cdb: (connection has passed maxLifetime)
+2024-05-18 00:24:41 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@4d059d54
+2024-05-18 00:24:45 [DEBUG] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Closing connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@717ecac8: (connection has passed maxLifetime)
+2024-05-18 00:24:45 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@c38976f
+2024-05-18 00:24:45 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Add connection elided, waiting=0, adders pending/running=1
+2024-05-18 00:24:45 [DEBUG] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Closing connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@6fb19eae: (connection has passed maxLifetime)
+2024-05-18 00:24:45 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@3dfe5cc8
+2024-05-18 00:24:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:24:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:25:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:25:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:25:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:25:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:26:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:26:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:26:32 [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2024-05-18 00:26:32 [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5490a8b2] was not registered for synchronization because synchronization is not active
+2024-05-18 00:26:32 [DEBUG] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+2024-05-18 00:26:32 [DEBUG] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@2108592829 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@7631a829] will not be managed by Spring
+2024-05-18 00:26:32 [DEBUG] c.e.d.r.A.getForPrintSpots - ==>  Preparing: SELECT * FROM spot
+2024-05-18 00:26:32 [DEBUG] c.e.d.r.A.getForPrintSpots - ==> Parameters: 
+2024-05-18 00:26:32 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+11. SELECT *
+FROM spot
+ {executed in 1 msec}
+2024-05-18 00:26:32 [INFO ] jdbc.resultsettable - 
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|id |city |spot_name |location |initialdate |updatedate |area    |etc                                    |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|1  |충주시  |세계무술공원    |금릉동      |1980-10-30  |2016-12-09 |617325  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|2  |충주시  |충주호체험     |가금면 탑평리  |2004-08-13  |2016-07-08 |223134  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|3  |충주시  |능암온천      |앙성면 능암리  |1989-12-14  |2016-06-10 |199210  |탄산온천                                   |
+|4  |충주시  |충온온천      |앙성면 돈산리  |1989-12-14  |2011-02-18 |224825  |탄산온천                                   |
+|5  |제천시  |교리        |청풍면 교리   |1989-12-28  |2020-08-14 |310853  |청풍리조트                                  |
+|6  |제천시  |능강        |수산면 능강리  |1997-06-27  |2008-04-18 |136818  |E.S리조트                                 |
+|7  |제천시  |금월봉       |금성면 월굴리  |1998-05-29  |2016-03-25 |92514   |콘도, 수석공원, 수상레저시설                       |
+|8  |제천시  |계산        |청풍면 계산리  |1998-07-24  |2018-01-24 |135806  |펜션,조각공원,눈썰매장,모노레일                      |
+|9  |제천시  |제천온천      |수산면 내리   |2002-01-16  |2011-01-16 |296700  |온천                                     |
+|10 |제천시  |만남의광장     |청풍면 교리   |2004-08-27  |2012-12-27 |147440  |번지점프, 인공암벽, 휴게소, 야생화원                  |
+|11 |제천시  |KBS 촬영장   |금성면 성내리  |2004-08-27  |2018-12-14 |100272  |촬영장, 휴게쉼터                              |
+|12 |보은군  |구병산       |마로면 적암리  |2007-08-21  |2008-09-01 |146276  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|13 |보은군  |속리산레저     |속리산면 상판리 |1996-10-04  |2007-06-22 |130191  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|14 |옥천군  |장계        |안내면 장계리  |1986-06-07  |2010-05-04 |198705  |향토전시관, 육영수생가, 정지용 생가 및 문학관             |
+|15 |영동군  |레인보우힐링    |영동읍 매천리  |2010-10-08  |2022-08-12 |1750523 |과일나라테마공원, 와인터널,와인연구소,복합문화예술회관          |
+|16 |영동군  |송호        |양산면 송호리  |1977-10-31  |2013-10-21 |284000  |금강수변, 솔밭 및 양산팔경                        |
+|17 |괴산군  |괴강        |괴산읍 검승리  |2000-12-27  |2007-08-03 |238132  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 충민사     |
+|18 |괴산군  |수옥정       |연풍면 원풍리  |1995-12-08  |2021-12-17 |225818  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 조령산 휴양림 |
+|19 |음성군  |무극전적      |음성읍 소여리  |1985-06-08  |2010-08-11 |18499   |전승기념관 및 기념비, 전승탑, 충혼탑                  |
+|20 |단양군  |다리안       |단양읍 천동리  |1969-01-21  |2016-11-25 |154737  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|21 |단양군  |천 동       |단양읍 천동리  |1969-01-21  |2016-01-08 |120982  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|22 |단양군  |온 달       |영춘면  하리  |1994-09-06  |2013-06-21 |97576   |구인사, 온달산성, 온달동굴, 남천계곡, 소백산             |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+
+2024-05-18 00:26:32 [DEBUG] c.e.d.r.A.getForPrintSpots - <==      Total: 22
+2024-05-18 00:26:32 [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5490a8b2]
+2024-05-18 00:26:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:26:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:26:57 [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2024-05-18 00:26:57 [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@64a9850c] was not registered for synchronization because synchronization is not active
+2024-05-18 00:26:57 [DEBUG] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+2024-05-18 00:26:57 [DEBUG] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@322018612 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@7631a829] will not be managed by Spring
+2024-05-18 00:26:57 [DEBUG] c.e.d.r.A.getForPrintSpots - ==>  Preparing: SELECT * FROM spot
+2024-05-18 00:26:57 [DEBUG] c.e.d.r.A.getForPrintSpots - ==> Parameters: 
+2024-05-18 00:26:57 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+11. SELECT *
+FROM spot
+ {executed in 1 msec}
+2024-05-18 00:26:57 [INFO ] jdbc.resultsettable - 
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|id |city |spot_name |location |initialdate |updatedate |area    |etc                                    |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|1  |충주시  |세계무술공원    |금릉동      |1980-10-30  |2016-12-09 |617325  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|2  |충주시  |충주호체험     |가금면 탑평리  |2004-08-13  |2016-07-08 |223134  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|3  |충주시  |능암온천      |앙성면 능암리  |1989-12-14  |2016-06-10 |199210  |탄산온천                                   |
+|4  |충주시  |충온온천      |앙성면 돈산리  |1989-12-14  |2011-02-18 |224825  |탄산온천                                   |
+|5  |제천시  |교리        |청풍면 교리   |1989-12-28  |2020-08-14 |310853  |청풍리조트                                  |
+|6  |제천시  |능강        |수산면 능강리  |1997-06-27  |2008-04-18 |136818  |E.S리조트                                 |
+|7  |제천시  |금월봉       |금성면 월굴리  |1998-05-29  |2016-03-25 |92514   |콘도, 수석공원, 수상레저시설                       |
+|8  |제천시  |계산        |청풍면 계산리  |1998-07-24  |2018-01-24 |135806  |펜션,조각공원,눈썰매장,모노레일                      |
+|9  |제천시  |제천온천      |수산면 내리   |2002-01-16  |2011-01-16 |296700  |온천                                     |
+|10 |제천시  |만남의광장     |청풍면 교리   |2004-08-27  |2012-12-27 |147440  |번지점프, 인공암벽, 휴게소, 야생화원                  |
+|11 |제천시  |KBS 촬영장   |금성면 성내리  |2004-08-27  |2018-12-14 |100272  |촬영장, 휴게쉼터                              |
+|12 |보은군  |구병산       |마로면 적암리  |2007-08-21  |2008-09-01 |146276  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|13 |보은군  |속리산레저     |속리산면 상판리 |1996-10-04  |2007-06-22 |130191  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|14 |옥천군  |장계        |안내면 장계리  |1986-06-07  |2010-05-04 |198705  |향토전시관, 육영수생가, 정지용 생가 및 문학관             |
+|15 |영동군  |레인보우힐링    |영동읍 매천리  |2010-10-08  |2022-08-12 |1750523 |과일나라테마공원, 와인터널,와인연구소,복합문화예술회관          |
+|16 |영동군  |송호        |양산면 송호리  |1977-10-31  |2013-10-21 |284000  |금강수변, 솔밭 및 양산팔경                        |
+|17 |괴산군  |괴강        |괴산읍 검승리  |2000-12-27  |2007-08-03 |238132  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 충민사     |
+|18 |괴산군  |수옥정       |연풍면 원풍리  |1995-12-08  |2021-12-17 |225818  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 조령산 휴양림 |
+|19 |음성군  |무극전적      |음성읍 소여리  |1985-06-08  |2010-08-11 |18499   |전승기념관 및 기념비, 전승탑, 충혼탑                  |
+|20 |단양군  |다리안       |단양읍 천동리  |1969-01-21  |2016-11-25 |154737  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|21 |단양군  |천 동       |단양읍 천동리  |1969-01-21  |2016-01-08 |120982  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|22 |단양군  |온 달       |영춘면  하리  |1994-09-06  |2013-06-21 |97576   |구인사, 온달산성, 온달동굴, 남천계곡, 소백산             |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+
+2024-05-18 00:26:57 [DEBUG] c.e.d.r.A.getForPrintSpots - <==      Total: 22
+2024-05-18 00:26:57 [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@64a9850c]
+2024-05-18 00:27:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:27:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:27:25 [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2024-05-18 00:27:25 [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4e5242d5] was not registered for synchronization because synchronization is not active
+2024-05-18 00:27:25 [DEBUG] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+2024-05-18 00:27:25 [DEBUG] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@396083326 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@7631a829] will not be managed by Spring
+2024-05-18 00:27:25 [DEBUG] c.e.d.r.A.getForPrintSpots - ==>  Preparing: SELECT * FROM spot
+2024-05-18 00:27:25 [DEBUG] c.e.d.r.A.getForPrintSpots - ==> Parameters: 
+2024-05-18 00:27:25 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+11. SELECT *
+FROM spot
+ {executed in 1 msec}
+2024-05-18 00:27:25 [INFO ] jdbc.resultsettable - 
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|id |city |spot_name |location |initialdate |updatedate |area    |etc                                    |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|1  |충주시  |세계무술공원    |금릉동      |1980-10-30  |2016-12-09 |617325  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|2  |충주시  |충주호체험     |가금면 탑평리  |2004-08-13  |2016-07-08 |223134  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|3  |충주시  |능암온천      |앙성면 능암리  |1989-12-14  |2016-06-10 |199210  |탄산온천                                   |
+|4  |충주시  |충온온천      |앙성면 돈산리  |1989-12-14  |2011-02-18 |224825  |탄산온천                                   |
+|5  |제천시  |교리        |청풍면 교리   |1989-12-28  |2020-08-14 |310853  |청풍리조트                                  |
+|6  |제천시  |능강        |수산면 능강리  |1997-06-27  |2008-04-18 |136818  |E.S리조트                                 |
+|7  |제천시  |금월봉       |금성면 월굴리  |1998-05-29  |2016-03-25 |92514   |콘도, 수석공원, 수상레저시설                       |
+|8  |제천시  |계산        |청풍면 계산리  |1998-07-24  |2018-01-24 |135806  |펜션,조각공원,눈썰매장,모노레일                      |
+|9  |제천시  |제천온천      |수산면 내리   |2002-01-16  |2011-01-16 |296700  |온천                                     |
+|10 |제천시  |만남의광장     |청풍면 교리   |2004-08-27  |2012-12-27 |147440  |번지점프, 인공암벽, 휴게소, 야생화원                  |
+|11 |제천시  |KBS 촬영장   |금성면 성내리  |2004-08-27  |2018-12-14 |100272  |촬영장, 휴게쉼터                              |
+|12 |보은군  |구병산       |마로면 적암리  |2007-08-21  |2008-09-01 |146276  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|13 |보은군  |속리산레저     |속리산면 상판리 |1996-10-04  |2007-06-22 |130191  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|14 |옥천군  |장계        |안내면 장계리  |1986-06-07  |2010-05-04 |198705  |향토전시관, 육영수생가, 정지용 생가 및 문학관             |
+|15 |영동군  |레인보우힐링    |영동읍 매천리  |2010-10-08  |2022-08-12 |1750523 |과일나라테마공원, 와인터널,와인연구소,복합문화예술회관          |
+|16 |영동군  |송호        |양산면 송호리  |1977-10-31  |2013-10-21 |284000  |금강수변, 솔밭 및 양산팔경                        |
+|17 |괴산군  |괴강        |괴산읍 검승리  |2000-12-27  |2007-08-03 |238132  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 충민사     |
+|18 |괴산군  |수옥정       |연풍면 원풍리  |1995-12-08  |2021-12-17 |225818  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 조령산 휴양림 |
+|19 |음성군  |무극전적      |음성읍 소여리  |1985-06-08  |2010-08-11 |18499   |전승기념관 및 기념비, 전승탑, 충혼탑                  |
+|20 |단양군  |다리안       |단양읍 천동리  |1969-01-21  |2016-11-25 |154737  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|21 |단양군  |천 동       |단양읍 천동리  |1969-01-21  |2016-01-08 |120982  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|22 |단양군  |온 달       |영춘면  하리  |1994-09-06  |2013-06-21 |97576   |구인사, 온달산성, 온달동굴, 남천계곡, 소백산             |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+
+2024-05-18 00:27:25 [DEBUG] c.e.d.r.A.getForPrintSpots - <==      Total: 22
+2024-05-18 00:27:25 [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4e5242d5]
+2024-05-18 00:27:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:27:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:27:48 [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2024-05-18 00:27:48 [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6e082cf4] was not registered for synchronization because synchronization is not active
+2024-05-18 00:27:48 [DEBUG] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+2024-05-18 00:27:48 [DEBUG] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@757780945 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@7631a829] will not be managed by Spring
+2024-05-18 00:27:48 [DEBUG] c.e.d.r.A.getForPrintSpots - ==>  Preparing: SELECT * FROM spot
+2024-05-18 00:27:48 [DEBUG] c.e.d.r.A.getForPrintSpots - ==> Parameters: 
+2024-05-18 00:27:48 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+11. SELECT *
+FROM spot
+ {executed in 1 msec}
+2024-05-18 00:27:48 [INFO ] jdbc.resultsettable - 
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|id |city |spot_name |location |initialdate |updatedate |area    |etc                                    |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+|1  |충주시  |세계무술공원    |금릉동      |1980-10-30  |2016-12-09 |617325  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|2  |충주시  |충주호체험     |가금면 탑평리  |2004-08-13  |2016-07-08 |223134  |충주호, 탄금호, 중앙탑, 중원고구려비, 탄금대             |
+|3  |충주시  |능암온천      |앙성면 능암리  |1989-12-14  |2016-06-10 |199210  |탄산온천                                   |
+|4  |충주시  |충온온천      |앙성면 돈산리  |1989-12-14  |2011-02-18 |224825  |탄산온천                                   |
+|5  |제천시  |교리        |청풍면 교리   |1989-12-28  |2020-08-14 |310853  |청풍리조트                                  |
+|6  |제천시  |능강        |수산면 능강리  |1997-06-27  |2008-04-18 |136818  |E.S리조트                                 |
+|7  |제천시  |금월봉       |금성면 월굴리  |1998-05-29  |2016-03-25 |92514   |콘도, 수석공원, 수상레저시설                       |
+|8  |제천시  |계산        |청풍면 계산리  |1998-07-24  |2018-01-24 |135806  |펜션,조각공원,눈썰매장,모노레일                      |
+|9  |제천시  |제천온천      |수산면 내리   |2002-01-16  |2011-01-16 |296700  |온천                                     |
+|10 |제천시  |만남의광장     |청풍면 교리   |2004-08-27  |2012-12-27 |147440  |번지점프, 인공암벽, 휴게소, 야생화원                  |
+|11 |제천시  |KBS 촬영장   |금성면 성내리  |2004-08-27  |2018-12-14 |100272  |촬영장, 휴게쉼터                              |
+|12 |보은군  |구병산       |마로면 적암리  |2007-08-21  |2008-09-01 |146276  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|13 |보은군  |속리산레저     |속리산면 상판리 |1996-10-04  |2007-06-22 |130191  |속리산국립공원, 법주사, 구병산, 삼년산성                |
+|14 |옥천군  |장계        |안내면 장계리  |1986-06-07  |2010-05-04 |198705  |향토전시관, 육영수생가, 정지용 생가 및 문학관             |
+|15 |영동군  |레인보우힐링    |영동읍 매천리  |2010-10-08  |2022-08-12 |1750523 |과일나라테마공원, 와인터널,와인연구소,복합문화예술회관          |
+|16 |영동군  |송호        |양산면 송호리  |1977-10-31  |2013-10-21 |284000  |금강수변, 솔밭 및 양산팔경                        |
+|17 |괴산군  |괴강        |괴산읍 검승리  |2000-12-27  |2007-08-03 |238132  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 충민사     |
+|18 |괴산군  |수옥정       |연풍면 원풍리  |1995-12-08  |2021-12-17 |225818  |쌍곡구곡, 선유구곡, 화양구곡, 산막이 옛길, 괴산댐, 조령산 휴양림 |
+|19 |음성군  |무극전적      |음성읍 소여리  |1985-06-08  |2010-08-11 |18499   |전승기념관 및 기념비, 전승탑, 충혼탑                  |
+|20 |단양군  |다리안       |단양읍 천동리  |1969-01-21  |2016-11-25 |154737  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|21 |단양군  |천 동       |단양읍 천동리  |1969-01-21  |2016-01-08 |120982  |대명콘도, 도담삼봉, 만천하스카이워크                   |
+|22 |단양군  |온 달       |영춘면  하리  |1994-09-06  |2013-06-21 |97576   |구인사, 온달산성, 온달동굴, 남천계곡, 소백산             |
+|---|-----|----------|---------|------------|-----------|--------|---------------------------------------|
+
+2024-05-18 00:27:48 [DEBUG] c.e.d.r.A.getForPrintSpots - <==      Total: 22
+2024-05-18 00:27:48 [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6e082cf4]
+2024-05-18 00:28:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:28:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:28:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:28:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:29:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:29:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:29:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:29:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:30:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:30:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:30:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:30:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:31:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:31:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:31:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:31:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:32:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:32:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:32:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:32:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:33:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:33:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:33:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:33:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:34:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:34:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:34:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:34:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:35:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:35:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:35:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:35:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:36:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:36:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:36:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:36:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:37:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:37:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:37:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:37:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:38:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:38:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:38:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:38:48 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:39:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:39:18 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2024-05-18 00:39:44 [INFO ] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-05-18 00:39:44 [DEBUG] o.s.b.a.ApplicationAvailabilityBean - Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2024-05-18 00:39:44 [DEBUG] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@43325fe7, started on Fri May 17 23:51:14 KST 2024
+2024-05-18 00:39:44 [DEBUG] o.s.c.s.DefaultLifecycleProcessor - Stopping beans in phase 2147482623
+2024-05-18 00:39:44 [DEBUG] o.s.c.s.DefaultLifecycleProcessor - Bean 'webServerGracefulShutdown' completed its stop procedure
+2024-05-18 00:39:44 [DEBUG] o.s.c.s.DefaultLifecycleProcessor - Stopping beans in phase 2147481599
+2024-05-18 00:39:44 [INFO ] o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2024-05-18 00:39:44 [INFO ] o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2024-05-18 00:39:44 [INFO ] o.a.c.c.C.[Tomcat].[localhost].[/] - Destroying Spring FrameworkServlet 'dispatcherServlet'
+2024-05-18 00:39:44 [WARN ] o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.10/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.10/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.10/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.10/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@17.0.10/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@17.0.10/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@17.0.10/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.10/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.10/java.lang.Thread.run(Thread.java:840)
+2024-05-18 00:39:44 [INFO ] o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2024-05-18 00:39:44 [DEBUG] o.s.c.s.DefaultLifecycleProcessor - Bean 'webServerStartStop' completed its stop procedure
+2024-05-18 00:39:44 [DEBUG] o.s.c.s.DefaultLifecycleProcessor - Stopping beans in phase -2147483647
+2024-05-18 00:39:44 [DEBUG] o.s.c.s.DefaultLifecycleProcessor - Bean 'springBootLoggingLifecycle' completed its stop procedure
+2024-05-18 00:39:44 [DEBUG] o.s.j.e.a.AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown
+2024-05-18 00:39:44 [DEBUG] o.s.j.e.a.AnnotationMBeanExporter - Unregistering JMX-exposed beans
+2024-05-18 00:39:44 [DEBUG] o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2024-05-18 00:39:44 [INFO ] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-05-18 00:39:44 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Before shutdown stats (total=10, active=0, idle=10, waiting=0)
+2024-05-18 00:39:44 [DEBUG] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Closing connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@7631a829: (connection evicted)
+2024-05-18 00:39:44 [DEBUG] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Closing connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@370ca212: (connection evicted)
+2024-05-18 00:39:44 [DEBUG] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Closing connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@6f176a3: (connection evicted)
+2024-05-18 00:39:44 [DEBUG] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Closing connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@1091a906: (connection evicted)
+2024-05-18 00:39:44 [DEBUG] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Closing connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@21cb5f2d: (connection evicted)
+2024-05-18 00:39:44 [DEBUG] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Closing connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@70be5649: (connection evicted)
+2024-05-18 00:39:44 [DEBUG] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Closing connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@4b62bd80: (connection evicted)
+2024-05-18 00:39:44 [DEBUG] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Closing connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@4d059d54: (connection evicted)
+2024-05-18 00:39:44 [DEBUG] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Closing connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@c38976f: (connection evicted)
+2024-05-18 00:39:44 [DEBUG] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Closing connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@3dfe5cc8: (connection evicted)
+2024-05-18 00:39:44 [DEBUG] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - After shutdown stats (total=0, active=0, idle=0, waiting=0)
+2024-05-18 00:39:44 [INFO ] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
